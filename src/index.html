@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>MobaArena.IO | by Eleventh Games</title>
+        <meta name="viewport" content="width=300, initial-scale=1, user-scalable=no">
+        <meta name="HandheldFriendly" content="True">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+
+    <body>
+        <div id="content" style="display: block; width: 100%; text-align: center"></div>
+        <div class="ingame-modals">
+            <div class="dark-bg" id="dark-bg" style="display: none">
+                <div class="return-to-menu"></div>
+            </div>
+            <div class="dark-bg" id="dark-bg-basic" style="display: none"></div>
+            <div class="loading-wrapper modal" id="lobby-spinner" style="display: none">
+                <img src="assets/ui/spinner.gif" width="64">
+                <div class="loading-status" id="loading-status"></div>
+            </div>
+            <div id="connectionLost" class="modal" style="display: none;">
+                <div class="header">Connection lost</div>
+                <div class="detail" id="connectionLostDetail">N/A</div>
+            </div>
+        </div>
+        <div class="ingame-ui" id="root" style="display: none">
+        </div>
+        <div id="version" class="version hide"></div>
+        <div class="load-font" style="display: none;">load font</div>
+    </body>
+</html>
