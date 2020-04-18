@@ -6,8 +6,8 @@ export default {
     UI: ui,
     World: {
         size: {
-            width: 2500,
-            height: 2500
+            width: 1024,
+            height: 768
         }
     }
 };

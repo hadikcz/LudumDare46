@@ -24,6 +24,8 @@ export default class BootScene extends Phaser.Scene {
         }, this);
 
         // LOAD assets HERE
+        this.load.atlas('assets', 'assets/images/assets.png', 'assets/images/assets.json');
+        this.load.spritesheet('characters', 'assets/images/characters.png', { frameWidth: 36, frameHeight: 36, endFrame: 40 });
         this.load.image('mobPlaceholder', 'assets/images/mobPlaceholder.png');
     }
 

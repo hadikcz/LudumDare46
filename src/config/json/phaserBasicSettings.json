@@ -1,7 +1,7 @@
 {
   "gameSize": {
-    "width": 800,
-    "height": 700
+    "width": 1024,
+    "height": 640
   },
   "backgroundColor": "0x000000"
 }

@@ -22,13 +22,13 @@ const config = {
     },
     disableContextMenu: !__DEV__,
     antialias: false,
-    scale: {
-        // mode: Phaser.DOM.FILL,
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: window.innerWidth,
-        height: window.innerHeight
-    },
+    // scale: {
+    //     // mode: Phaser.DOM.FILL,
+    //     mode: Phaser.Scale.FIT,
+    //     autoCenter: Phaser.Scale.CENTER_BOTH,
+    //     width: window.innerWidth,
+    //     height: window.innerHeight
+    // },
     scene: [
         BootScene,
         GameScene
