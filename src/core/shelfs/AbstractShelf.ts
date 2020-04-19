@@ -3,6 +3,8 @@ import {ShelfState} from "enums/ShelfState";
 import Image = Phaser.GameObjects.Image;
 import {Shelfs} from "enums/Shelfs";
 import {Depths} from "enums/Depths";
+import ShelfManager from "core/ShelfManager";
+import WorldEnvironment from "core/WorldEnvironment";
 
 export default abstract class AbstractShelf extends Phaser.GameObjects.Container {
 
@@ -18,7 +20,11 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         this.shelfType = shelfType;
 
         this.scene.add.existing(this);
-        this.setDepth(Depths.SHELF);
+        if (this.y < WorldEnvironment.SHELF_SECOND_ROW_DEPTH) {
+            this.setDepth(Depths.SHELF_UNDER_PLAYER);
+        } else {
+            this.setDepth(Depths.SHELF);
+        }
 
         this.shelfImage = this.scene.add.image(0, 0, 'assets', shelfType)
             .setOrigin(0, 1);
