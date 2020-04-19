@@ -7,12 +7,12 @@ declare let window: any;
 
 export default class MatrixWorld {
 
-    private static readonly TILE_SIZE: number = 16;
+    public static readonly TILE_SIZE: number = 16;
     private static readonly TILES_COUNT: number = 62;
     private static readonly SESSION_STORAGE_KEY_MAP_DATA = 'SESSION_STORAGE_KEY_MAP_DATA';
 
+    public easyStarWrapper: EasyStarWrapper;
     private scene: GameScene;
-    private easyStarWrapper: EasyStarWrapper;
     private debugGui: any;
     private debugGridLayer: Phaser.Tilemaps.DynamicTilemapLayer;
     private debugFillIndex: number = 1;
@@ -37,6 +37,7 @@ export default class MatrixWorld {
         this.debugGridLayer.setAlpha(0.5);
 
         this.fillGrid();
+        this.easyStarWrapper.setGrid(this.tileMapToArray());
         this.debugGridLayer.setVisible(this.showTilemap);
 
         this.initDebugGUI();
@@ -52,9 +53,16 @@ export default class MatrixWorld {
         let pointerTileX = this.debugGridLayer.worldToTileX(worldPoint.x);
         let pointerTileY = this.debugGridLayer.worldToTileY(worldPoint.y);
 
-        if (this.scene.input.manager.activePointer.isDown) {
+        if (this.scene.input.manager.activePointer.isDown && this.showTilemap) {
             this.debugGridLayer.fill(this.debugFillIndex, pointerTileX, pointerTileY, this.debugDrawSize, this.debugDrawSize);
         }
+    }
+
+    public static getWorldSize (): number[] {
+        return [
+            MatrixWorld.TILE_SIZE * MatrixWorld.TILES_COUNT,
+            MatrixWorld.TILE_SIZE * MatrixWorld.TILES_COUNT
+        ];
     }
 
     private fillGrid (): void {
@@ -63,13 +71,7 @@ export default class MatrixWorld {
     }
 
     public saveTileMapIntoSession (): void {
-        let tiles: integer[][] = [];
-        this.debugGridLayer.forEachTile((tile) => {
-            if (tiles[tile.y] === undefined) {
-                tiles[tile.y] = [];
-            }
-            tiles[tile.y][tile.x] = parseInt(tile.index.toString());
-        });
+        let tiles = this.tileMapToArray();
         sessionStorage.setItem(MatrixWorld.SESSION_STORAGE_KEY_MAP_DATA, JSON.stringify(tiles));
     }
 
@@ -79,7 +81,18 @@ export default class MatrixWorld {
         this.debugGridLayer.putTilesAt(tiles, 0, 0);
     }
 
-    public clearTilesAndSave (): void {
+    private tileMapToArray (): integer[][] {
+        let tiles: integer[][] = [];
+        this.debugGridLayer.forEachTile((tile) => {
+            if (tiles[tile.y] === undefined) {
+                tiles[tile.y] = [];
+            }
+            tiles[tile.y][tile.x] = parseInt(tile.index.toString());
+        });
+        return tiles;
+    }
+
+    private clearTilesAndSave (): void {
         for (let x: number = 0; x < MatrixWorld.TILES_COUNT; x++) {
             for (let y: number = 0; y < MatrixWorld.TILES_COUNT; y++) {
                 this.debugGridLayer.putTileAt(0, x, y);

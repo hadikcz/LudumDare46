@@ -28,8 +28,8 @@ export default class GameScene extends Phaser.Scene {
         this.worldEnvironment = new WorldEnvironment(this);
         this.effectManager = new EffectManager(this);
 
-        this.playerCharacter = new PlayerCharacter(this, 350, 356);
         this.matrixWorld = new MatrixWorld(this, this.debugGui);
+        this.playerCharacter = new PlayerCharacter(this, 350, 356, this.matrixWorld.easyStarWrapper);
 
         this.ui = new UI(this);
         this.ui.show();

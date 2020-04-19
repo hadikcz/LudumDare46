@@ -1,16 +1,21 @@
 import Phaser from 'phaser';
 import GameScene from "scenes/GameScene";
 import Vector2 = Phaser.Math.Vector2;
+import EasyStarWrapper from "core/pathfinding/EasyStarWrapper";
 
 export default class PlayerCharacter extends Phaser.GameObjects.Container implements Phaser.GameObjects.GameObject {
 
     public scene!: GameScene;
     private static readonly SCALE: number = 3;
+    private pathfinding: EasyStarWrapper;
     private character: Phaser.GameObjects.Sprite;
     private positionToMove: Vector2 | null = null;
 
-    constructor(scene: GameScene, x: number, y: number) {
+
+    constructor(scene: GameScene, x: number, y: number, pathfinding: EasyStarWrapper) {
         super(scene, x, y, []);
+        this.pathfinding = pathfinding;
+
         this.scene.add.existing(this);
         this.scene.physics.world.enable(this);
 
@@ -31,8 +36,11 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
         this.add(this.character);
 
         this.scene.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
-            this.scene.physics.moveTo(this, pointer.worldX, pointer.worldY, 150);
-            this.positionToMove = new Vector2(pointer.worldX, pointer.worldY);
+            this.pathfinding.findPath(this.x, this.y, pointer.worldX, pointer.worldY, (status, points) => {
+                console.log([status, points]);
+            }, this);
+            // this.scene.physics.moveTo(this, pointer.worldX, pointer.worldY, 150);
+            // this.positionToMove = new Vector2(pointer.worldX, pointer.worldY);
         });
     }
 
