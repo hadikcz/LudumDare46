@@ -13,5 +13,6 @@ export enum Depths {
     FLY_TEXT,
     GRID_DEBUG,
     UI_ICONS,
-    UI_DEBUG
+    UI_DEBUG,
+    UI
 }

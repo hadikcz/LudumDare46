@@ -31,6 +31,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     protected pooIcon!: Image;
     protected feedIcon!: Image;
     protected dieIcon!: Image;
+    protected smileIcon!: Image;
     protected diePermaIcon!: Image;
     private feedInterval!: Phaser.Time.TimerEvent | null;
     private pooInterval!: Phaser.Time.TimerEvent | null;
@@ -58,6 +59,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
             this.feedIcon = this.scene.add.image(x + config?.iconX, y + config?.iconY, 'assets', 'game_feed').setOrigin(0.5, 0.5).setDepth(Depths.UI_ICONS).setVisible(false);
             this.dieIcon = this.scene.add.image(x + config?.iconX, y + config?.iconY, 'assets', 'game_skull').setOrigin(0.5, 0.5).setDepth(Depths.UI_ICONS).setVisible(false);
             this.diePermaIcon = this.scene.add.image(x + config?.iconX, y + config?.iconY, 'assets', 'game_skull_permanent').setOrigin(0.5, 0.5).setDepth(Depths.UI_ICONS).setVisible(false);
+            this.smileIcon = this.scene.add.image(x + config?.iconX, y + config?.iconY, 'assets', 'game_smile').setOrigin(0.5, 0.5).setDepth(Depths.UI_ICONS).setVisible(false);
 
             this.scene.tweens.add({
                 targets: [this.feedIcon, this.pooIcon],
@@ -112,7 +114,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     public doAction (finishCallback: any): void {
         console.log('start action');
         this.scene.time.addEvent({
-            delay: this.getDurationTime() * 1000,
+            delay: this.getDurationTime(),
             callbackScope: this,
             callback: () => {
                 finishCallback();
@@ -121,14 +123,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         });
     }
 
-    private finishAction (): void {
-        this.feedIcon.setVisible(false);
-        this.pooIcon.setVisible(false);
-
-        this.shelfState = ShelfState.OK;
-    }
-
-    private getDurationTime (): number {
+    public getDurationTime (): number {
         if (!this.config) return 0;
 
         if (this.shelfState === ShelfState.WAITING_FOR_CLEAN) {
@@ -138,6 +133,30 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         } else {
             return 0;
         }
+    }
+
+    private finishAction (): void {
+        this.feedIcon.setVisible(false);
+        this.pooIcon.setVisible(false);
+
+        this.shelfState = ShelfState.OK;
+        this.smileIcon.setVisible(true);
+        this.smileIcon.setAlpha(1);
+
+        let y = 0;
+        if (this.config) {
+            y = this.config.iconY;
+        }
+        this.smileIcon.y = this.y + y;
+        console.log([this.smileIcon.y, this.y + y - 100]);
+
+        console.log(this.smileIcon);
+        this.scene.tweens.add({
+            targets: this.smileIcon,
+            alpha: 0,
+            y: this.y + y - 100,
+            duration: 5000,
+        });
     }
 
     private startFeedInterval (): void {
@@ -200,10 +219,14 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         if (this.lives <= 0) {
             this.totalAnimalDie();
         } else {
+            let y = 0;
+            if (this.config) {
+                y = this.config.iconY;
+            }
             this.scene.tweens.add({
                 targets: this.dieIcon,
                 alpha: 0,
-                y: this.dieIcon.y - 100,
+                y: this.y + y - 100,
                 duration: 5000,
             });
         }
@@ -215,10 +238,14 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         console.log(`Whole animal die ${this.title} ${this.lives}/${this.config?.count}`);
         this.hideAnimal();
         this.diePermaIcon.setVisible(true);
+        let y = 0;
+        if (this.config) {
+            y = this.config.iconY;
+        }
         this.scene.tweens.add({
             targets: this.diePermaIcon,
             alpha: 0,
-            y: this.diePermaIcon.y - 100,
+            y: this.y + y - 100,
             duration: 5000,
         });
     }

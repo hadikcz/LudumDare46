@@ -6,6 +6,7 @@ import Tween = Phaser.Tweens.Tween;
 import MatrixWorld from "core/pathfinding/MatrixWorld";
 import WorldEnvironment from "core/WorldEnvironment";
 import ShelfManager from "core/ShelfManager";
+import ProgressBarUI from "libs/ProgressBarUI";
 
 export default class PlayerCharacter extends Phaser.GameObjects.Container implements Phaser.GameObjects.GameObject {
 
@@ -20,6 +21,7 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
     private shadowAnimation: Tween;
     private shelfManager: ShelfManager;
     private isFreeze: boolean = false;
+    private progressBar: ProgressBarUI;
 
     constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld, shelfManager: ShelfManager) {
         super(scene, x, y, []);
@@ -34,6 +36,19 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
         body.setFriction(100, 100);
         this.setScale(PlayerCharacter.SCALE);
         this.setDepth(Depths.CHARACTER_ABOVE_DESK);
+
+        this.progressBar = new ProgressBarUI(this.scene, {
+            followTarget: this,
+            atlas: 'assets',
+            atlasBg: 'progress_bar_bg',
+            atlasBar: 'progress_bar_inner',
+            tintBar: 0x00FF00,
+            depth: Depths.UI,
+            offsetX: -30,
+            offsetY: 10
+        });
+        this.progressBar.setPercent(0);
+        this.progressBar.hide();
 
         this.scene.anims.create({
             key: 'playerCharacterWalk',
@@ -137,9 +152,23 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
         if (this.shelfManager.lastClick && !this.isFreeze && this.shelfManager.lastClick.canDoJob()) {
             console.log(`Reach target`);
             this.freeze();
+            this.progressBar.setPercent(0);
+            this.progressBar.show();
+
+            let started = Math.round(Date.now());
+            let target = Math.round(this.shelfManager.lastClick?.getDurationTime());
+            let interval = setInterval(() => {
+                let current = Math.round(Date.now()) - started;
+                let percent = (current / target) * 100;
+                this.progressBar.setPercent(percent);
+            }, 10);
+
+
             this.shelfManager.lastClick.doAction(() => {
+                clearInterval(interval);
                 console.log('finished job');
                 this.shelfManager.lastClick = null;
+                this.progressBar.hide();
                 this.unfreeze();
             });
         }
