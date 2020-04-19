@@ -71,5 +71,3 @@ export default class EasyStarWrapper {
     }
 
 }
-
-interface FindPathCallback { (success: boolean, path: Vector2[]): void }

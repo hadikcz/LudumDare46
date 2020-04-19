@@ -1,23 +1,23 @@
 import Phaser from 'phaser';
 import GameScene from "scenes/GameScene";
 import Vector2 = Phaser.Math.Vector2;
-import EasyStarWrapper from "core/pathfinding/EasyStarWrapper";
 import {Depths} from "structs/Depths";
 import Tween = Phaser.Tweens.Tween;
+import MatrixWorld from "core/pathfinding/MatrixWorld";
 
 export default class PlayerCharacter extends Phaser.GameObjects.Container implements Phaser.GameObjects.GameObject {
 
     public scene!: GameScene;
     public debugPath: boolean = sessionStorage.getItem('debugPath') && JSON.parse(sessionStorage.getItem('debugPath') as string) ? true : false;
     private static readonly SCALE: number = 3;
-    private pathfinding: EasyStarWrapper;
+    private pathfinding: MatrixWorld;
     private shadow: Phaser.GameObjects.Graphics;
     private character: Phaser.GameObjects.Sprite;
     private positionToMove: Vector2 | null = null;
     private path: Vector2[] = [];
     private shadowAnimation: Tween;
 
-    constructor(scene: GameScene, x: number, y: number, pathfinding: EasyStarWrapper) {
+    constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld) {
         super(scene, x, y, []);
         this.pathfinding = pathfinding;
 
@@ -64,7 +64,7 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
                 }
                 if (this.debugPath)
                     this.scene.debugPath(points);
-            }, this);
+            }, true, this);
         });
     }
 

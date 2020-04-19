@@ -2,6 +2,8 @@ import EasyStarWrapper from "core/pathfinding/EasyStarWrapper";
 import GameScene from "scenes/GameScene";
 import ArrayHelpers from "helpers/ArrayHelpers";
 import {Depths} from "structs/Depths";
+import Vector2 = Phaser.Math.Vector2;
+import Tile = Phaser.Tilemaps.Tile;
 
 declare let window: any;
 
@@ -45,6 +47,18 @@ export default class MatrixWorld {
         window.saveTileMapIntoSession = this.saveTileMapIntoSession.bind(this);
         window.loadTileMapFromSession = this.loadTileMapFromSession.bind(this);
         window.clearTilesAndSave = this.clearTilesAndSave.bind(this);
+    }
+
+    findPath (x1: number, y1: number, x2: number, y2: number, callback: FindPathCallback, nearestFallback: boolean = false, callbackContext: any): void {
+        this.easyStarWrapper.findPath(x1, y1, x2, y2, (success, points) => {
+            if(!success && nearestFallback) {
+                let nearestWalkablePoint = this.findNearestWalkablePosition(x2, y2);
+                if (nearestWalkablePoint) {
+                    return this.findPath(x1, y1, nearestWalkablePoint.x, nearestWalkablePoint.y, callback, false, callbackContext);
+                }
+            }
+            callback(success, points);
+        }, callbackContext);
     }
 
     update (): void {
@@ -125,5 +139,25 @@ export default class MatrixWorld {
         collisionMask.add(this, 'toogleShowMinimap');
         collisionMask.add(this, 'debugFillIndex', [0, 1]);
         collisionMask.open();
+    }
+
+    private findNearestWalkablePosition (x, y): Vector2 | null {
+        let nearestTile: Tile | null = null;
+        let nearestDistance = Infinity;
+
+        this.debugGridLayer.forEachTile((tile) => {
+            let distance = Phaser.Math.Distance.Between(x, y, tile.getCenterX(), tile.getCenterY());
+            if (distance < nearestDistance && tile.index === 1) {
+                nearestTile = tile;
+                nearestDistance = distance;
+            }
+        });
+
+        if (nearestTile) {
+            let tile: Tile = nearestTile;
+            return new Vector2(tile.getCenterX(), tile.getCenterY());
+        }
+        return null;
+
     }
 }
