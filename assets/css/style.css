@@ -35,9 +35,8 @@ a {text-decoration: none;}
 #content {
     position: absolute;
     z-index: 0;
-    position: absolute;
-    top: 50%;
-    transform: translate(0px, -50%);
+    /*top: 50%;*/
+    /*transform: translate(0px, -50%);*/
 }
 #datGui {
     top: 0;

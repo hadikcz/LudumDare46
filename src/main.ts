@@ -24,8 +24,8 @@ const config = {
     antialias: false,
     scale: {
         // mode: Phaser.DOM.FILL,
-        // mode: Phaser.Scale.CENTER_BOTH,
-        // autoCenter: Phaser.Scale.CENTER_BOTH,
+        mode: Phaser.Scale.CENTER_BOTH,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
         // width: GameConfig.PhaserBasicSettings.gameSize.width,
         // height: GameConfig.PhaserBasicSettings.gameSize.height
     },
