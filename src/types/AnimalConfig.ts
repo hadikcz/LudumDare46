@@ -4,4 +4,6 @@ export interface AnimalConfig {
     timeBetweenFeed: number[];
     timeBetweenPoo: number[];
     count: number;
+    iconX: number;
+    iconY: number;
 }

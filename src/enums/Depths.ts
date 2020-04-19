@@ -12,5 +12,6 @@ export enum Depths {
     CEILING_LAMPS,
     FLY_TEXT,
     GRID_DEBUG,
+    UI_ICONS,
     UI_DEBUG
 }

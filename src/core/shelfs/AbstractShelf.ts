@@ -27,6 +27,10 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     protected animalImage2!: Image;
     protected cage!: Image;
     protected config!: AnimalConfig | null;
+    protected pooIcon!: Image;
+    protected feedIcon!: Image;
+    protected dieIcon!: Image;
+    protected diePermaIcon!: Image;
     private feedInterval!: Phaser.Time.TimerEvent | null;
     private pooInterval!: Phaser.Time.TimerEvent | null;
 
@@ -45,6 +49,23 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         }
 
         this.scene.add.existing(this);
+
+        if (config?.iconX && config.iconY) {
+            this.pooIcon = this.scene.add.image(x + config?.iconX, y + config?.iconY, 'assets', 'game_poop').setOrigin(0.5, 0.5).setDepth(Depths.UI_ICONS).setVisible(false);
+            this.feedIcon = this.scene.add.image(x + config?.iconX, y + config?.iconY, 'assets', 'game_feed').setOrigin(0.5, 0.5).setDepth(Depths.UI_ICONS).setVisible(false);
+            this.dieIcon = this.scene.add.image(x + config?.iconX, y + config?.iconY, 'assets', 'game_skull').setOrigin(0.5, 0.5).setDepth(Depths.UI_ICONS).setVisible(false);
+            this.diePermaIcon = this.scene.add.image(x + config?.iconX, y + config?.iconY, 'assets', 'game_skull_permanent').setOrigin(0.5, 0.5).setDepth(Depths.UI_ICONS).setVisible(false);
+
+            this.scene.tweens.add({
+                targets: [this.feedIcon, this.pooIcon],
+                y: y + config?.iconY - 15,
+                duration: 500,
+                yoyo: true,
+                repeat: Infinity,
+                ease: Phaser.Math.Easing.Bounce.In
+            });
+        }
+
         if (this.y < WorldEnvironment.SHELF_SECOND_ROW_DEPTH) {
             this.setDepth(Depths.SHELF_UNDER_PLAYER);
         } else {
@@ -83,9 +104,10 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
             repeat: Infinity,
             callback: () => {
                 console.log(`Want feed ${this.title}`);
+                this.feedIcon.setVisible(true);
                 this.events.emit(AbstractShelf.NEED_FOOD);
                 this.scene.time.addEvent({
-                    delay: GameConfig.Animal.WaitForPooOrFoodBeforeDie,
+                    delay: GameConfig.Animal.WaitForPooOrFoodBeforeDie * 1000,
                     callbackScope: this,
                     callback: () => {
                         this.animalDie();
@@ -105,9 +127,10 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
             repeat: Infinity,
             callback: () => {
                 console.log(`Want clean poo ${this.title}`);
+                this.pooIcon.setVisible(true);
                 this.events.emit(AbstractShelf.NEED_CLEAN_POO);
                 this.scene.time.addEvent({
-                    delay: GameConfig.Animal.WaitForPooOrFoodBeforeDie,
+                    delay: GameConfig.Animal.WaitForPooOrFoodBeforeDie * 1000,
                     callbackScope: this,
                     callback: () => {
                         this.animalDie();
@@ -119,9 +142,21 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
 
     private animalDie (): void {
         this.lives--;
+        this.feedIcon.setVisible(false);
+        this.pooIcon.setVisible(false);
+
+        this.dieIcon.setVisible(true);
+
         console.log(`Animal die ${this.title} ${this.lives}/${this.config?.count}`);
         if (this.lives <= 0) {
             this.totalAnimalDie();
+        } else {
+            this.scene.tweens.add({
+                targets: this.dieIcon,
+                alpha: 0,
+                y: this.dieIcon.y - 100,
+                duration: 5000,
+            });
         }
     }
 
@@ -129,5 +164,13 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         this.feedInterval?.destroy();
         this.pooInterval?.destroy();
         console.log(`Whole animal die ${this.title} ${this.lives}/${this.config?.count}`);
+        this.hideAnimal();
+        this.diePermaIcon.setVisible(true);
+        this.scene.tweens.add({
+            targets: this.diePermaIcon,
+            alpha: 0,
+            y: this.diePermaIcon.y - 100,
+            duration: 5000,
+        });
     }
 }
