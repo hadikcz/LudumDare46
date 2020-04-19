@@ -4,8 +4,8 @@
 			"image": "assets.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2032,
-				"h": 1080
+				"w": 2014,
+				"h": 1092
 			},
 			"scale": 2,
 			"frames": [
@@ -52,6 +52,720 @@
 					}
 				},
 				{
+					"filename": "game_bunny_cage",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 94,
+						"h": 68
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 94,
+						"h": 68
+					},
+					"frame": {
+						"x": 1919,
+						"y": 1,
+						"w": 94,
+						"h": 68
+					}
+				},
+				{
+					"filename": "game_door_highlight",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 62,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 62,
+						"h": 100
+					},
+					"frame": {
+						"x": 1919,
+						"y": 71,
+						"w": 62,
+						"h": 100
+					}
+				},
+				{
+					"filename": "game_parrot",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 28,
+						"h": 36
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 28,
+						"h": 36
+					},
+					"frame": {
+						"x": 1983,
+						"y": 71,
+						"w": 28,
+						"h": 36
+					}
+				},
+				{
+					"filename": "game_dog_head",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 28,
+						"h": 26
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 28,
+						"h": 26
+					},
+					"frame": {
+						"x": 1983,
+						"y": 109,
+						"w": 28,
+						"h": 26
+					}
+				},
+				{
+					"filename": "game_clock",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 26,
+						"h": 26
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 26,
+						"h": 26
+					},
+					"frame": {
+						"x": 1983,
+						"y": 137,
+						"w": 26,
+						"h": 26
+					}
+				},
+				{
+					"filename": "game_vent_inner",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 26,
+						"h": 26
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 26,
+						"h": 26
+					},
+					"frame": {
+						"x": 1983,
+						"y": 165,
+						"w": 26,
+						"h": 26
+					}
+				},
+				{
+					"filename": "game_door",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 60,
+						"h": 98
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 60,
+						"h": 98
+					},
+					"frame": {
+						"x": 1919,
+						"y": 173,
+						"w": 60,
+						"h": 98
+					}
+				},
+				{
+					"filename": "game_calendar",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 30
+					},
+					"frame": {
+						"x": 1981,
+						"y": 193,
+						"w": 32,
+						"h": 30
+					}
+				},
+				{
+					"filename": "game_rat_in_cage",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 26,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 26,
+						"h": 24
+					},
+					"frame": {
+						"x": 1981,
+						"y": 225,
+						"w": 26,
+						"h": 24
+					}
+				},
+				{
+					"filename": "game_rat_in_cage2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 28,
+						"h": 22
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 28,
+						"h": 22
+					},
+					"frame": {
+						"x": 1981,
+						"y": 251,
+						"w": 28,
+						"h": 22
+					}
+				},
+				{
+					"filename": "game_parrot_highlight",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 46,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 46,
+						"h": 56
+					},
+					"frame": {
+						"x": 1919,
+						"y": 273,
+						"w": 46,
+						"h": 56
+					}
+				},
+				{
+					"filename": "game_parrot_cage",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 42,
+						"h": 52
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 42,
+						"h": 52
+					},
+					"frame": {
+						"x": 1967,
+						"y": 275,
+						"w": 42,
+						"h": 52
+					}
+				},
+				{
+					"filename": "game_wallpaper_highlight",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 52
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 52
+					},
+					"frame": {
+						"x": 1967,
+						"y": 329,
+						"w": 40,
+						"h": 52
+					}
+				},
+				{
+					"filename": "game_wallpaper",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 36,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 36,
+						"h": 48
+					},
+					"frame": {
+						"x": 1919,
+						"y": 331,
+						"w": 36,
+						"h": 48
+					}
+				},
+				{
+					"filename": "game_skull_permanent",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 38
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 38
+					},
+					"frame": {
+						"x": 1919,
+						"y": 381,
+						"w": 40,
+						"h": 38
+					}
+				},
+				{
+					"filename": "game_dog",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 50,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 50
+					},
+					"frame": {
+						"x": 1961,
+						"y": 383,
+						"w": 50,
+						"h": 50
+					}
+				},
+				{
+					"filename": "game_bunny",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 38,
+						"h": 38
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 38,
+						"h": 38
+					},
+					"frame": {
+						"x": 1919,
+						"y": 421,
+						"w": 38,
+						"h": 38
+					}
+				},
+				{
+					"filename": "game_feed",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 30
+					},
+					"frame": {
+						"x": 1959,
+						"y": 435,
+						"w": 54,
+						"h": 30
+					}
+				},
+				{
+					"filename": "game_vent",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 36,
+						"h": 36
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 36,
+						"h": 36
+					},
+					"frame": {
+						"x": 1919,
+						"y": 461,
+						"w": 36,
+						"h": 36
+					}
+				},
+				{
+					"filename": "game_dog_body",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 42,
+						"h": 34
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 42,
+						"h": 34
+					},
+					"frame": {
+						"x": 1957,
+						"y": 467,
+						"w": 42,
+						"h": 34
+					}
+				},
+				{
+					"filename": "game_skull",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 36,
+						"h": 34
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 36,
+						"h": 34
+					},
+					"frame": {
+						"x": 1919,
+						"y": 499,
+						"w": 36,
+						"h": 34
+					}
+				},
+				{
+					"filename": "game_purchase",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 46,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 46,
+						"h": 30
+					},
+					"frame": {
+						"x": 1957,
+						"y": 503,
+						"w": 46,
+						"h": 30
+					}
+				},
+				{
+					"filename": "game_dog_highlight",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 88,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 88,
+						"h": 56
+					},
+					"frame": {
+						"x": 1919,
+						"y": 535,
+						"w": 88,
+						"h": 56
+					}
+				},
+				{
+					"filename": "game_dog_cage",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 84,
+						"h": 52
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 84,
+						"h": 52
+					},
+					"frame": {
+						"x": 1919,
+						"y": 593,
+						"w": 84,
+						"h": 52
+					}
+				},
+				{
+					"filename": "game_fish_highlight",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 74,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 74,
+						"h": 42
+					},
+					"frame": {
+						"x": 1919,
+						"y": 647,
+						"w": 74,
+						"h": 42
+					}
+				},
+				{
+					"filename": "game_spider_highlight",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 74,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 74,
+						"h": 42
+					},
+					"frame": {
+						"x": 1919,
+						"y": 647,
+						"w": 74,
+						"h": 42
+					}
+				},
+				{
+					"filename": "game_turtle_highlight",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 74,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 74,
+						"h": 42
+					},
+					"frame": {
+						"x": 1919,
+						"y": 647,
+						"w": 74,
+						"h": 42
+					}
+				},
+				{
+					"filename": "game_fish_orange",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 12
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 12
+					},
+					"frame": {
+						"x": 1995,
+						"y": 647,
+						"w": 16,
+						"h": 12
+					}
+				},
+				{
+					"filename": "game_fish_red",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 10
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 10
+					},
+					"frame": {
+						"x": 1995,
+						"y": 661,
+						"w": 16,
+						"h": 10
+					}
+				},
+				{
+					"filename": "game_spider",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 8
+					},
+					"frame": {
+						"x": 1995,
+						"y": 673,
+						"w": 16,
+						"h": 8
+					}
+				},
+				{
+					"filename": "game_bunny_highlight",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 62,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 62,
+						"h": 42
+					},
+					"frame": {
+						"x": 1919,
+						"y": 691,
+						"w": 62,
+						"h": 42
+					}
+				},
+				{
+					"filename": "game_rat_highlight",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 62,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 62,
+						"h": 42
+					},
+					"frame": {
+						"x": 1919,
+						"y": 691,
+						"w": 62,
+						"h": 42
+					}
+				},
+				{
+					"filename": "game_smile",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 1983,
+						"y": 691,
+						"w": 24,
+						"h": 24
+					}
+				},
+				{
+					"filename": "game_coin",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 22
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 22
+					},
+					"frame": {
+						"x": 1983,
+						"y": 717,
+						"w": 24,
+						"h": 22
+					}
+				},
+				{
 					"filename": "game_floor",
 					"rotated": false,
 					"trimmed": false,
@@ -73,6 +787,48 @@
 					}
 				},
 				{
+					"filename": "game_light_left",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 170,
+						"h": 136
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 170,
+						"h": 136
+					},
+					"frame": {
+						"x": 905,
+						"y": 667,
+						"w": 170,
+						"h": 136
+					}
+				},
+				{
+					"filename": "game_turtle",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 26,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 26,
+						"h": 16
+					},
+					"frame": {
+						"x": 1077,
+						"y": 667,
+						"w": 26,
+						"h": 16
+					}
+				},
+				{
 					"filename": "game_wall",
 					"rotated": false,
 					"trimmed": false,
@@ -87,8 +843,8 @@
 						"h": 134
 					},
 					"frame": {
-						"x": 905,
-						"y": 721,
+						"x": 1,
+						"y": 957,
 						"w": 902,
 						"h": 134
 					}
@@ -108,94 +864,10 @@
 						"h": 104
 					},
 					"frame": {
-						"x": 1,
-						"y": 957,
+						"x": 1077,
+						"y": 721,
 						"w": 628,
 						"h": 104
-					}
-				},
-				{
-					"filename": "game_light",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 460,
-						"h": 138
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 460,
-						"h": 138
-					},
-					"frame": {
-						"x": 905,
-						"y": 857,
-						"w": 460,
-						"h": 138
-					}
-				},
-				{
-					"filename": "game_prodejni_pult",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 246,
-						"h": 84
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 246,
-						"h": 84
-					},
-					"frame": {
-						"x": 1367,
-						"y": 857,
-						"w": 246,
-						"h": 84
-					}
-				},
-				{
-					"filename": "game_light_left",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 170,
-						"h": 136
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 170,
-						"h": 136
-					},
-					"frame": {
-						"x": 1367,
-						"y": 943,
-						"w": 170,
-						"h": 136
-					}
-				},
-				{
-					"filename": "game_prodejni_pult_highlight",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 248,
-						"h": 78
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 248,
-						"h": 78
-					},
-					"frame": {
-						"x": 631,
-						"y": 957,
-						"w": 248,
-						"h": 78
 					}
 				},
 				{
@@ -213,10 +885,31 @@
 						"h": 132
 					},
 					"frame": {
-						"x": 1919,
-						"y": 1,
+						"x": 905,
+						"y": 805,
 						"w": 112,
 						"h": 132
+					}
+				},
+				{
+					"filename": "game_poop",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 44,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 44,
+						"h": 30
+					},
+					"frame": {
+						"x": 1019,
+						"y": 805,
+						"w": 44,
+						"h": 30
 					}
 				},
 				{
@@ -234,535 +927,10 @@
 						"h": 128
 					},
 					"frame": {
-						"x": 1919,
-						"y": 135,
-						"w": 112,
-						"h": 128
-					}
-				},
-				{
-					"filename": "game_default_shelf",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 112,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 112,
-						"h": 128
-					},
-					"frame": {
-						"x": 1919,
-						"y": 265,
-						"w": 112,
-						"h": 128
-					}
-				},
-				{
-					"filename": "game_fishes_shelf",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 112,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 112,
-						"h": 128
-					},
-					"frame": {
-						"x": 1919,
-						"y": 395,
-						"w": 112,
-						"h": 128
-					}
-				},
-				{
-					"filename": "game_parrot_shelf",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 112,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 112,
-						"h": 128
-					},
-					"frame": {
-						"x": 1919,
-						"y": 525,
-						"w": 112,
-						"h": 128
-					}
-				},
-				{
-					"filename": "game_rat_shelf",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 112,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 112,
-						"h": 128
-					},
-					"frame": {
-						"x": 1809,
+						"x": 1707,
 						"y": 721,
 						"w": 112,
 						"h": 128
-					}
-				},
-				{
-					"filename": "game_dog_cage",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 84,
-						"h": 52
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 84,
-						"h": 52
-					},
-					"frame": {
-						"x": 905,
-						"y": 667,
-						"w": 84,
-						"h": 52
-					}
-				},
-				{
-					"filename": "game_rat plain",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 152,
-						"h": 66
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 152,
-						"h": 66
-					},
-					"frame": {
-						"x": 1615,
-						"y": 857,
-						"w": 152,
-						"h": 66
-					}
-				},
-				{
-					"filename": "game_spider_shelf",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 112,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 112,
-						"h": 128
-					},
-					"frame": {
-						"x": 1539,
-						"y": 943,
-						"w": 112,
-						"h": 128
-					}
-				},
-				{
-					"filename": "game_turtle_shelf",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 112,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 112,
-						"h": 128
-					},
-					"frame": {
-						"x": 1653,
-						"y": 925,
-						"w": 112,
-						"h": 128
-					}
-				},
-				{
-					"filename": "game_fish_highlight",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 74,
-						"h": 42
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 74,
-						"h": 42
-					},
-					"frame": {
-						"x": 631,
-						"y": 1037,
-						"w": 74,
-						"h": 42
-					}
-				},
-				{
-					"filename": "game_spider_highlight",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 74,
-						"h": 42
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 74,
-						"h": 42
-					},
-					"frame": {
-						"x": 631,
-						"y": 1037,
-						"w": 74,
-						"h": 42
-					}
-				},
-				{
-					"filename": "game_turtle_highlight",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 74,
-						"h": 42
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 74,
-						"h": 42
-					},
-					"frame": {
-						"x": 631,
-						"y": 1037,
-						"w": 74,
-						"h": 42
-					}
-				},
-				{
-					"filename": "game_bunny_highlight",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 62,
-						"h": 42
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 62,
-						"h": 42
-					},
-					"frame": {
-						"x": 707,
-						"y": 1037,
-						"w": 62,
-						"h": 42
-					}
-				},
-				{
-					"filename": "game_rat_highlight",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 62,
-						"h": 42
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 62,
-						"h": 42
-					},
-					"frame": {
-						"x": 707,
-						"y": 1037,
-						"w": 62,
-						"h": 42
-					}
-				},
-				{
-					"filename": "game_dog_highlight",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 88,
-						"h": 56
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 88,
-						"h": 56
-					},
-					"frame": {
-						"x": 1919,
-						"y": 655,
-						"w": 88,
-						"h": 56
-					}
-				},
-				{
-					"filename": "game_door_highlight",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 62,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 62,
-						"h": 100
-					},
-					"frame": {
-						"x": 1923,
-						"y": 713,
-						"w": 62,
-						"h": 100
-					}
-				},
-				{
-					"filename": "game_parrot_cage",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 42,
-						"h": 52
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 42,
-						"h": 52
-					},
-					"frame": {
-						"x": 991,
-						"y": 667,
-						"w": 42,
-						"h": 52
-					}
-				},
-				{
-					"filename": "game_wallpaper_highlight",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 40,
-						"h": 52
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 40,
-						"h": 52
-					},
-					"frame": {
-						"x": 1035,
-						"y": 667,
-						"w": 40,
-						"h": 52
-					}
-				},
-				{
-					"filename": "game_door_entrance",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 114,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 114,
-						"h": 100
-					},
-					"frame": {
-						"x": 1809,
-						"y": 851,
-						"w": 114,
-						"h": 100
-					}
-				},
-				{
-					"filename": "game_door_entrance_highlight",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 118,
-						"h": 104
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 118,
-						"h": 104
-					},
-					"frame": {
-						"x": 1767,
-						"y": 953,
-						"w": 118,
-						"h": 104
-					}
-				},
-				{
-					"filename": "game_door",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 60,
-						"h": 98
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 60,
-						"h": 98
-					},
-					"frame": {
-						"x": 1887,
-						"y": 953,
-						"w": 60,
-						"h": 98
-					}
-				},
-				{
-					"filename": "game_bunny",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 38,
-						"h": 38
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 38,
-						"h": 38
-					},
-					"frame": {
-						"x": 1769,
-						"y": 857,
-						"w": 38,
-						"h": 38
-					}
-				},
-				{
-					"filename": "game_bunny_cage",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 94,
-						"h": 68
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 94,
-						"h": 68
-					},
-					"frame": {
-						"x": 881,
-						"y": 997,
-						"w": 94,
-						"h": 68
-					}
-				},
-				{
-					"filename": "game_parrot_highlight",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 46,
-						"h": 56
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 46,
-						"h": 56
-					},
-					"frame": {
-						"x": 977,
-						"y": 997,
-						"w": 46,
-						"h": 56
-					}
-				},
-				{
-					"filename": "game_dog",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 50,
-						"h": 50
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 50,
-						"h": 50
-					},
-					"frame": {
-						"x": 1025,
-						"y": 997,
-						"w": 50,
-						"h": 50
-					}
-				},
-				{
-					"filename": "game_feed",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 54,
-						"h": 30
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 54,
-						"h": 30
-					},
-					"frame": {
-						"x": 1025,
-						"y": 1049,
-						"w": 54,
-						"h": 30
 					}
 				},
 				{
@@ -780,178 +948,73 @@
 						"h": 38
 					},
 					"frame": {
-						"x": 771,
-						"y": 1037,
+						"x": 1821,
+						"y": 721,
 						"w": 58,
 						"h": 38
 					}
 				},
 				{
-					"filename": "game_fishes_aquarium_glass",
+					"filename": "game_default_shelf",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 66,
-						"h": 28
+						"w": 112,
+						"h": 128
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 66,
-						"h": 28
+						"w": 112,
+						"h": 128
 					},
 					"frame": {
-						"x": 1077,
-						"y": 997,
-						"w": 66,
-						"h": 28
+						"x": 1881,
+						"y": 741,
+						"w": 112,
+						"h": 128
 					}
 				},
 				{
-					"filename": "game_spider_aquarium_glass",
+					"filename": "game_light",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 66,
-						"h": 28
+						"w": 460,
+						"h": 138
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 66,
-						"h": 28
+						"w": 460,
+						"h": 138
 					},
 					"frame": {
-						"x": 1145,
-						"y": 997,
-						"w": 66,
-						"h": 28
+						"x": 1065,
+						"y": 827,
+						"w": 460,
+						"h": 138
 					}
 				},
 				{
-					"filename": "game_turtle_aquarium_glass",
+					"filename": "game_fishes_shelf",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 66,
-						"h": 28
+						"w": 112,
+						"h": 128
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 66,
-						"h": 28
+						"w": 112,
+						"h": 128
 					},
 					"frame": {
-						"x": 1213,
-						"y": 997,
-						"w": 66,
-						"h": 28
-					}
-				},
-				{
-					"filename": "game_dog_body",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 42,
-						"h": 34
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 42,
-						"h": 34
-					},
-					"frame": {
-						"x": 1923,
-						"y": 815,
-						"w": 42,
-						"h": 34
-					}
-				},
-				{
-					"filename": "game_wallpaper",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 36,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 36,
-						"h": 48
-					},
-					"frame": {
-						"x": 1925,
-						"y": 851,
-						"w": 36,
-						"h": 48
-					}
-				},
-				{
-					"filename": "game_skull_permanent",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 40,
-						"h": 38
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 40,
-						"h": 38
-					},
-					"frame": {
-						"x": 831,
-						"y": 1037,
-						"w": 40,
-						"h": 38
-					}
-				},
-				{
-					"filename": "game_purchase",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 46,
-						"h": 30
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 46,
-						"h": 30
-					},
-					"frame": {
-						"x": 1281,
-						"y": 997,
-						"w": 46,
-						"h": 30
-					}
-				},
-				{
-					"filename": "game_vent",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 36,
-						"h": 36
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 36,
-						"h": 36
-					},
-					"frame": {
-						"x": 1329,
-						"y": 997,
-						"w": 36,
-						"h": 36
+						"x": 905,
+						"y": 939,
+						"w": 112,
+						"h": 128
 					}
 				},
 				{
@@ -969,8 +1032,8 @@
 						"h": 8
 					},
 					"frame": {
-						"x": 1,
-						"y": 1063,
+						"x": 905,
+						"y": 1069,
 						"w": 64,
 						"h": 8
 					}
@@ -990,283 +1053,262 @@
 						"h": 8
 					},
 					"frame": {
-						"x": 1653,
-						"y": 1055,
+						"x": 905,
+						"y": 1079,
 						"w": 64,
 						"h": 8
 					}
 				},
 				{
-					"filename": "game_skull",
+					"filename": "game_parrot_shelf",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 36,
-						"h": 34
+						"w": 112,
+						"h": 128
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 36,
-						"h": 34
+						"w": 112,
+						"h": 128
 					},
 					"frame": {
-						"x": 1925,
-						"y": 901,
-						"w": 36,
-						"h": 34
+						"x": 1527,
+						"y": 827,
+						"w": 112,
+						"h": 128
 					}
 				},
 				{
-					"filename": "game_turtle",
+					"filename": "game_rat_shelf",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 26,
-						"h": 16
+						"w": 112,
+						"h": 128
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 26,
-						"h": 16
+						"w": 112,
+						"h": 128
 					},
 					"frame": {
-						"x": 1615,
-						"y": 925,
-						"w": 26,
-						"h": 16
+						"x": 1641,
+						"y": 851,
+						"w": 112,
+						"h": 128
 					}
 				},
 				{
-					"filename": "game_parrot",
+					"filename": "game_spider_shelf",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 28,
-						"h": 36
+						"w": 112,
+						"h": 128
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 28,
-						"h": 36
+						"w": 112,
+						"h": 128
 					},
 					"frame": {
-						"x": 1077,
-						"y": 667,
-						"w": 28,
-						"h": 36
+						"x": 1527,
+						"y": 957,
+						"w": 112,
+						"h": 128
 					}
 				},
 				{
-					"filename": "game_rat_in_cage",
+					"filename": "game_turtle_shelf",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 26,
-						"h": 24
+						"w": 112,
+						"h": 128
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 26,
-						"h": 24
+						"w": 112,
+						"h": 128
 					},
 					"frame": {
-						"x": 977,
-						"y": 1055,
-						"w": 26,
-						"h": 24
+						"x": 1755,
+						"y": 851,
+						"w": 112,
+						"h": 128
 					}
 				},
 				{
-					"filename": "game_dog_head",
+					"filename": "game_door_entrance_highlight",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 28,
-						"h": 26
+						"w": 118,
+						"h": 104
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 28,
-						"h": 26
+						"w": 118,
+						"h": 104
 					},
 					"frame": {
-						"x": 1887,
-						"y": 1053,
-						"w": 28,
-						"h": 26
+						"x": 1869,
+						"y": 871,
+						"w": 118,
+						"h": 104
 					}
 				},
 				{
-					"filename": "game_vent_inner",
+					"filename": "game_door_entrance",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 26,
-						"h": 26
+						"w": 114,
+						"h": 100
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 26,
-						"h": 26
+						"w": 114,
+						"h": 100
 					},
 					"frame": {
-						"x": 1917,
-						"y": 1053,
-						"w": 26,
-						"h": 26
+						"x": 1869,
+						"y": 977,
+						"w": 114,
+						"h": 100
 					}
 				},
 				{
-					"filename": "game_smile",
+					"filename": "game_rat plain",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 24,
-						"h": 24
+						"w": 152,
+						"h": 66
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 24,
-						"h": 24
+						"w": 152,
+						"h": 66
 					},
 					"frame": {
-						"x": 1719,
-						"y": 1055,
-						"w": 24,
-						"h": 24
+						"x": 1641,
+						"y": 981,
+						"w": 152,
+						"h": 66
 					}
 				},
 				{
-					"filename": "game_poop",
+					"filename": "game_fishes_aquarium_glass",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 44,
-						"h": 30
+						"w": 66,
+						"h": 28
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 44,
-						"h": 30
+						"w": 66,
+						"h": 28
 					},
 					"frame": {
-						"x": 1081,
-						"y": 1027,
-						"w": 44,
-						"h": 30
+						"x": 1795,
+						"y": 981,
+						"w": 66,
+						"h": 28
 					}
 				},
 				{
-					"filename": "game_rat_in_cage2",
+					"filename": "game_spider_aquarium_glass",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 28,
-						"h": 22
+						"w": 66,
+						"h": 28
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 28,
-						"h": 22
+						"w": 66,
+						"h": 28
 					},
 					"frame": {
-						"x": 1769,
-						"y": 897,
-						"w": 28,
-						"h": 22
+						"x": 1795,
+						"y": 1011,
+						"w": 66,
+						"h": 28
 					}
 				},
 				{
-					"filename": "game_coin",
+					"filename": "game_turtle_aquarium_glass",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 24,
-						"h": 22
+						"w": 66,
+						"h": 28
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 24,
-						"h": 22
+						"w": 66,
+						"h": 28
 					},
 					"frame": {
-						"x": 1127,
-						"y": 1027,
-						"w": 24,
-						"h": 22
+						"x": 1795,
+						"y": 1041,
+						"w": 66,
+						"h": 28
 					}
 				},
 				{
-					"filename": "game_fish_orange",
+					"filename": "game_prodejni_pult",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 16,
-						"h": 12
+						"w": 246,
+						"h": 84
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 16,
-						"h": 12
+						"w": 246,
+						"h": 84
 					},
 					"frame": {
-						"x": 873,
-						"y": 1067,
-						"w": 16,
-						"h": 12
+						"x": 1019,
+						"y": 967,
+						"w": 246,
+						"h": 84
 					}
 				},
 				{
-					"filename": "game_fish_red",
+					"filename": "game_prodejni_pult_highlight",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 16,
-						"h": 10
+						"w": 248,
+						"h": 78
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 16,
-						"h": 10
+						"w": 248,
+						"h": 78
 					},
 					"frame": {
-						"x": 2009,
-						"y": 655,
-						"w": 16,
-						"h": 10
-					}
-				},
-				{
-					"filename": "game_spider",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 8
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 8
-					},
-					"frame": {
-						"x": 1987,
-						"y": 713,
-						"w": 16,
-						"h": 8
+						"x": 1267,
+						"y": 967,
+						"w": 248,
+						"h": 78
 					}
 				}
 			]
@@ -1275,6 +1317,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:0e7d9c845492209cef78c83b9b424bc3:a901c5d25581c279b6d7f6c1d8ba929b:a759b6bbc8381ac9c472b28f589ad0d6$"
+		"smartupdate": "$TexturePacker:SmartUpdate:94e0326ec53c071070d60370d6c2467b:fc7087e4ffadeb8d68dcebcb26d93a62:a759b6bbc8381ac9c472b28f589ad0d6$"
 	}
 }
