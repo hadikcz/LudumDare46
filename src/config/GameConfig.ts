@@ -9,5 +9,8 @@ export default {
             width: 1024,
             height: 768
         }
+    },
+    Animal: {
+        WaitForPooOrFoodBeforeDie: 30
     }
 };

@@ -8,6 +8,7 @@ import {AnimalConfig} from "types/AnimalConfig";
 import NumberHelpers from "helpers/NumberHelpers";
 import Image = Phaser.GameObjects.Image;
 import EventEmitter = Phaser.Events.EventEmitter;
+import GameConfig from "config/GameConfig";
 
 export default abstract class AbstractShelf extends Phaser.GameObjects.Container {
 
@@ -19,13 +20,15 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     protected events: EventEmitter;
     protected scene: GameScene;
     protected shelfType: Shelfs;
-    protected lives: number = 10;
+    protected lives: number = 3;
     protected shelfState: ShelfState = ShelfState.OK;
     protected shelfImage: Image;
     protected animalImage: Image;
     protected animalImage2!: Image;
     protected cage!: Image;
     protected config!: AnimalConfig | null;
+    private feedInterval!: Phaser.Time.TimerEvent | null;
+    private pooInterval!: Phaser.Time.TimerEvent | null;
 
     protected title: string;
 
@@ -37,6 +40,9 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         this.config = config;
         this.events = new EventEmitter();
         this.highlight = new Highlightable(scene, this, title);
+        if (config?.count) {
+            this.lives = config?.count;
+        }
 
         this.scene.add.existing(this);
         if (this.y < WorldEnvironment.SHELF_SECOND_ROW_DEPTH) {
@@ -68,28 +74,60 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     }
 
     private startFeedInterval (): void {
-        if (this.shelfState === ShelfState.WAITING_FOR_FEED) return this.startFeedInterval();
+        // if (this.shelfState === ShelfState.WAITING_FOR_FEED) return this.startFeedInterval();
+        console.log(`startFeedInterval ${this.title}`);
 
-        this.scene.time.addEvent({
-            delay: NumberHelpers.randomIntInRange(this.config?.feedDuration[0], this.config?.feedDuration[1]) * 1000,
+        this.feedInterval = this.scene.time.addEvent({
+            delay: NumberHelpers.randomIntInRange(this.config?.timeBetweenFeed[0], this.config?.timeBetweenFeed[1]) * 1000,
             callbackScope: this,
+            repeat: Infinity,
             callback: () => {
+                console.log(`Want feed ${this.title}`);
                 this.events.emit(AbstractShelf.NEED_FOOD);
-                this.startFeedInterval();
+                this.scene.time.addEvent({
+                    delay: GameConfig.Animal.WaitForPooOrFoodBeforeDie,
+                    callbackScope: this,
+                    callback: () => {
+                        this.animalDie();
+                    }
+                });
             }
         });
     }
 
     private startPooInterval (): void {
-        if (this.shelfState === ShelfState.WAITING_FOR_CLEAN) return this.startPooInterval();
+        // if (this.shelfState === ShelfState.WAITING_FOR_CLEAN) return this.startPooInterval();
+        console.log(`startPooInterval ${this.title}`);
 
-        this.scene.time.addEvent({
-            delay: NumberHelpers.randomIntInRange(this.config?.pooDuration[0], this.config?.pooDuration[1]) * 1000,
+        this.pooInterval = this.scene.time.addEvent({
+            delay: NumberHelpers.randomIntInRange(this.config?.timeBetweenPoo[0], this.config?.timeBetweenPoo[1]) * 1000,
             callbackScope: this,
+            repeat: Infinity,
             callback: () => {
+                console.log(`Want clean poo ${this.title}`);
                 this.events.emit(AbstractShelf.NEED_CLEAN_POO);
-                this.startPooInterval();
+                this.scene.time.addEvent({
+                    delay: GameConfig.Animal.WaitForPooOrFoodBeforeDie,
+                    callbackScope: this,
+                    callback: () => {
+                        this.animalDie();
+                    }
+                });
             }
         });
+    }
+
+    private animalDie (): void {
+        this.lives--;
+        console.log(`Animal die ${this.title} ${this.lives}/${this.config?.count}`);
+        if (this.lives <= 0) {
+            this.totalAnimalDie();
+        }
+    }
+
+    private totalAnimalDie (): void {
+        this.feedInterval?.destroy();
+        this.pooInterval?.destroy();
+        console.log(`Whole animal die ${this.title} ${this.lives}/${this.config?.count}`);
     }
 }
