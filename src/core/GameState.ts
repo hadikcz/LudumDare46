@@ -11,6 +11,7 @@ export default class GameState {
         this.purchasedShelfs = [
             Shelfs.BUNNY,
             Shelfs.DOG,
+            Shelfs.RAT
         ];
     }
 

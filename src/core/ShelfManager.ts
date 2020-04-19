@@ -7,6 +7,7 @@ import GameState from "core/GameState";
 import {Shelfs} from "enums/Shelfs";
 import DogShelf from "core/shelfs/DogShelf";
 import BunnyShelf from "core/shelfs/BunnyShelf";
+import RatShelf from "core/shelfs/RatShelf";
 
 export default class ShelfManager {
 
@@ -37,15 +38,19 @@ export default class ShelfManager {
     }
 
     private generateShelf (x: number, y: number, shelf: Shelfs | null = null): AbstractShelf {
+        x = x + WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x;
+        y = y + WorldEnvironment.ORIGIN_POINT.y;
         switch (shelf) {
             case Shelfs.DOG:
-                return new DogShelf(this.scene, x + WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x, y + WorldEnvironment.ORIGIN_POINT.y);
+                return new DogShelf(this.scene, x, y);
             case Shelfs.BUNNY:
-                return new BunnyShelf(this.scene, x + WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x, y + WorldEnvironment.ORIGIN_POINT.y);
+                return new BunnyShelf(this.scene, x, y);
+            case Shelfs.RAT:
+                return new RatShelf(this.scene, x, y);
             case Shelfs.EMPTY:
-                return new EmptyShelf(this.scene, x + WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x, y + WorldEnvironment.ORIGIN_POINT.y);
+                return new EmptyShelf(this.scene, x, y);
             default:
-                return new EmptyShelf(this.scene, x + WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x, y + WorldEnvironment.ORIGIN_POINT.y);
+                return new EmptyShelf(this.scene, x, y);
         }
     }
 }

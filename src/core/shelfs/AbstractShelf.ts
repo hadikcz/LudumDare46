@@ -13,6 +13,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     protected shelfState: ShelfState = ShelfState.OK;
     protected shelfImage: Image;
     protected animalImage: Image;
+    protected animalImage2!: Image;
     protected cage!: Image;
 
     constructor(scene: GameScene, x: number, y: number, shelfType: Shelfs) {
@@ -36,9 +37,11 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
 
     hideAnimal (): void {
         this.animalImage.setVisible(false);
+        this.animalImage2?.setVisible(false);
     }
 
     showAnimal (): void {
         this.animalImage.setVisible(true);
+        this.animalImage2?.setVisible(true);
     }
 }
