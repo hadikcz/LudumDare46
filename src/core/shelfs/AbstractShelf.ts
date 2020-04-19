@@ -3,7 +3,6 @@ import {ShelfState} from "enums/ShelfState";
 import Image = Phaser.GameObjects.Image;
 import {Shelfs} from "enums/Shelfs";
 import {Depths} from "enums/Depths";
-import ShelfManager from "core/ShelfManager";
 import WorldEnvironment from "core/WorldEnvironment";
 
 export default abstract class AbstractShelf extends Phaser.GameObjects.Container {

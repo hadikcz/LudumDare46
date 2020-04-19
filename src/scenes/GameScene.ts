@@ -8,6 +8,7 @@ import UI from "ui/UI";
 import WorldEnvironment from 'core/WorldEnvironment';
 import Vector2 = Phaser.Math.Vector2;
 import ShelfManager from "core/ShelfManager";
+import GameState from "core/GameState";
 
 declare let window: any;
 
@@ -20,6 +21,7 @@ export default class GameScene extends Phaser.Scene {
     private debugGui: any;
     private debugPathLines!: Phaser.GameObjects.Group;
 
+    private gameState!: GameState;
     private shelfManager!: ShelfManager;
 
     private playerCharacter!: PlayerCharacter;
@@ -30,6 +32,7 @@ export default class GameScene extends Phaser.Scene {
 
     create (): void {
         this.initDebugUI();
+        this.gameState = new GameState();
         this.worldEnvironment = new WorldEnvironment(this);
         this.effectManager = new EffectManager(this);
 
@@ -37,7 +40,7 @@ export default class GameScene extends Phaser.Scene {
         this.playerCharacter = new PlayerCharacter(this, 350, 356, this.matrixWorld);
         this.initDebugUiPlayer();
 
-        this.shelfManager = new ShelfManager(this);
+        this.shelfManager = new ShelfManager(this, this.gameState);
 
         this.ui = new UI(this);
         this.ui.show();
