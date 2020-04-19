@@ -32,7 +32,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
             .setOrigin(0, 1);
         this.add(this.shelfImage);
 
-        this.animalImage = this.scene.add.image(0, 0, '');
+        this.animalImage = this.scene.add.image(-10000, -10000, '');
     }
 
     hideAnimal (): void {
