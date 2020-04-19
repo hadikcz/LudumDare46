@@ -6,4 +6,6 @@ export interface AnimalConfig {
     count: number;
     iconX: number;
     iconY: number;
+    moveX: number;
+    moveY: number;
 }

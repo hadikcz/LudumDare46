@@ -48,6 +48,8 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
             this.lives = config?.count;
         }
 
+        console.log(`Creating ${title}`);
+
         this.scene.add.existing(this);
 
         if (config?.iconX && config.iconY) {
@@ -77,6 +79,11 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         this.add(this.shelfImage);
 
         this.animalImage = this.scene.add.image(-10000, -10000, '');
+
+        if (this.config?.moveX && this.config?.moveY) {
+            console.log([this.x, this.x + this.config?.moveX]);
+            this.scene.add.circle(this.x + this.config?.moveX, this.y + this.config?.moveY, 3, 0xFF0000).setDepth(9999999);
+        }
 
         this.setInteractive();
 

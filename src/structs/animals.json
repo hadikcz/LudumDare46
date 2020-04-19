@@ -6,7 +6,9 @@
     "timeBetweenPoo": [30, 65],
     "count": 3,
     "iconX": 80,
-    "iconY": -95
+    "iconY": -95,
+    "moveX": 70,
+    "moveY": 10
   },
   "dog": {
     "feedDuration": 3,
@@ -15,7 +17,9 @@
     "timeBetweenPoo": [30, 65],
     "count": 3,
     "iconX": 65,
-    "iconY": -105
+    "iconY": -105,
+    "moveX": 70,
+    "moveY": 10
   },
   "fish": {
     "feedDuration": 3,
@@ -24,7 +28,9 @@
     "timeBetweenPoo": [30, 65],
     "count": 1,
     "iconX": 45,
-    "iconY": -95
+    "iconY": -95,
+    "moveX": 45,
+    "moveY": 10
   },
   "parrot": {
     "feedDuration": 3,
@@ -33,7 +39,9 @@
     "timeBetweenPoo": [30, 65],
     "count": 3,
     "iconX": 85,
-    "iconY": -105
+    "iconY": -105,
+    "moveX": 80,
+    "moveY": 10
   },
   "rat": {
     "feedDuration": 3,
@@ -42,7 +50,9 @@
     "timeBetweenPoo": [30, 65],
     "count": 3,
     "iconX": 50,
-    "iconY": -95
+    "iconY": -95,
+    "moveX": 45,
+    "moveY": 10
   },
   "spider": {
     "feedDuration": 3,
@@ -51,7 +61,9 @@
     "timeBetweenPoo": [30, 65],
     "count": 3,
     "iconX": 45,
-    "iconY": -95
+    "iconY": -95,
+    "moveX": 45,
+    "moveY": 10
   },
   "turtle": {
     "feedDuration": 3,
@@ -60,6 +72,8 @@
     "timeBetweenPoo": [30, 65],
     "count": 3,
     "iconX": 45,
-    "iconY": -95
+    "iconY": -95,
+    "moveX": 45,
+    "moveY": 10
   }
 }
