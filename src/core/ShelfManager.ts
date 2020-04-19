@@ -10,6 +10,7 @@ import BunnyShelf from "core/shelfs/BunnyShelf";
 import RatShelf from "core/shelfs/RatShelf";
 import ParrotShelf from "core/shelfs/ParrotShelf";
 import TurtleShelf from "core/shelfs/TurtleShelf";
+import SpiderShelf from "core/shelfs/SpiderShelf";
 
 export default class ShelfManager {
 
@@ -53,6 +54,8 @@ export default class ShelfManager {
                 return new RatShelf(this.scene, x, y);
             case Shelfs.TURTLE:
                 return new TurtleShelf(this.scene, x, y);
+            case Shelfs.SPIDER:
+                return new SpiderShelf(this.scene, x, y);
             case Shelfs.EMPTY:
                 return new EmptyShelf(this.scene, x, y);
             default:

@@ -14,6 +14,7 @@ export default class GameState {
             Shelfs.RAT,
             Shelfs.PARROT,
             Shelfs.TURTLE,
+            Shelfs.SPIDER,
         ];
     }
 
