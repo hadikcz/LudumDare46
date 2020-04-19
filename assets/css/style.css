@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: "AldotheApache";
     src: url('../fonts/AldotheApache.ttf') format("truetype");
@@ -6,7 +5,8 @@
 
 html,
 body {
-    color: #f4fdff;
+    color: #FFFFFF;
+    /*background: #767474;*/
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -26,37 +26,24 @@ body {
     -ms-user-select: none; /* IE10+ */
 }
 
+body.black-bg {
+    background-color: #000 !important;
+}
+
 a {text-decoration: none;}
 
 #content {
     position: absolute;
     z-index: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(0px, -50%);
 }
-
-/*#ui {*/
-/*    width: 1024px;*/
-/*    height: 640px;*/
-/*    position: absolute;*/
-/*    z-index: 10000;*/
-/*    left: 50%;*/
-/*    transform: translateX(-50%);*/
-/*}*/
-
-/*#root {*/
-/*    width: 1024px;*/
-/*    height: 640px;*/
-/*    z-index: 5002;*/
-/*    position: absolute;*/
-/*}*/
-
 #datGui {
     top: 0;
-    /*left: 50%;*/
-    /*transform: translateX(-50%);*/
     position: absolute;
     z-index: 100;
 }
-
 
 .hide {
     display: none;

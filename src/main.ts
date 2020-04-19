@@ -1,5 +1,5 @@
 import 'phaser';
-// import Stats from 'stats.js';
+import Stats from 'stats.js';
 import GameConfig from 'config/GameConfig';
 import BootScene from 'scenes/BootScene';
 import GameScene from 'scenes/GameScene';
@@ -22,13 +22,13 @@ const config = {
     },
     disableContextMenu: !__DEV__,
     antialias: false,
-    // scale: {
-    //     // mode: Phaser.DOM.FILL,
-    //     mode: Phaser.Scale.FIT,
-    //     autoCenter: Phaser.Scale.CENTER_BOTH,
-    //     width: window.innerWidth,
-    //     height: window.innerHeight
-    // },
+    scale: {
+        // mode: Phaser.DOM.FILL,
+        // mode: Phaser.Scale.CENTER_BOTH,
+        // autoCenter: Phaser.Scale.CENTER_BOTH,
+        // width: GameConfig.PhaserBasicSettings.gameSize.width,
+        // height: GameConfig.PhaserBasicSettings.gameSize.height
+    },
     scene: [
         BootScene,
         GameScene
@@ -36,10 +36,10 @@ const config = {
 };
 const game = new Phaser.Game(config);
 
-// let stats = new Stats();
-// document.body.appendChild(stats.dom);
-//
-// requestAnimationFrame(function loop () {
-//     stats.update();
-//     requestAnimationFrame(loop);
-// });
+let stats = new Stats();
+document.body.appendChild(stats.dom);
+
+requestAnimationFrame(function loop () {
+    stats.update();
+    requestAnimationFrame(loop);
+});

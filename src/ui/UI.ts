@@ -10,6 +10,8 @@ export default class UI {
         this.scene = scene;
 
         this.show();
+        $('html').addClass('black-bg');
+        $('body').addClass('black-bg');
     }
 
     show (): void {

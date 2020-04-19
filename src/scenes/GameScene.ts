@@ -60,6 +60,7 @@ export default class GameScene extends Phaser.Scene {
         let player = this.debugGui.addFolder('Player');
         player.add(this.playerCharacter, 'x').step(1).listen();
         player.add(this.playerCharacter, 'y').step(1).listen();
+        player.add(this.playerCharacter, 'toogleDebugPath');
         player.open();
     }
 

@@ -7,6 +7,7 @@ import {Depths} from "structs/Depths";
 export default class PlayerCharacter extends Phaser.GameObjects.Container implements Phaser.GameObjects.GameObject {
 
     public scene!: GameScene;
+    public debugPath: boolean = sessionStorage.getItem('debugPath') && JSON.parse(sessionStorage.getItem('debugPath') as string) ? true : false;
     private static readonly SCALE: number = 3;
     private pathfinding: EasyStarWrapper;
     private character: Phaser.GameObjects.Sprite;
@@ -41,21 +42,17 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
         this.scene.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
             this.pathfinding.findPath(this.x, this.y, pointer.worldX, pointer.worldY, (status, points) => {
                 if (status) {
+                    points.splice(0, 1);
                     this.path = points;
                 }
-                // this.scene.debugPath(points);
+                if (this.debugPath)
+                    this.scene.debugPath(points);
             }, this);
-            // this.scene.physics.moveTo(this, pointer.worldX, pointer.worldY, 150);
-            // this.positionToMove = new Vector2(pointer.worldX, pointer.worldY);
         });
     }
 
     preUpdate (): void {
         let body = this.body as Phaser.Physics.Arcade.Body;
-        // if (this.positionToMove !== null && Phaser.Math.Distance.Between(this.positionToMove.x, this.positionToMove.y, this.x, this.y) <= 5) {
-        //     this.positionToMove = null;
-        //     body.setVelocity(0, 0);
-        // }
 
         if (body.velocity.x < 0) {
             this.setScale(-PlayerCharacter.SCALE, PlayerCharacter.SCALE);
@@ -89,5 +86,10 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
         } else {
             this.setDepth(Depths.CHARACTER_ABOVE_SHELF);
         }
+    }
+
+    public toogleDebugPath (): void {
+        this.debugPath = !this.debugPath;
+        sessionStorage.setItem('debugPath', JSON.stringify(this.debugPath));
     }
 }
