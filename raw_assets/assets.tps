@@ -192,6 +192,8 @@
             <key type="filename">tileset/game_dog_shelf.png</key>
             <key type="filename">tileset/game_door.png</key>
             <key type="filename">tileset/game_door_entrance.png</key>
+            <key type="filename">tileset/game_fish_orange.png</key>
+            <key type="filename">tileset/game_fish_red.png</key>
             <key type="filename">tileset/game_fishes.png</key>
             <key type="filename">tileset/game_fishes_aquarium_glass.png</key>
             <key type="filename">tileset/game_fishes_shelf.png</key>

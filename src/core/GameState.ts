@@ -9,12 +9,13 @@ export default class GameState {
 
     constructor () {
         this.purchasedShelfs = [
-            Shelfs.BUNNY,
             Shelfs.DOG,
-            Shelfs.RAT,
             Shelfs.PARROT,
+            Shelfs.RAT,
+            Shelfs.BUNNY,
             Shelfs.TURTLE,
             Shelfs.SPIDER,
+            Shelfs.FISH,
         ];
     }
 

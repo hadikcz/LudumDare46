@@ -1,5 +1,5 @@
 export enum Shelfs {
-    FISHES = 'game_fishes_shelf',
+    FISH = 'game_fishes_shelf',
     BUNNY = 'game_bunny_shelf',
     PARROT = 'game_parrot_shelf',
     RAT = 'game_rat_shelf',
