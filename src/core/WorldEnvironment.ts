@@ -32,24 +32,9 @@ export default class WorldEnvironment {
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 179, WorldEnvironment.ORIGIN_POINT.y + 30, 'assets', 'game_vent').setOrigin(0.5, 0.5).setDepth(Depths.UNDER_PLAYER);
         this.fanInner = this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 179, WorldEnvironment.ORIGIN_POINT.y + 30, 'assets', 'game_vent_inner').setOrigin(0.5, 0.5).setDepth(Depths.UNDER_PLAYER);
 
-        // this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 781, WorldEnvironment.ORIGIN_POINT.y + 136, 'assets', 'game_door').setOrigin(0, 1).setDepth(Depths.UNDER_PLAYER);
         let door = new Door(this.scene, WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 781, WorldEnvironment.ORIGIN_POINT.y + 136);
 
-        // let wallShadow = this.scene.add.graphics({x: WorldEnvironment.ORIGIN_POINT.x + 0, y: WorldEnvironment.ORIGIN_POINT.y + 131});
-        // wallShadow.fillStyle(0xFF0000, 0xFF0000, 0xFF00FF, 0xFF00FF);
-        // wallShadow.fillRect(0, 0, 1000, 30);
         this.scene.add.rectangle(WorldEnvironment.ORIGIN_POINT.x + 0, WorldEnvironment.ORIGIN_POINT.y + 131, 1000, 15, 0x000000, 0.35).setOrigin(0, 0.5).setDepth(Depths.UNDER_PLAYER);
-        // this.scene.add.re
-        // this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 297, WorldEnvironment.ORIGIN_POINT.y + 144, 'assets', 'game_fishes_shelf').setOrigin(0, 1);
-        // this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 417, WorldEnvironment.ORIGIN_POINT.y + 144, 'assets', 'game_bunny_shelf').setOrigin(0, 1);
-        // this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 537, WorldEnvironment.ORIGIN_POINT.y + 144, 'assets', 'game_rat_shelf').setOrigin(0, 1);
-        // this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 657, WorldEnvironment.ORIGIN_POINT.y + 144, 'assets', 'game_parrot_shelf').setOrigin(0, 1);
-        //
-        // this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 417, WorldEnvironment.ORIGIN_POINT.y + 322, 'assets', 'game_spider_shelf').setOrigin(0, 1).setDepth(Depths.DOWN_SHELF);
-        // this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 537, WorldEnvironment.ORIGIN_POINT.y + 322, 'assets', 'game_dog_shelf').setOrigin(0, 1).setDepth(Depths.DOWN_SHELF);
-        // this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 657, WorldEnvironment.ORIGIN_POINT.y + 322, 'assets', 'game_turtle_shelf').setOrigin(0, 1).setDepth(Depths.DOWN_SHELF);
-
-        // this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 87, WorldEnvironment.ORIGIN_POINT.y + 389, 'assets', 'game_door_entrance').setOrigin(0.5, 1).setAlpha(0.8).setDepth(Depths.ENTRANCE_DOOR);
         let entrance = new DoorEntrance(this.scene, WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 87, WorldEnvironment.ORIGIN_POINT.y + 389);
 
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 90, WorldEnvironment.ORIGIN_POINT.y + 14, 'assets', 'game_light_left').setOrigin(0.5, 0).setDepth(Depths.CEILING_LAMPS_LIGHTS);

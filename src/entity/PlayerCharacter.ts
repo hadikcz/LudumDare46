@@ -5,6 +5,7 @@ import {Depths} from "enums/Depths";
 import Tween = Phaser.Tweens.Tween;
 import MatrixWorld from "core/pathfinding/MatrixWorld";
 import WorldEnvironment from "core/WorldEnvironment";
+import ShelfManager from "core/ShelfManager";
 
 export default class PlayerCharacter extends Phaser.GameObjects.Container implements Phaser.GameObjects.GameObject {
 
@@ -17,10 +18,12 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
     private positionToMove: Vector2 | null = null;
     private path: Vector2[] = [];
     private shadowAnimation: Tween;
+    private shelfManager: ShelfManager;
 
-    constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld) {
+    constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld, shelfManager: ShelfManager) {
         super(scene, x, y, []);
         this.pathfinding = pathfinding;
+        this.shelfManager = shelfManager;
 
         this.scene.add.existing(this);
         this.scene.physics.world.enable(this);
@@ -58,14 +61,25 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
         this.add(this.character);
 
         this.scene.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
-            this.pathfinding.findPath(this.x, this.y, pointer.worldX, pointer.worldY, (status, points) => {
-                if (status) {
-                    points.splice(0, 1);
-                    this.path = points;
+            setTimeout(() => {
+                let moveTo = new Vector2(pointer.worldX, pointer.worldY);
+
+                if (this.shelfManager.clickedShelf) {
+                    moveTo.set(this.shelfManager.clickedShelf.getPosition().x, this.shelfManager.clickedShelf.getPosition().y);
+                    this.shelfManager.clickedShelf = null;
+                } else {
+                    this.shelfManager.lastClick = null;
                 }
-                if (this.debugPath)
-                    this.scene.debugPath(points);
-            }, true, this);
+
+                this.pathfinding.findPath(this.x, this.y, moveTo.x, moveTo.y, (status, points) => {
+                    if (status) {
+                        points.splice(0, 1);
+                        this.path = points;
+                    }
+                    if (this.debugPath)
+                        this.scene.debugPath(points);
+                }, true, this);
+            }, 0);
         });
     }
 
@@ -80,11 +94,9 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
 
         if (Math.abs(body.velocity.x) !== 0 || Math.abs(body.velocity.y) !== 0) {
             this.character.anims.play('playerCharacterWalk', true);
-            // this.shadowAnimation.play();
         } else if (Math.abs(body.velocity.x) === 0 && Math.abs(body.velocity.y) === 0) {
             this.character.setFrame(0);
             this.character.anims.stop();
-            // this.shadowAnimation.stop();
         }
 
         if (this.path.length > 0) {
@@ -96,6 +108,7 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
         } else {
             this.positionToMove = null;
             body.setVelocity(0, 0);
+            this.reachTarget();
         }
 
         this.shadow.setVisible(true);
@@ -110,6 +123,14 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
             this.setDepth(Depths.CHARACTER_UNDER_SHELF);
         } else {
             this.setDepth(Depths.CHARACTER_ABOVE_SHELF);
+        }
+    }
+
+    private reachTarget (): void {
+        console.log(`Reach target`);
+        if (this.shelfManager.lastClick) {
+            console.log(this.shelfManager.lastClick);
+            this.shelfManager.lastClick = null;
         }
     }
 

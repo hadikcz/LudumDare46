@@ -9,6 +9,7 @@ import NumberHelpers from "helpers/NumberHelpers";
 import Image = Phaser.GameObjects.Image;
 import EventEmitter = Phaser.Events.EventEmitter;
 import GameConfig from "config/GameConfig";
+import Vector2 = Phaser.Math.Vector2;
 
 export default abstract class AbstractShelf extends Phaser.GameObjects.Container {
 
@@ -17,7 +18,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     public static readonly DIE: 'die';
 
     public readonly highlight: Highlightable;
-    protected events: EventEmitter;
+    public events: EventEmitter;
     protected scene: GameScene;
     protected shelfType: Shelfs;
     protected lives: number = 3;
@@ -89,6 +90,13 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
 
         this.startFeedInterval();
         this.startPooInterval();
+    }
+
+    getPosition (): Vector2 {
+        if (this.config?.moveX && this.config.moveY) {
+            return new Vector2(this.x + this.config?.moveX, this.y + this.config?.moveY);
+        }
+        return new Vector2(this.x, this.y);
     }
 
     hideAnimal (): void {

@@ -55,7 +55,7 @@ export default class Highlightable {
         });
 
         this.highlight.on('pointerdown', () => {
-            this.events.emit(Highlightable.CLICK, this);
+            this.events.emit(Highlightable.CLICK, this.parent);
         });
     }
 }

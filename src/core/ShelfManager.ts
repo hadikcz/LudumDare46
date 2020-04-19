@@ -12,10 +12,13 @@ import ParrotShelf from "core/shelfs/ParrotShelf";
 import TurtleShelf from "core/shelfs/TurtleShelf";
 import SpiderShelf from "core/shelfs/SpiderShelf";
 import FishShelf from "core/shelfs/FishShelf";
+import Highlightable from "core/Highlightable";
 
 export default class ShelfManager {
 
     public static readonly SHELF_COUNT: number = 7;
+    public clickedShelf: AbstractShelf | null = null;
+    public lastClick: AbstractShelf | null = null;
 
     private scene: GameScene;
     private gameState: GameState;
@@ -37,6 +40,9 @@ export default class ShelfManager {
             let shelfType: Shelfs | null = this.gameState.getPurchasedShelfs()[i] || null;
 
             shelf = this.generateShelf(position.x, position.y, shelfType);
+            shelf.highlight.events.on(Highlightable.CLICK, (shelfP) => {
+                this.clickOnShelf(shelfP);
+            });
             this.shelfs.push(shelf);
         }
     }
@@ -64,5 +70,13 @@ export default class ShelfManager {
             default:
                 return new EmptyShelf(this.scene, x, y);
         }
+    }
+
+    private clickOnShelf (shelf: AbstractShelf): void {
+        this.clickedShelf = shelf;
+        this.lastClick = shelf;
+        setTimeout(() => {
+            this.clickedShelf = null;
+        }, 500);
     }
 }
