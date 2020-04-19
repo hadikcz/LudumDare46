@@ -17,7 +17,6 @@ export default class EasyStarWrapper {
     }
 
     setGrid (data: integer[][]): void {
-        console.log(data);
         this.easyStar.setGrid(data);
     }
 
