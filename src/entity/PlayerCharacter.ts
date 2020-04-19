@@ -19,6 +19,7 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
     private path: Vector2[] = [];
     private shadowAnimation: Tween;
     private shelfManager: ShelfManager;
+    private isFreeze: boolean = false;
 
     constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld, shelfManager: ShelfManager) {
         super(scene, x, y, []);
@@ -61,6 +62,7 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
         this.add(this.character);
 
         this.scene.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+            if (this.isFreeze) return;
             setTimeout(() => {
                 let moveTo = new Vector2(pointer.worldX, pointer.worldY);
 
@@ -126,16 +128,28 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
         }
     }
 
-    private reachTarget (): void {
-        console.log(`Reach target`);
-        if (this.shelfManager.lastClick) {
-            console.log(this.shelfManager.lastClick);
-            this.shelfManager.lastClick = null;
-        }
-    }
-
     public toogleDebugPath (): void {
         this.debugPath = !this.debugPath;
         sessionStorage.setItem('debugPath', JSON.stringify(this.debugPath));
+    }
+
+    private reachTarget (): void {
+        if (this.shelfManager.lastClick && !this.isFreeze && this.shelfManager.lastClick.canDoJob()) {
+            console.log(`Reach target`);
+            this.freeze();
+            this.shelfManager.lastClick.doAction(() => {
+                console.log('finished job');
+                this.shelfManager.lastClick = null;
+                this.unfreeze();
+            });
+        }
+    }
+
+    private freeze (): void {
+        this.isFreeze = true;
+    }
+
+    private unfreeze (): void {
+        this.isFreeze = false;
     }
 }

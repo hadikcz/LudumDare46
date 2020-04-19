@@ -6,9 +6,9 @@ import WorldEnvironment from "core/WorldEnvironment";
 import Highlightable from "core/Highlightable";
 import {AnimalConfig} from "types/AnimalConfig";
 import NumberHelpers from "helpers/NumberHelpers";
+import GameConfig from "config/GameConfig";
 import Image = Phaser.GameObjects.Image;
 import EventEmitter = Phaser.Events.EventEmitter;
-import GameConfig from "config/GameConfig";
 import Vector2 = Phaser.Math.Vector2;
 
 export default abstract class AbstractShelf extends Phaser.GameObjects.Container {
@@ -109,8 +109,44 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         this.animalImage2?.setVisible(true);
     }
 
+    public canDoJob (): boolean {
+        console.log(this.shelfState);
+        return (this.shelfState === ShelfState.WAITING_FOR_FEED || this.shelfState === ShelfState.WAITING_FOR_CLEAN) && this.lives > 0;
+    }
+
+    public doAction (finishCallback: any): void {
+        console.log('start action');
+        this.scene.time.addEvent({
+            delay: this.getDurationTime() * 1000,
+            callbackScope: this,
+            callback: () => {
+                finishCallback();
+                this.finishAction();
+            }
+        });
+    }
+
+    private finishAction (): void {
+        this.feedIcon.setVisible(false);
+        this.pooIcon.setVisible(false);
+
+        this.shelfState = ShelfState.OK;
+    }
+
+    private getDurationTime (): number {
+        if (!this.config) return 0;
+
+        if (this.shelfState === ShelfState.WAITING_FOR_CLEAN) {
+            return this.config?.pooDuration;
+        } else if (this.shelfState === ShelfState.WAITING_FOR_FEED) {
+            return this.config?.feedDuration;
+        } else {
+            return 0;
+        }
+    }
+
     private startFeedInterval (): void {
-        // if (this.shelfState === ShelfState.WAITING_FOR_FEED) return this.startFeedInterval();
+        if (this.shelfState === ShelfState.WAITING_FOR_FEED || this.shelfState === ShelfState.WAITING_FOR_CLEAN) return;
         console.log(`startFeedInterval ${this.title}`);
 
         this.feedInterval = this.scene.time.addEvent({
@@ -118,6 +154,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
             callbackScope: this,
             repeat: Infinity,
             callback: () => {
+                this.shelfState = ShelfState.WAITING_FOR_FEED;
                 console.log(`Want feed ${this.title}`);
                 this.feedIcon.setVisible(true);
                 this.events.emit(AbstractShelf.NEED_FOOD);
@@ -133,7 +170,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     }
 
     private startPooInterval (): void {
-        // if (this.shelfState === ShelfState.WAITING_FOR_CLEAN) return this.startPooInterval();
+        if (this.shelfState === ShelfState.WAITING_FOR_FEED || this.shelfState === ShelfState.WAITING_FOR_CLEAN) return;
         console.log(`startPooInterval ${this.title}`);
 
         this.pooInterval = this.scene.time.addEvent({
@@ -141,6 +178,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
             callbackScope: this,
             repeat: Infinity,
             callback: () => {
+                this.shelfState = ShelfState.WAITING_FOR_CLEAN;
                 console.log(`Want clean poo ${this.title}`);
                 this.pooIcon.setVisible(true);
                 this.events.emit(AbstractShelf.NEED_CLEAN_POO);
@@ -159,6 +197,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         this.lives--;
         this.feedIcon.setVisible(false);
         this.pooIcon.setVisible(false);
+        this.shelfState = ShelfState.OK;
 
         this.dieIcon.setVisible(true);
 
