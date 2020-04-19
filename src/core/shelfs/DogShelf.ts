@@ -5,16 +5,18 @@ import {Shelfs} from "enums/Shelfs";
 export default class DogShelf extends AbstractShelf {
 
     constructor (scene: GameScene, x: number, y: number) {
-        super(scene, x, y, Shelfs.DOG);
+        super(scene, x, y, Shelfs.DOG, 'Dog');
 
         this.animalImage = this.scene.add.image(71, -63 + 7, 'assets', 'game_dog_body');
         this.add(this.animalImage);
 
-        this.animalImage2 = this.scene.add.image(55, -83 + 7, 'assets', 'game_dog_head').setAlpha(1);
+        this.animalImage2 = this.scene.add.image(55, -83 + 7, 'assets', 'game_dog_head');
         this.add(this.animalImage2);
 
-        this.cage = this.scene.add.image(60, -65, 'assets', 'game_dog_cage').setVisible(true);
+        this.cage = this.scene.add.image(60, -65, 'assets', 'game_dog_cage');
         this.add(this.cage);
+
+        this.setInteractiveAreaAndHighlight('game_dog_highlight', 60, -65);
 
         this.animalImage2.angle = 25;
         this.scene.add.tween({

@@ -13,6 +13,8 @@ export default class SpiderShelf extends AbstractShelf {
         this.cage = this.scene.add.image(45, -56, 'assets', 'game_spider_aquarium_glass');
         this.add(this.cage);
 
+        this.setInteractiveAreaAndHighlight('game_spider_highlight', 45, -56, true);
+
         this.scene.add.tween({
             targets: this.animalImage,
             x: 25,

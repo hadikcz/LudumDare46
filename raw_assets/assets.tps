@@ -188,7 +188,9 @@
             <key type="filename">tileset/game_ceiling_single.png</key>
             <key type="filename">tileset/game_default_shelf.png</key>
             <key type="filename">tileset/game_dog.png</key>
+            <key type="filename">tileset/game_dog_body.png</key>
             <key type="filename">tileset/game_dog_cage.png</key>
+            <key type="filename">tileset/game_dog_head.png</key>
             <key type="filename">tileset/game_dog_shelf.png</key>
             <key type="filename">tileset/game_door.png</key>
             <key type="filename">tileset/game_door_entrance.png</key>
@@ -217,6 +219,7 @@
             <key type="filename">tileset/game_turtle_shelf.png</key>
             <key type="filename">tileset/game_vent.png</key>
             <key type="filename">tileset/game_vent_inner.png</key>
+            <key type="filename">tileset/game_void.png</key>
             <key type="filename">tileset/game_wall.png</key>
             <key type="filename">tileset/game_wallpaper.png</key>
             <struct type="IndividualSpriteSettings">

@@ -8,7 +8,7 @@ export default class RatShelf extends AbstractShelf {
     private previous2X: number = 0;
 
     constructor (scene: GameScene, x: number, y: number) {
-        super(scene, x, y, Shelfs.RAT);
+        super(scene, x, y, Shelfs.RAT, 'Hamster');
 
         this.animalImage = this.scene.add.image(20, -60, 'assets', 'game_rat_in_cage');
         this.add(this.animalImage);
@@ -18,6 +18,8 @@ export default class RatShelf extends AbstractShelf {
 
         this.cage = this.scene.add.image(42, -59, 'assets', 'game_rat_cage');
         this.add(this.cage);
+
+        this.setInteractiveAreaAndHighlight('game_rat_highlight', 42, -59);
 
         let duration = 5000;
         this.scene.add.tween({

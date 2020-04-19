@@ -32,6 +32,7 @@ export default class GameScene extends Phaser.Scene {
 
     create (): void {
         this.initDebugUI();
+        this.input.topOnly = false;
         this.gameState = new GameState();
         this.worldEnvironment = new WorldEnvironment(this);
         this.effectManager = new EffectManager(this);

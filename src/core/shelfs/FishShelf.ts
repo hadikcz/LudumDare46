@@ -9,7 +9,7 @@ export default class FishShelf extends AbstractShelf {
     private previous2X: number = 0;
 
     constructor (scene: GameScene, x: number, y: number) {
-        super(scene, x, y, Shelfs.FISH);
+        super(scene, x, y, Shelfs.FISH, 'Fish');
 
         let rangeX = [20, 65];
         let rangeY = [-57, -48];
@@ -20,6 +20,8 @@ export default class FishShelf extends AbstractShelf {
 
         this.cage = this.scene.add.image(41, -53, 'assets', 'game_fishes_aquarium_glass');
         this.add(this.cage);
+
+        this.setInteractiveAreaAndHighlight('game_fish_highlight', 41, -53);
 
         let duration = 5000;
 
