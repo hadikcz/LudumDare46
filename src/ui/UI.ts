@@ -4,6 +4,7 @@ import GameScene from 'scenes/GameScene';
 import WorldEnvironment from "core/WorldEnvironment";
 import Text = Phaser.GameObjects.Text;
 import GameState from "core/GameState";
+import DayNightSystem from "core/DayNightSystem";
 
 export default class UI {
 
@@ -12,10 +13,12 @@ export default class UI {
     private clock!: Text;
     private calendar!: Text;
     private gameState: GameState;
+    private dayNightSystem: DayNightSystem;
 
-    constructor (scene: GameScene, gameState: GameState) {
+    constructor (scene: GameScene, gameState: GameState, dayNightSystem: DayNightSystem) {
         this.scene = scene;
         this.gameState = gameState;
+        this.dayNightSystem= dayNightSystem;
 
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + 10, WorldEnvironment.ORIGIN_POINT.y - 20, 'assets', 'game_coin');
         this.balance = this.scene.add.text(WorldEnvironment.ORIGIN_POINT.x + 25, WorldEnvironment.ORIGIN_POINT.y - 43, '10', { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 120, color: '#feda09', align: 'center' }).setScale(0.3);
@@ -36,6 +39,10 @@ export default class UI {
         this.show();
         $('html').addClass('black-bg');
         $('body').addClass('black-bg');
+    }
+
+    update () {
+        this.clock.setText(this.dayNightSystem.getTime().toFixed(0).toString());
     }
 
     show (): void {

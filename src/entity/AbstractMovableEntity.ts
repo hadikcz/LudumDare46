@@ -87,6 +87,6 @@ export default abstract class AbstractMovableEntity extends Phaser.GameObjects.C
     }
 
     protected reachTarget (): void {
-        console.log(`Reach target`);
+        // console.log(`Reach target`);
     }
 }

@@ -34,7 +34,7 @@ export default class GameScene extends Phaser.Scene {
     create (): void {
         this.initDebugUI();
         this.input.topOnly = false;
-        this.gameState = new GameState();
+        this.gameState = new GameState(this);
         this.worldEnvironment = new WorldEnvironment(this);
         this.effectManager = new EffectManager(this);
 
@@ -45,7 +45,7 @@ export default class GameScene extends Phaser.Scene {
         let customer = new Customer(this, 192, 410, this.matrixWorld);
         this.initDebugUiPlayer();
 
-        this.ui = new UI(this, this.gameState);
+        this.ui = new UI(this, this.gameState, this.gameState.dayNightSystem);
         this.ui.show();
 
         this.debugPathLines = this.add.group();
@@ -54,6 +54,7 @@ export default class GameScene extends Phaser.Scene {
     update (): void {
         this.worldEnvironment.update();
         this.matrixWorld.update();
+        this.ui.update();
     }
 
     private initDebugUI (): void {
