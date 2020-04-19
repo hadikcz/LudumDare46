@@ -1,13 +1,14 @@
 import AbstractShelf from "core/shelfs/AbstractShelf";
 import GameScene from "scenes/GameScene";
 import {Shelfs} from "enums/Shelfs";
+import Highlightable from "core/Highlightable";
 
 export default class TurtleShelf extends AbstractShelf {
 
     private previousX: number = 0;
 
     constructor (scene: GameScene, x: number, y: number) {
-        super(scene, x, y, Shelfs.TURTLE);
+        super(scene, x, y, Shelfs.TURTLE, 'Turtle');
 
         this.animalImage = this.scene.add.image(55, -52, 'assets', 'game_turtle');
         this.add(this.animalImage);
@@ -15,7 +16,7 @@ export default class TurtleShelf extends AbstractShelf {
         this.cage = this.scene.add.image(41, -56, 'assets', 'game_turtle_aquarium_glass');
         this.add(this.cage);
 
-        this.setInteractiveAreaAndHighlight('game_turtle_highlight', 41, -56);
+        this.highlight.setInteractiveAreaAndHighlight('game_turtle_highlight', 41, -56);
 
         this.scene.add.tween({
             targets: this.animalImage,
@@ -26,6 +27,10 @@ export default class TurtleShelf extends AbstractShelf {
             delay: Phaser.Math.RND.between(450, 1500),
             yoyo: true,
             repeat: Infinity
+        });
+
+        this.highlight.events.on(Highlightable.CLICK, () => {
+            console.log('Turtle click');
         });
     }
 

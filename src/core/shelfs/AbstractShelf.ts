@@ -4,11 +4,11 @@ import Image = Phaser.GameObjects.Image;
 import {Shelfs} from "enums/Shelfs";
 import {Depths} from "enums/Depths";
 import WorldEnvironment from "core/WorldEnvironment";
-import Sprite = Phaser.GameObjects.Sprite;
-import $ from 'jquery';
+import Highlightable from "core/Highlightable";
 
 export default abstract class AbstractShelf extends Phaser.GameObjects.Container {
 
+    public readonly highlight: Highlightable;
     protected scene: GameScene;
     protected shelfType: Shelfs;
     protected lives: number = 10;
@@ -17,15 +17,15 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     protected animalImage: Image;
     protected animalImage2!: Image;
     protected cage!: Image;
-    protected highlight: Sprite | null = null;
 
     protected title: string;
 
     constructor(scene: GameScene, x: number, y: number, shelfType: Shelfs, title: string = 'Unknown') {
-        super(scene, x, y, []);
+        super(scene, x, y);
         this.scene = scene;
         this.shelfType = shelfType;
         this.title = title;
+        this.highlight = new Highlightable(scene, this, title);
 
         this.scene.add.existing(this);
         if (this.y < WorldEnvironment.SHELF_SECOND_ROW_DEPTH) {
@@ -51,29 +51,5 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     showAnimal (): void {
         this.animalImage.setVisible(true);
         this.animalImage2?.setVisible(true);
-    }
-
-    protected setInteractiveAreaAndHighlight (imageIndex: string, x: number, y: number, hideAfterPointerOut: boolean = true): void {
-        this.highlight = this.scene.add.sprite(x, y, 'assets', imageIndex).setInteractive();
-        this.add(this.highlight);
-
-        if (hideAfterPointerOut) {
-            this.highlight.setAlpha(0.00001);
-        }
-
-        this.highlight.setInteractive();
-
-        this.highlight.on('pointerover', () => {
-            this.highlight?.setAlpha(1);
-            $('#content').css('cursor', 'pointer');
-        });
-
-        this.highlight.on('pointerout', () => {
-            if (!hideAfterPointerOut) return;
-            this.highlight?.setAlpha(0.00001);
-
-            $('#content').css('cursor', 'auto');
-        });
-
     }
 }

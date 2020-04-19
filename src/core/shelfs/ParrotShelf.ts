@@ -13,7 +13,7 @@ export default class ParrotShelf extends AbstractShelf {
         this.cage = this.scene.add.image(80, -65, 'assets', 'game_parrot_cage');
         this.add(this.cage);
 
-        this.setInteractiveAreaAndHighlight('game_parrot_highlight', 80, -65);
+        this.highlight.setInteractiveAreaAndHighlight('game_parrot_highlight', 80, -65);
 
         this.scene.add.tween({
             targets: this.animalImage,
