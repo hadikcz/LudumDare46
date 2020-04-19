@@ -12,5 +12,13 @@ export default class ParrotShelf extends AbstractShelf {
 
         this.cage = this.scene.add.image(80, -65, 'assets', 'game_parrot_cage');
         this.add(this.cage);
+
+        this.scene.add.tween({
+            targets: this.animalImage,
+            angle: -Phaser.Math.RND.between(20, 30),
+            duration: Phaser.Math.RND.between(1000, 3000),
+            yoyo: true,
+            repeat: Infinity
+        });
     }
 }

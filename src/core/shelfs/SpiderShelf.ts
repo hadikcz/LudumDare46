@@ -16,7 +16,9 @@ export default class SpiderShelf extends AbstractShelf {
         this.scene.add.tween({
             targets: this.animalImage,
             x: 25,
-            duration: 5000,
+            duration: Phaser.Math.RND.between(4000, 5000),
+            repeatDelay: Phaser.Math.RND.between(450, 750),
+            loopDelay: Phaser.Math.RND.between(450, 500),
             yoyo: true,
             repeat: Infinity
         });
