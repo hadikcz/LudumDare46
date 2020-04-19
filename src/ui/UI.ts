@@ -43,6 +43,7 @@ export default class UI {
 
     update () {
         this.clock.setText(this.dayNightSystem.getTime().toFixed(0).toString());
+        this.calendar.setText(this.dayNightSystem.getDay().toFixed(0).toString());
     }
 
     show (): void {

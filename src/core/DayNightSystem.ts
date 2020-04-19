@@ -21,6 +21,10 @@ export default class DayNightSystem {
         return this.currentTime;
     }
 
+    getDay (): number {
+        return this.day;
+    }
+
     /**
      * @private
      */
