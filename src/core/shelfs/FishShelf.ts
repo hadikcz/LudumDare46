@@ -5,6 +5,9 @@ import NumberHelpers from "helpers/NumberHelpers";
 
 export default class FishShelf extends AbstractShelf {
 
+    private previousX: number = 0;
+    private previous2X: number = 0;
+
     constructor (scene: GameScene, x: number, y: number) {
         super(scene, x, y, Shelfs.FISH);
 
@@ -37,5 +40,21 @@ export default class FishShelf extends AbstractShelf {
             yoyo: true,
             repeat: Infinity
         });
+    }
+
+    preUpdate (): void {
+        if (this.previousX < this.animalImage.x) {
+            this.animalImage.setScale(-1, 1);
+        } else {
+            this.animalImage.setScale(1, 1);
+        }
+        this.previousX = this.animalImage.x;
+
+        if (this.previous2X < this.animalImage2.x) {
+            this.animalImage2.setScale(-1, 1);
+        } else {
+            this.animalImage2.setScale(1, 1);
+        }
+        this.previous2X = this.animalImage2.x;
     }
 }
