@@ -1,11 +1,13 @@
 import AbstractShelf from "core/shelfs/AbstractShelf";
 import GameScene from "scenes/GameScene";
 import {Shelfs} from "enums/Shelfs";
+import animals from 'structs/animals.json';
+import {AnimalConfig} from "types/AnimalConfig";
 
 export default class ParrotShelf extends AbstractShelf {
 
     constructor (scene: GameScene, x: number, y: number) {
-        super(scene, x, y, Shelfs.PARROT, 'Parrot');
+        super(scene, x, y, Shelfs.PARROT, 'Parrot', animals.parrot as AnimalConfig);
 
         this.animalImage = this.scene.add.image(80, -65, 'assets', 'game_parrot');
         this.add(this.animalImage);

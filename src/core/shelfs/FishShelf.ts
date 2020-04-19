@@ -2,6 +2,8 @@ import AbstractShelf from "core/shelfs/AbstractShelf";
 import GameScene from "scenes/GameScene";
 import {Shelfs} from "enums/Shelfs";
 import NumberHelpers from "helpers/NumberHelpers";
+import {AnimalConfig} from "types/AnimalConfig";
+import animals from 'structs/animals.json';
 
 export default class FishShelf extends AbstractShelf {
 
@@ -9,7 +11,7 @@ export default class FishShelf extends AbstractShelf {
     private previous2X: number = 0;
 
     constructor (scene: GameScene, x: number, y: number) {
-        super(scene, x, y, Shelfs.FISH, 'Fish');
+        super(scene, x, y, Shelfs.FISH, 'Fish', animals.fish as AnimalConfig);
 
         let rangeX = [20, 65];
         let rangeY = [-57, -48];

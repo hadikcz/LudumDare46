@@ -5,6 +5,7 @@ import {Shelfs} from "enums/Shelfs";
 import {Depths} from "enums/Depths";
 import WorldEnvironment from "core/WorldEnvironment";
 import Highlightable from "core/Highlightable";
+import {AnimalConfig} from "types/AnimalConfig";
 
 export default abstract class AbstractShelf extends Phaser.GameObjects.Container {
 
@@ -17,14 +18,16 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     protected animalImage: Image;
     protected animalImage2!: Image;
     protected cage!: Image;
+    protected config!: AnimalConfig | null;
 
     protected title: string;
 
-    constructor(scene: GameScene, x: number, y: number, shelfType: Shelfs, title: string = 'Unknown') {
+    constructor(scene: GameScene, x: number, y: number, shelfType: Shelfs, title: string = 'Unknown', config: AnimalConfig | null = null) {
         super(scene, x, y);
         this.scene = scene;
         this.shelfType = shelfType;
         this.title = title;
+        this.config = config;
         this.highlight = new Highlightable(scene, this, title);
 
         this.scene.add.existing(this);

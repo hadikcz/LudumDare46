@@ -1,6 +1,8 @@
 import AbstractShelf from "core/shelfs/AbstractShelf";
 import GameScene from "scenes/GameScene";
 import {Shelfs} from "enums/Shelfs";
+import animals from 'structs/animals.json';
+import {AnimalConfig} from "types/AnimalConfig";
 
 export default class RatShelf extends AbstractShelf {
 
@@ -8,7 +10,7 @@ export default class RatShelf extends AbstractShelf {
     private previous2X: number = 0;
 
     constructor (scene: GameScene, x: number, y: number) {
-        super(scene, x, y, Shelfs.RAT, 'Rat');
+        super(scene, x, y, Shelfs.RAT, 'Rat', animals.rat as AnimalConfig);
 
         this.animalImage = this.scene.add.image(20, -60, 'assets', 'game_rat_in_cage');
         this.add(this.animalImage);

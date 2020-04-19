@@ -1,11 +1,13 @@
 import AbstractShelf from "core/shelfs/AbstractShelf";
 import GameScene from "scenes/GameScene";
 import {Shelfs} from "enums/Shelfs";
+import animals from 'structs/animals.json';
+import {AnimalConfig} from "types/AnimalConfig";
 
 export default class SpiderShelf extends AbstractShelf {
 
     constructor (scene: GameScene, x: number, y: number) {
-        super(scene, x, y, Shelfs.SPIDER, 'Spider');
+        super(scene, x, y, Shelfs.SPIDER, 'Spider', animals.spider as AnimalConfig);
 
         this.animalImage = this.scene.add.image(70, -49, 'assets', 'game_spider');
         this.add(this.animalImage);
