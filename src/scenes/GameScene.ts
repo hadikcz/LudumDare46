@@ -6,6 +6,7 @@ import Phaser from 'phaser';
 import PlayerCharacter from "entity/PlayerCharacter";
 import UI from "ui/UI";
 import WorldEnvironment from 'core/WorldEnvironment';
+import Vector2 = Phaser.Math.Vector2;
 
 declare let window: any;
 
@@ -16,6 +17,7 @@ export default class GameScene extends Phaser.Scene {
     private worldEnvironment!: WorldEnvironment;
     private matrixWorld!: MatrixWorld;
     private debugGui: any;
+    private debugPathLines!: Phaser.GameObjects.Group;
 
     private playerCharacter!: PlayerCharacter;
 
@@ -33,6 +35,8 @@ export default class GameScene extends Phaser.Scene {
 
         this.ui = new UI(this);
         this.ui.show();
+
+        this.debugPathLines = this.add.group();
     }
 
     update (): void {
@@ -47,6 +51,17 @@ export default class GameScene extends Phaser.Scene {
         let camera = this.debugGui.addFolder('Camera');
         camera.add(this.cameras.main, 'zoom').step(1).listen();
         camera.open();
+    }
+
+    public debugPath (points: Vector2[]): void {
+        this.debugPathLines.clear(true);
+        for (let i: number = 0; i < points.length; i++) {
+            if (points[i + 1] === undefined) break;
+            let a = points[i];
+            let b = points[i + 1];
+            let line = this.add.line(0, 0, a.x, a.y, b.x, b.y, 0x0000FF).setOrigin(0, 0);
+            this.debugPathLines.add(line);
+        }
     }
 
 }

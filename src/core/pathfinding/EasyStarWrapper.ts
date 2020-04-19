@@ -5,7 +5,7 @@ import WorldEnvironment from "core/WorldEnvironment";
 
 export default class EasyStarWrapper {
 
-    private static readonly ACCEPTABLE_TILES: number[] = [-1, 0];
+    private static readonly ACCEPTABLE_TILES: number[] = [1];
     private easyStar;
 
     constructor () {
@@ -13,9 +13,11 @@ export default class EasyStarWrapper {
         this.easyStar.setAcceptableTiles(EasyStarWrapper.ACCEPTABLE_TILES);
         this.easyStar.enableSync();
         this.easyStar.enableDiagonals();
+        this.easyStar.enableCornerCutting();
     }
 
     setGrid (data: integer[][]): void {
+        console.log(data);
         this.easyStar.setGrid(data);
     }
 
@@ -43,22 +45,22 @@ export default class EasyStarWrapper {
 
     private static transformGridToWorldPosition (x, y): Vector2 {
         return {
-            x: x * MatrixWorld.TILE_SIZE + WorldEnvironment.ORIGIN_POINT.x,
-            y: y * MatrixWorld.TILE_SIZE + WorldEnvironment.ORIGIN_POINT.y
+            x: x * MatrixWorld.TILE_SIZE,
+            y: y * MatrixWorld.TILE_SIZE
         } as Vector2;
     }
 
     private static transformWorldToGridPosition (x: number, y: number, checkBounds: boolean = false): Vector2 {
         if (checkBounds) {
             if (x < 0) {
-                x = MatrixWorld.TILE_SIZE * 2;
+                x = MatrixWorld.TILE_SIZE * 2 - WorldEnvironment.ORIGIN_POINT.x;
             } else if (x > MatrixWorld.getWorldSize[0]) {
-                x = MatrixWorld.getWorldSize[0] - MatrixWorld.TILE_SIZE * 2;
+                x = MatrixWorld.getWorldSize[0] - MatrixWorld.TILE_SIZE * 2 - WorldEnvironment.ORIGIN_POINT.x;
             }
             if (y < 0) {
-                y = MatrixWorld.TILE_SIZE * 2;
+                y = MatrixWorld.TILE_SIZE * 2 - WorldEnvironment.ORIGIN_POINT.y;
             } else if (y > MatrixWorld.getWorldSize[1]) {
-                y = MatrixWorld.getWorldSize[1] - MatrixWorld.TILE_SIZE * 2;
+                y = MatrixWorld.getWorldSize[1] - MatrixWorld.TILE_SIZE * 2 - WorldEnvironment.ORIGIN_POINT.y;
             }
         }
 
