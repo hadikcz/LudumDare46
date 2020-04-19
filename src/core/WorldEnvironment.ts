@@ -2,6 +2,7 @@ import GameScene from 'scenes/GameScene';
 import GameConfig from "config/GameConfig";
 import Vector2 = Phaser.Math.Vector2;
 import {Depths} from "enums/Depths";
+import CashDesk from "core/CashDesk";
 
 export default class WorldEnvironment {
 
@@ -22,8 +23,9 @@ export default class WorldEnvironment {
 
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + 0, WorldEnvironment.ORIGIN_POINT.y + 130, 'assets', 'game_floor').setOrigin(0, 0).setDepth(Depths.UNDER_PLAYER);
 
+        // this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 0, WorldEnvironment.ORIGIN_POINT.y + 155, 'assets', 'game_prodejni_pult').setOrigin(0, 1).setDepth(Depths.SELL_DESK);
 
-        this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 0, WorldEnvironment.ORIGIN_POINT.y + 155, 'assets', 'game_prodejni_pult').setOrigin(0, 1).setDepth(Depths.SELL_DESK);
+        let cashDesk = new CashDesk(this.scene, WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 0, WorldEnvironment.ORIGIN_POINT.y + 155);
 
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 26, WorldEnvironment.ORIGIN_POINT.y + 27, 'assets', 'game_wallpaper').setOrigin(0, 0).setDepth(Depths.UNDER_PLAYER);
 

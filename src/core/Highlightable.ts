@@ -25,11 +25,11 @@ export default class Highlightable {
         this.events = new EventEmitter();
     }
 
-    setInteractiveAreaAndHighlight (imageIndex: string, x: number, y: number, hideAfterPointerOut: boolean = true): void {
+    setInteractiveAreaAndHighlight (imageIndex: string, x: number, y: number, hideAfterPointerOut: boolean = true, modifiyTextX: number = -15, modifyTextY: number = -45): void {
         this.highlight = this.scene.add.sprite(x, y, 'assets', imageIndex).setInteractive();
         this.parent.add(this.highlight);
 
-        this.highlightText = this.scene.add.text(x - 15, y - 45, this.title, { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 65, color: '#feda09', align: 'center' }).setScale(0.2);
+        this.highlightText = this.scene.add.text(x + modifiyTextX, y + modifyTextY, this.title, { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 65, color: '#feda09', align: 'center' }).setScale(0.2);
         this.highlightText.setStroke('#7c6e1b', 30).setVisible(false);
         this.parent.add(this.highlightText);
 
