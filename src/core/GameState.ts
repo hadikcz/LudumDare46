@@ -7,8 +7,8 @@ export default class GameState {
 
     public events: EventEmitter;
     private balance: number = 5;
-    // private day: 1;
-    // private time: 0;
+    private day: number = 1;
+    // private time: number = 0;
     private purchasedShelfs: Shelfs[];
 
     constructor () {
@@ -22,6 +22,14 @@ export default class GameState {
             Shelfs.SPIDER,
             Shelfs.FISH,
         ];
+    }
+
+    getCurrentDay (): number {
+        return this.day;
+    }
+
+    addDay (): void {
+        this.day++;
     }
 
     getPurchasedShelfs (): Shelfs[] {
