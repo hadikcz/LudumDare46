@@ -1,8 +1,11 @@
-import Phaser from 'phaser';
-import WorldEnvironment from 'core/WorldEnvironment';
+import $ from 'jquery';
+import * as dat from 'dat.gui';
 import EffectManager from "effects/EffectManager";
-import UI from "ui/UI";
+import MatrixWorld from "core/pathfinding/MatrixWorld";
+import Phaser from 'phaser';
 import PlayerCharacter from "entity/PlayerCharacter";
+import UI from "ui/UI";
+import WorldEnvironment from 'core/WorldEnvironment';
 
 declare let window: any;
 
@@ -11,6 +14,8 @@ export default class GameScene extends Phaser.Scene {
     private effectManager!: EffectManager;
     private ui!: UI;
     private worldEnvironment!: WorldEnvironment;
+    private matrixWorld!: MatrixWorld;
+    private debugGui: any;
 
     private playerCharacter!: PlayerCharacter;
 
@@ -19,13 +24,12 @@ export default class GameScene extends Phaser.Scene {
     }
 
     create (): void {
-
+        this.initDebugUI();
         this.worldEnvironment = new WorldEnvironment(this);
         this.effectManager = new EffectManager(this);
 
         this.playerCharacter = new PlayerCharacter(this, 350, 356);
-        // this.cameras.main.setOrigin(0, 0);
-        // this.cameras.main.setPosition(GameConfig.World.size.width / 2, GameConfig.World.size.width / 2);
+        this.matrixWorld = new MatrixWorld(this, this.debugGui);
 
         this.ui = new UI(this);
         this.ui.show();
@@ -33,6 +37,16 @@ export default class GameScene extends Phaser.Scene {
 
     update (): void {
         this.worldEnvironment.update();
-        // console.log([this.input.activePointer.worldX - WorldEnvironment.ORIGIN_POINT.x - WorldEnvironment.ORIGIN_POINT_INNER.x, this.input.activePointer.worldY - WorldEnvironment.ORIGIN_POINT.y]);
+        this.matrixWorld.update();
     }
+
+    private initDebugUI (): void {
+        this.debugGui = new dat.GUI({ autoPlace: false });
+        $('#datGui').append(this.debugGui.domElement);
+
+        let camera = this.debugGui.addFolder('Camera');
+        camera.add(this.cameras.main, 'zoom').step(1).listen();
+        camera.open();
+    }
+
 }
