@@ -14,9 +14,9 @@ export default class MatrixWorld {
     private static readonly SESSION_STORAGE_KEY_MAP_DATA = 'SESSION_STORAGE_KEY_MAP_DATA';
 
     public easyStarWrapper: EasyStarWrapper;
+    public debugGridLayer: Phaser.Tilemaps.DynamicTilemapLayer;
     private scene: GameScene;
     private debugGui: any;
-    private debugGridLayer: Phaser.Tilemaps.DynamicTilemapLayer;
     private debugFillIndex: number = 1;
     private debugDrawSize: number = 1;
     private showTilemap: boolean = sessionStorage.getItem('showTilemap') && JSON.parse(sessionStorage.getItem('showTilemap') as string) ? true : false;

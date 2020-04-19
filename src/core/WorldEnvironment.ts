@@ -11,6 +11,8 @@ export default class WorldEnvironment {
     public static readonly ORIGIN_POINT: Vector2 = new Vector2(70, 100);
     public static readonly ORIGIN_POINT_INNER: Vector2 = new Vector2(50, 0);
     public static readonly SHELF_SECOND_ROW_DEPTH: number = 398;
+    public static readonly PURCHASE_POSITION: Vector2 = new Vector2(222, 272);
+    public static readonly LEAVE_POSITION: Vector2 = new Vector2(207, 481);
 
     private scene: GameScene;
 
