@@ -1,9 +1,10 @@
 import Phaser from 'phaser';
 import GameScene from "scenes/GameScene";
 import Vector2 = Phaser.Math.Vector2;
-import {Depths} from "structs/Depths";
+import {Depths} from "enums/Depths";
 import Tween = Phaser.Tweens.Tween;
 import MatrixWorld from "core/pathfinding/MatrixWorld";
+import WorldEnvironment from "core/WorldEnvironment";
 
 export default class PlayerCharacter extends Phaser.GameObjects.Container implements Phaser.GameObjects.GameObject {
 
@@ -105,7 +106,7 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
             }
             this.setDepth(Depths.CHARACTER_UNDER_DESK);
 
-        } else if (this.y <= 398) {
+        } else if (this.y <= WorldEnvironment.SHELF_SECOND_ROW_DEPTH) {
             this.setDepth(Depths.CHARACTER_UNDER_SHELF);
         } else {
             this.setDepth(Depths.CHARACTER_ABOVE_SHELF);

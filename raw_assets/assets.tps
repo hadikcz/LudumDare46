@@ -186,6 +186,7 @@
             <key type="filename">tileset/game_bunny_shelf.png</key>
             <key type="filename">tileset/game_ceiling lights.png</key>
             <key type="filename">tileset/game_ceiling_single.png</key>
+            <key type="filename">tileset/game_default_shelf.png</key>
             <key type="filename">tileset/game_dog.png</key>
             <key type="filename">tileset/game_dog_cage.png</key>
             <key type="filename">tileset/game_dog_shelf.png</key>
@@ -199,7 +200,6 @@
             <key type="filename">tileset/game_light_left.png</key>
             <key type="filename">tileset/game_parrot.png</key>
             <key type="filename">tileset/game_parrot_cage.png</key>
-            <key type="filename">tileset/game_parrot_cage_inside.png</key>
             <key type="filename">tileset/game_parrot_shelf.png</key>
             <key type="filename">tileset/game_prodejni_pult.png</key>
             <key type="filename">tileset/game_rat plain.png</key>

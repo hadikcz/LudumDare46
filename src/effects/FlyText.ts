@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import TextStyle = Phaser.Types.GameObjects.Text.TextStyle;
-import {Depths} from "structs/Depths";
+import {Depths} from "enums/Depths";
 import EffectManager from "effects/EffectManager";
 
 export default class FlyText extends Phaser.GameObjects.Text {

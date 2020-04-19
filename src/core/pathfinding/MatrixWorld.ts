@@ -1,7 +1,7 @@
 import EasyStarWrapper from "core/pathfinding/EasyStarWrapper";
 import GameScene from "scenes/GameScene";
 import ArrayHelpers from "helpers/ArrayHelpers";
-import {Depths} from "structs/Depths";
+import {Depths} from "enums/Depths";
 import Vector2 = Phaser.Math.Vector2;
 import Tile = Phaser.Tilemaps.Tile;
 
