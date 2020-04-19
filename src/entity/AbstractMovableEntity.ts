@@ -13,10 +13,13 @@ export default abstract class AbstractMovableEntity extends Phaser.GameObjects.C
     private static readonly SCALE: number = 3;
     private shadow: Phaser.GameObjects.Graphics;
     private character: Phaser.GameObjects.Sprite;
+    private characterIndex: number;
+    private characterData: any;
 
-    constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld) {
+    constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld, characterIndex: number = 0) {
         super(scene, x, y, []);
         this.pathfinding = pathfinding;
+        this.characterIndex = characterIndex;
 
         this.scene.add.existing(this);
         this.scene.physics.world.enable(this);
@@ -27,9 +30,10 @@ export default abstract class AbstractMovableEntity extends Phaser.GameObjects.C
         this.setScale(AbstractMovableEntity.SCALE);
         this.setDepth(Depths.CHARACTER_ABOVE_DESK);
 
+        this.characterData = this.getCharacterData(this.characterIndex);
         this.scene.anims.create({
-            key: 'playerCharacterWalk',
-            frames: this.scene.anims.generateFrameNumbers('characters', { start: 0, end: 3, first: 0 }),
+            key: 'playerCharacterWalk' + characterIndex,
+            frames: this.scene.anims.generateFrameNumbers('characters', this.characterData),
             frameRate: 8,
             repeat: -1
         });
@@ -39,7 +43,7 @@ export default abstract class AbstractMovableEntity extends Phaser.GameObjects.C
         this.shadow.fillEllipse(0, 0, 16, 8);
         this.add(this.shadow);
 
-        this.character = this.scene.add.sprite(0, 0, 'characters', 0)
+        this.character = this.scene.add.sprite(0, 0, 'characters', this.characterData.start)
             .setOrigin(0.5, 1);
         this.add(this.character);
     }
@@ -54,9 +58,9 @@ export default abstract class AbstractMovableEntity extends Phaser.GameObjects.C
         }
 
         if (Math.abs(body.velocity.x) !== 0 || Math.abs(body.velocity.y) !== 0) {
-            this.character.anims.play('playerCharacterWalk', true);
+            this.character.anims.play('playerCharacterWalk' + this.characterIndex, true);
         } else if (Math.abs(body.velocity.x) === 0 && Math.abs(body.velocity.y) === 0) {
-            this.character.setFrame(0);
+            this.character.setFrame(this.characterData.start);
             this.character.anims.stop();
         }
 
@@ -88,5 +92,16 @@ export default abstract class AbstractMovableEntity extends Phaser.GameObjects.C
 
     protected reachTarget (): void {
         // console.log(`Reach target`);
+    }
+
+    private getCharacterData (number: number): any {
+        let data = [
+            { start: 0, end: 3, first: 0 },
+            { start: 8, end: 11, first: 8 },
+            { start: 16, end: 19, first: 16 },
+            { start: 24, end: 27, first: 24 },
+            { start: 32, end: 35, first: 32 },
+        ];
+        return data[number];
     }
 }

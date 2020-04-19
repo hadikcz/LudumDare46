@@ -17,8 +17,8 @@ export default class Customer extends AbstractMovableEntity {
     private wanderAttempt: number = 0;
     protected purchaseIcon!: Phaser.GameObjects.Image;
 
-    constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld) {
-        super(scene, x, y, pathfinding);
+    constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld, characterIndex: number = 0) {
+        super(scene, x, y, pathfinding, characterIndex);
         this.wanderAttempt = Phaser.Math.RND.between(1, 5);
 
         let yT = -36;
