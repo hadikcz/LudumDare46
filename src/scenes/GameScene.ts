@@ -32,6 +32,7 @@ export default class GameScene extends Phaser.Scene {
 
         this.matrixWorld = new MatrixWorld(this, this.debugGui);
         this.playerCharacter = new PlayerCharacter(this, 350, 356, this.matrixWorld.easyStarWrapper);
+        this.initDebugUiPlayer();
 
         this.ui = new UI(this);
         this.ui.show();
@@ -50,7 +51,16 @@ export default class GameScene extends Phaser.Scene {
 
         let camera = this.debugGui.addFolder('Camera');
         camera.add(this.cameras.main, 'zoom').step(1).listen();
+        camera.add(this.input.activePointer, 'worldX').step(1).listen();
+        camera.add(this.input.activePointer, 'worldY').step(1).listen();
         camera.open();
+    }
+
+    private initDebugUiPlayer (): void {
+        let player = this.debugGui.addFolder('Player');
+        player.add(this.playerCharacter, 'x').step(1).listen();
+        player.add(this.playerCharacter, 'y').step(1).listen();
+        player.open();
     }
 
     public debugPath (points: Vector2[]): void {

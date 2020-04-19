@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import GameScene from "scenes/GameScene";
 import Vector2 = Phaser.Math.Vector2;
 import EasyStarWrapper from "core/pathfinding/EasyStarWrapper";
+import {Depths} from "structs/Depths";
 
 export default class PlayerCharacter extends Phaser.GameObjects.Container implements Phaser.GameObjects.GameObject {
 
@@ -23,6 +24,7 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
 
         body.setFriction(100, 100);
         this.setScale(PlayerCharacter.SCALE);
+        this.setDepth(Depths.CHARACTER_ABOVE_DESK);
 
         this.scene.anims.create({
             key: 'playerCharacterWalk',
@@ -41,8 +43,7 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
                 if (status) {
                     this.path = points;
                 }
-                console.log([status, points]);
-                this.scene.debugPath(points);
+                // this.scene.debugPath(points);
             }, this);
             // this.scene.physics.moveTo(this, pointer.worldX, pointer.worldY, 150);
             // this.positionToMove = new Vector2(pointer.worldX, pointer.worldY);
@@ -78,6 +79,15 @@ export default class PlayerCharacter extends Phaser.GameObjects.Container implem
         } else {
             this.positionToMove = null;
             body.setVelocity(0, 0);
+        }
+
+        // check depth against other things
+        if (this.y <= 250) {
+            this.setDepth(Depths.CHARACTER_UNDER_DESK);
+        } else if (this.y <= 398) {
+            this.setDepth(Depths.CHARACTER_UNDER_SHELF);
+        } else {
+            this.setDepth(Depths.CHARACTER_ABOVE_SHELF);
         }
     }
 }
