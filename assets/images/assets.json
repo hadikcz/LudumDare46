@@ -1186,6 +1186,27 @@
 					}
 				},
 				{
+					"filename": "game_coin",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 22
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 22
+					},
+					"frame": {
+						"x": 1127,
+						"y": 1027,
+						"w": 24,
+						"h": 22
+					}
+				},
+				{
 					"filename": "game_fish_orange",
 					"rotated": false,
 					"trimmed": false,
@@ -1254,6 +1275,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:6848ad98cd4a8fbdfe45e50e5ef15f15:5360613ec25e617291d384c9f2336da0:a759b6bbc8381ac9c472b28f589ad0d6$"
+		"smartupdate": "$TexturePacker:SmartUpdate:0e7d9c845492209cef78c83b9b424bc3:a901c5d25581c279b6d7f6c1d8ba929b:a759b6bbc8381ac9c472b28f589ad0d6$"
 	}
 }

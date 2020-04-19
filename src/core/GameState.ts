@@ -1,13 +1,18 @@
 import {Shelfs} from "enums/Shelfs";
+import EventEmitter = Phaser.Events.EventEmitter;
 
 export default class GameState {
 
+    public static readonly COIN_UPDATE: string = 'coinudpate';
+
+    public events: EventEmitter;
     private balance: number = 5;
     // private day: 1;
     // private time: 0;
     private purchasedShelfs: Shelfs[];
 
     constructor () {
+        this.events = new EventEmitter();
         this.purchasedShelfs = [
             Shelfs.PARROT,
             Shelfs.DOG,
@@ -25,5 +30,10 @@ export default class GameState {
 
     getBalance (): number {
         return this.balance;
+    }
+
+    addBalance (add: number): void {
+        this.balance += Math.abs(add);
+        this.events.emit(GameState.COIN_UPDATE, this.balance);
     }
 }

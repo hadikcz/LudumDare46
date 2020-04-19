@@ -43,7 +43,7 @@ export default class GameScene extends Phaser.Scene {
         this.initDebugUiPlayer();
 
 
-        this.ui = new UI(this);
+        this.ui = new UI(this, this.gameState);
         this.ui.show();
 
         this.debugPathLines = this.add.group();
@@ -57,6 +57,7 @@ export default class GameScene extends Phaser.Scene {
     private initDebugUI (): void {
         this.debugGui = new dat.GUI({ autoPlace: false });
         $('#datGui').append(this.debugGui.domElement);
+        $('#datGui').hide();
 
         let camera = this.debugGui.addFolder('Camera');
         camera.add(this.cameras.main, 'zoom').step(1).listen();
