@@ -19,6 +19,7 @@ export default class SpiderShelf extends AbstractShelf {
             duration: Phaser.Math.RND.between(4000, 5000),
             repeatDelay: Phaser.Math.RND.between(450, 750),
             loopDelay: Phaser.Math.RND.between(450, 500),
+            delay: Phaser.Math.RND.between(0, 350),
             yoyo: true,
             repeat: Infinity
         });

@@ -21,6 +21,7 @@ export default class TurtleShelf extends AbstractShelf {
             duration: Phaser.Math.RND.between(4000, 5000),
             repeatDelay: Phaser.Math.RND.between(500, 1500),
             loopDelay: Phaser.Math.RND.between(500, 1500),
+            delay: Phaser.Math.RND.between(450, 1500),
             yoyo: true,
             repeat: Infinity
         });
