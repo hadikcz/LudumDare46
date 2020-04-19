@@ -57,7 +57,7 @@ export default class Customer extends AbstractMovableEntity {
                         }
 
                     }, Phaser.Math.RND.between(500, 3000));
-                }, this);
+                }, true, this);
             }
         }
 
@@ -78,7 +78,7 @@ export default class Customer extends AbstractMovableEntity {
                     this.path = path;
                     this.customerState = CustomerStates.GOING_TO_PURCHASE;
                 }
-            }, this);
+            }, true, this);
         }
 
         // at the purchase point
@@ -100,7 +100,7 @@ export default class Customer extends AbstractMovableEntity {
                     this.path = path;
                     this.customerState = CustomerStates.LEAVING;
                 }
-            }, this);
+            }, true, this);
         }
 
         if (this.customerState === CustomerStates.LEAVING && this.path.length === 0) {

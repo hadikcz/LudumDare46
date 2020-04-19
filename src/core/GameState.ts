@@ -19,13 +19,13 @@ export default class GameState {
         this.events = new EventEmitter();
 
         this.purchasedShelfs = [
-            Shelfs.PARROT,
-            Shelfs.DOG,
-            Shelfs.RAT,
-            Shelfs.BUNNY,
-            Shelfs.TURTLE,
-            Shelfs.SPIDER,
-            Shelfs.FISH,
+            // Shelfs.PARROT,
+            // Shelfs.DOG,
+            // Shelfs.RAT,
+            // Shelfs.BUNNY,
+            // Shelfs.TURTLE,
+            // Shelfs.SPIDER,
+            // Shelfs.FISH,
         ];
     }
 

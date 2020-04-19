@@ -54,6 +54,7 @@ export default class MatrixWorld {
             if(!success && nearestFallback) {
                 let nearestWalkablePoint = this.findNearestWalkablePosition(x2, y2);
                 if (nearestWalkablePoint) {
+                    console.log(nearestWalkablePoint);
                     return this.findPath(x1, y1, nearestWalkablePoint.x, nearestWalkablePoint.y, callback, false, callbackContext);
                 }
             }
@@ -141,7 +142,7 @@ export default class MatrixWorld {
         collisionMask.open();
     }
 
-    private findNearestWalkablePosition (x, y): Vector2 | null {
+    private findNearestWalkablePosition (x: number, y: number): Vector2 | null {
         let nearestTile: Tile | null = null;
         let nearestDistance = Infinity;
 
