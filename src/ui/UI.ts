@@ -28,12 +28,13 @@ export default class UI {
         this.balance = this.scene.add.text(WorldEnvironment.ORIGIN_POINT.x + 25, WorldEnvironment.ORIGIN_POINT.y - 43, '10', { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 120, color: '#feda09', align: 'center' }).setScale(0.3).setDepth(Depths.UI);
         this.balance.setStroke('#7c6e1b', 10);
 
-        this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + 100, WorldEnvironment.ORIGIN_POINT.y - 20, 'assets', 'game_clock').setDepth(Depths.UI);
-        this.clock = this.scene.add.text(WorldEnvironment.ORIGIN_POINT.x + 120, WorldEnvironment.ORIGIN_POINT.y - 43, '0', { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 120, color: '#00b7ff', align: 'center' }).setScale(0.3).setDepth(Depths.UI);
+        let moveX = 25;
+        this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + 100 + moveX, WorldEnvironment.ORIGIN_POINT.y - 20, 'assets', 'game_clock').setDepth(Depths.UI);
+        this.clock = this.scene.add.text(WorldEnvironment.ORIGIN_POINT.x + 120 + moveX, WorldEnvironment.ORIGIN_POINT.y - 43, '0', { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 120, color: '#00b7ff', align: 'center' }).setScale(0.3).setDepth(Depths.UI);
         this.clock.setStroke('#0c6082', 10);
 
-        this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + 190, WorldEnvironment.ORIGIN_POINT.y - 20, 'assets', 'game_calendar').setDepth(Depths.UI);
-        this.calendar = this.scene.add.text(WorldEnvironment.ORIGIN_POINT.x + 210, WorldEnvironment.ORIGIN_POINT.y - 43, '1', { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 120, color: '#00b7ff', align: 'center' }).setScale(0.3).setDepth(Depths.UI);
+        this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + 190 + moveX, WorldEnvironment.ORIGIN_POINT.y - 20, 'assets', 'game_calendar').setDepth(Depths.UI);
+        this.calendar = this.scene.add.text(WorldEnvironment.ORIGIN_POINT.x + 210 + moveX, WorldEnvironment.ORIGIN_POINT.y - 43, '1', { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 120, color: '#00b7ff', align: 'center' }).setScale(0.3).setDepth(Depths.UI);
         this.calendar.setStroke('#0c6082', 10);
 
         this.gameState.events.on('GameState.COIN_UPDATE', (newBalance: number) => {

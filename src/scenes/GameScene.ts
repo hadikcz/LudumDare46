@@ -35,6 +35,7 @@ export default class GameScene extends Phaser.Scene {
     create (): void {
         console.log('create game scene');
         window.scene = this;
+        this.cameras.main.setPosition(0, 20);
         this.initDebugUI();
         this.input.topOnly = false;
         this.gameState = new GameState(this);

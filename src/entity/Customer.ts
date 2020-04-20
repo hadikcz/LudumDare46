@@ -11,6 +11,7 @@ import animals from 'structs/animals.json';
 import ArrayHelpers from "helpers/ArrayHelpers";
 import Vector2 = Phaser.Math.Vector2;
 import Text = Phaser.GameObjects.Text;
+import ProgressBarUI from "libs/ProgressBarUI";
 
 export default class Customer extends AbstractMovableEntity {
 
@@ -26,6 +27,7 @@ export default class Customer extends AbstractMovableEntity {
     private player: PlayerCharacter;
     private gameState: GameState;
     private leaveTimeout: number | null = null;
+    private progressBar: ProgressBarUI;
 
     private wantedItem: Shelfs | null = null;
 
@@ -34,6 +36,19 @@ export default class Customer extends AbstractMovableEntity {
         this.player = player;
         this.gameState = gameState;
         this.wanderAttempt = Phaser.Math.RND.between(1, 5);
+
+        this.progressBar = new ProgressBarUI(this.scene, {
+            followTarget: this,
+            atlas: 'assets',
+            atlasBg: 'progress_bar_bg',
+            atlasBar: 'progress_bar_inner',
+            tintBar: 0x00FF00,
+            depth: Depths.UI,
+            offsetX: -30,
+            offsetY: 10
+        });
+        this.progressBar.setPercent(0);
+        this.progressBar.hide();
 
         let yT = -36;
         this.purchaseIcon = this.scene.add.image(0, yT, 'assets', 'game_purchase')
@@ -95,7 +110,11 @@ export default class Customer extends AbstractMovableEntity {
 
             if (this.customerState === CustomerStates.LOOKIGN_FOR_PURCHASE_TARGET) {
                 this.customerState = CustomerStates.CALCULATING_PATH_TO_PURCHASE;
-                this.pathfinding.findPath(this.x, this.y, WorldEnvironment.PURCHASE_POSITION.x, WorldEnvironment.PURCHASE_POSITION.y, (success, path) => {
+                let moveTo = new Vector2(
+                    Phaser.Math.RND.integerInRange(WorldEnvironment.PURCHASE_POSITION_X[0], WorldEnvironment.PURCHASE_POSITION_X[1]),
+                    WorldEnvironment.PURCHASE_POSITION_Y
+                );
+                this.pathfinding.findPath(this.x, this.y, moveTo.x, moveTo.y, (success, path) => {
                     if (success) {
                         this.path = path;
                         this.customerState = CustomerStates.GOING_TO_PURCHASE;
@@ -117,10 +136,12 @@ export default class Customer extends AbstractMovableEntity {
 
                 this.customerState = CustomerStates.WAIT_FOR_PURCHASE;
                 this.purchaseIcon.setVisible(true);
+
                 // Maximal time for wait for purchase
                 // @ts-ignore
                 this.leaveTimeout = setTimeout(() => {
                     this.customerState = CustomerStates.LOOKIGN_FOR_LEAVE_TARGET;
+                    this.progressBar.hide();
                     this.purchaseIcon.setVisible(false);
                     this.highlightText.setVisible(false);
                     this.leavingWithoutPurchase();
@@ -135,8 +156,19 @@ export default class Customer extends AbstractMovableEntity {
                 }
                 this.customerState = CustomerStates.PURCHASING;
 
+                // processing purchase
+                let purchaseDuration = 2000;
+                this.progressBar.show();
+                let started = Math.round(Date.now());
+                let interval = setInterval(() => {
+
+                    let current = Math.round(Date.now()) - started;
+                    let percent = (current / purchaseDuration) * 100;
+                    this.progressBar.setPercent(percent);
+                }, 10);
+
                 this.scene.time.addEvent({
-                    delay: 2000,
+                    delay: purchaseDuration,
                     callbackScope: this,
                     callback: () => {
                         this.customerState = CustomerStates.LOOKIGN_FOR_LEAVE_TARGET;
@@ -144,6 +176,8 @@ export default class Customer extends AbstractMovableEntity {
                         this.gameState.addBalance(coins);
                         this.purchaseIcon.setVisible(false);
                         this.highlightText.setVisible(false);
+                        this.progressBar.hide();
+                        clearInterval(interval);
                         // @ts-ignore
                         window.scene.effectManager.launchFlyText(this.x, this.y, '+' + coins);
                     }
@@ -196,7 +230,7 @@ export default class Customer extends AbstractMovableEntity {
 
     private canStartPurchaseProcess (): boolean {
         let playerBody = this.player.body as Phaser.Physics.Arcade.Body;
-        return this.player.y <= WorldEnvironment.DESK_MIN_Y && this.player.x >= 210 && this.player.y <= 288 && playerBody.velocity.x === 0 && playerBody.velocity.y === 0
+        return this.player.y <= WorldEnvironment.DESK_MIN_Y && this.player.x >= 180 && this.player.y <= 288 && playerBody.velocity.x === 0 && playerBody.velocity.y === 0
             && this.hasWantedItemOnSklad();
     }
 
@@ -240,5 +274,6 @@ export default class Customer extends AbstractMovableEntity {
     destroy(fromScene?: boolean): void {
         super.destroy(fromScene);
         this.highlightText.destroy();
+        this.progressBar.destroy();
     }
 }

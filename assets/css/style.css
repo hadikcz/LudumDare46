@@ -104,10 +104,12 @@ a {text-decoration: none;}
 .shop .card .no-money {
     color: red;
     font-size: 17px;
+    text-align: center;
 }
 .shop .card .bought {
     color: yellow;
     font-size: 20px;
+    text-align: center;
 }
 
 .shop .card .purchase {
