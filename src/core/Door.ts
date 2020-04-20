@@ -16,8 +16,8 @@ export default class Door extends Phaser.GameObjects.Container {
             .setOrigin(0, 1);
         this.add(image);
 
-        this.highlight = new Highlightable(scene, this, 'Door');
+        this.highlight = new Highlightable(scene, this, 'Animal shop');
 
-        this.highlight.setInteractiveAreaAndHighlight('game_door_highlight', 30, -50, true, -17, -70);
+        this.highlight.setInteractiveAreaAndHighlight('game_door_highlight', 30, -50, true, -38, -70);
     }
 }

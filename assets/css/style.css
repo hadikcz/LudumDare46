@@ -57,3 +57,71 @@ a {text-decoration: none;}
     bottom: 0;
     position: absolute;
 }
+
+.shop {
+    position: absolute;
+    background: #3e4e41;
+    width: 528px;
+    height: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px;
+}
+
+.shop .close {
+    width: 100px;
+    height: 30px;
+    background: #6e0000;
+    color: #c40000;
+    font-size: 22px;
+    cursor: pointer;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 11px;
+}
+
+.shop .header {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.shop .card {
+    background: #2f3d31;
+    width: 120px;
+    height: 120px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.shop .card .title {
+    font-size: 24px;
+    text-align: center;
+}
+
+.shop .card .no-money {
+    color: red;
+    font-size: 17px;
+}
+.shop .card .bought {
+    color: yellow;
+    font-size: 20px;
+}
+
+.shop .card .purchase {
+    width: 100px;
+    height: 20px;
+    background: #273429;
+    border: black solid 1px;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+
+.shop .card .purchase .coin {
+
+}

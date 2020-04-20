@@ -6,12 +6,11 @@ import GameScene from "scenes/GameScene";
 export default class GameState {
 
     public static readonly COIN_UPDATE: string = 'coinudpate';
+    public static readonly UPDATE_SHELFS: string = 'uodateshelfs';
 
     public events: EventEmitter;
     public dayNightSystem: DayNightSystem;
-    private balance: number = 5;
-    private day: number = 1;
-    // private time: number = 0;
+    private balance: number = 15;
     private purchasedShelfs: Shelfs[];
 
     constructor (scene: GameScene) {
@@ -29,12 +28,9 @@ export default class GameState {
         ];
     }
 
-    getCurrentDay (): number {
-        return this.day;
-    }
-
-    addDay (): void {
-        this.day++;
+    addShelf (shelf: Shelfs): void {
+        this.purchasedShelfs.push(shelf);
+        this.events.emit(GameState.UPDATE_SHELFS);
     }
 
     getPurchasedShelfs (): Shelfs[] {
@@ -43,6 +39,10 @@ export default class GameState {
 
     getBalance (): number {
         return this.balance;
+    }
+
+    takeBalance (value: number): void {
+        this.balance -= value;
     }
 
     addBalance (add: number): void {

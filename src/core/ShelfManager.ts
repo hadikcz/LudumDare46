@@ -29,6 +29,10 @@ export default class ShelfManager {
         this.gameState = gameState;
 
         this.createShelfs();
+
+        this.gameState.events.on(GameState.UPDATE_SHELFS, () => {
+            this.updateShelfs();
+        });
     }
 
     private createShelfs (): void {
@@ -45,6 +49,14 @@ export default class ShelfManager {
             });
             this.shelfs.push(shelf);
         }
+    }
+
+    private updateShelfs (): void {
+        this.shelfs.forEach((shelf) => {
+            shelf.destroy(true);
+        });
+
+        this.createShelfs();
     }
 
     private generateShelf (x: number, y: number, shelf: Shelfs | null = null): AbstractShelf {
