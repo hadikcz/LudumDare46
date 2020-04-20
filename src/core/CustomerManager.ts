@@ -5,6 +5,7 @@ import MatrixWorld from "core/pathfinding/MatrixWorld";
 import WorldEnvironment from "core/WorldEnvironment";
 import NumberHelpers from "helpers/NumberHelpers";
 import PlayerCharacter from "entity/PlayerCharacter";
+import GameState from "core/GameState";
 
 export default class CustomerManager {
 

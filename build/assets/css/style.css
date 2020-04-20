@@ -1,0 +1,127 @@
+@font-face {
+    font-family: "ARCADECLASSIC";
+    src: url('../fonts/ARCADECLASSIC.ttf') format("truetype");
+}
+
+html,
+body {
+    color: #FFFFFF;
+    /*background: #767474;*/
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -o-crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: pixelated;
+    font-family: 'ARCADECLASSIC', Arial;
+
+    /* Disable selection after double click */
+    user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+body.black-bg {
+    background-color: #000 !important;
+}
+
+a {text-decoration: none;}
+
+#content {
+    position: absolute;
+    z-index: 0;
+    /*top: 50%;*/
+    /*transform: translate(0px, -50%);*/
+}
+#datGui {
+    top: 0;
+    position: absolute;
+    z-index: 100;
+}
+
+.hide {
+    display: none;
+}
+
+.center {
+    text-align: center;
+}
+
+/* test */
+.bottom {
+    bottom: 0;
+    position: absolute;
+}
+
+.shop {
+    position: absolute;
+    background: #3e4e41;
+    width: 528px;
+    height: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px;
+}
+
+.shop .close {
+    width: 100px;
+    height: 30px;
+    background: #6e0000;
+    color: #c40000;
+    font-size: 22px;
+    cursor: pointer;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 11px;
+}
+
+.shop .header {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.shop .card {
+    background: #2f3d31;
+    width: 120px;
+    height: 120px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.shop .card .title {
+    font-size: 24px;
+    text-align: center;
+}
+
+.shop .card .no-money {
+    color: red;
+    font-size: 17px;
+}
+.shop .card .bought {
+    color: yellow;
+    font-size: 20px;
+}
+
+.shop .card .purchase {
+    width: 100px;
+    height: 20px;
+    background: #273429;
+    border: black solid 1px;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+
+.shop .card .purchase .coin {
+
+}

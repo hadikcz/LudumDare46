@@ -80,6 +80,7 @@ export default class ShopUI {
         } else if (this.gameState.getBalance() >= price) {
             console.log('purchase');
             this.gameState.takeBalance(price);
+            // @ts-ignore
             this.gameState.addShelf(shelf);
             this.renderShop();
         }
