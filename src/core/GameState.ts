@@ -27,10 +27,10 @@ export default class GameState {
             Shelfs.SPIDER,
         ];
         this.purchasedShelfs = [
-            Shelfs.EMPTY,
             Shelfs.FISH,
             Shelfs.EMPTY,
-            Shelfs.BUNNY,
+            Shelfs.EMPTY,
+            Shelfs.EMPTY,
             Shelfs.EMPTY,
             Shelfs.EMPTY,
             Shelfs.EMPTY,
