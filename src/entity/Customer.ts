@@ -169,7 +169,7 @@ export default class Customer extends AbstractMovableEntity {
             alpha: 0,
             duration: 1000,
             onComplete: () => {
-                this.destroy(true);
+                this.destroy();
             }
         });
     }
@@ -224,6 +224,6 @@ export default class Customer extends AbstractMovableEntity {
 
     destroy(fromScene?: boolean): void {
         super.destroy(fromScene);
-        this.highlightText.destroy(true);
+        this.highlightText.destroy();
     }
 }

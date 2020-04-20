@@ -28,6 +28,11 @@ export default class GameState {
         ];
     }
 
+    removeShelf (shelf: Shelfs): void {
+        let i = this.purchasedShelfs.indexOf(shelf);
+        this.purchasedShelfs.splice(i, 1);
+    }
+
     addShelf (shelf: Shelfs): void {
         this.purchasedShelfs.push(shelf);
         this.events.emit(GameState.UPDATE_SHELFS);

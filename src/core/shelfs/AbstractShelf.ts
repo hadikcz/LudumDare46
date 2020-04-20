@@ -113,6 +113,10 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         this.animalImage2?.setVisible(true);
     }
 
+    getShelfType (): Shelfs {
+        return this.shelfType;
+    }
+
     public canDoJob (): boolean {
         console.log(this.shelfState);
         return (this.shelfState === ShelfState.WAITING_FOR_FEED || this.shelfState === ShelfState.WAITING_FOR_CLEAN) && this.lives > 0;
@@ -143,6 +147,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     }
 
     private finishAction (): void {
+        if (this.scene === undefined) return;
         this.feedIcon.setVisible(false);
         this.pooIcon.setVisible(false);
 
@@ -155,9 +160,6 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
             y = this.config.iconY;
         }
         this.smileIcon.y = this.y + y;
-        console.log([this.smileIcon.y, this.y + y - 100]);
-
-        console.log(this.smileIcon);
         this.scene.tweens.add({
             targets: this.smileIcon,
             alpha: 0,
@@ -240,10 +242,11 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     }
 
     private totalAnimalDie (): void {
-        this.events.emit(AbstractShelf.TOTAL_DIE, this);
-        this.feedInterval?.destroy();
-        this.pooInterval?.destroy();
+        if (this.scene === undefined) return;
         console.log(`Whole animal die ${this.title} ${this.lives}/${this.config?.count}`);
+        this.events.emit(AbstractShelf.TOTAL_DIE, this);
+        this.feedInterval?.remove();
+        this.pooInterval?.remove();
         this.hideAnimal();
         this.diePermaIcon.setVisible(true);
         let y = 0;
@@ -256,5 +259,27 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
             y: this.y + y - 100,
             duration: 5000,
         });
+        this.destroy();
+    }
+
+    destroy(fromScene?: boolean): void {
+        super.destroy(fromScene);
+        if (this.pooIcon !== undefined)
+            this.pooIcon.destroy(fromScene);
+
+        if (this.feedIcon !== undefined)
+            this.feedIcon.destroy(fromScene);
+
+        if (this.dieIcon !== undefined)
+            this.dieIcon.destroy(fromScene);
+
+        if (this.diePermaIcon !== undefined)
+            this.diePermaIcon.destroy(fromScene);
+
+        if (this.smileIcon !== undefined)
+            this.smileIcon.destroy(fromScene);
+
+        if (this.highlight !== undefined)
+            this.highlight.destroy(fromScene);
     }
 }

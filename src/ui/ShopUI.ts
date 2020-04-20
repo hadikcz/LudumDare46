@@ -58,7 +58,7 @@ export default class ShopUI {
 
             if (ArrayHelpers.inArray(this.gameState.getPurchasedShelfs(), animalData.shelfSlot)) {
                 purchase = `<div class="bought">Bought</div>`;
-            } else if (this.gameState.getBalance() <= animalData.price) {
+            } else if (this.gameState.getBalance() < animalData.price) {
                 purchase = `<div class="no-money">Not enought money</div>`;
             } else {
                 purchase = `<div class="purchase" data-shelf-slot="${animalData.shelfSlot}" data-price="${animalData.price}">${animalData.price}</div>`;

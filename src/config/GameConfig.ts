@@ -11,6 +11,6 @@ export default {
         }
     },
     Animal: {
-        WaitForPooOrFoodBeforeDie: 30
+        WaitForPooOrFoodBeforeDie: 5
     }
 };

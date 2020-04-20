@@ -57,6 +57,7 @@ export default class GameScene extends Phaser.Scene {
         this.worldEnvironment.update();
         this.matrixWorld.update();
         this.ui.update();
+        this.shelfManager.preUpdate();
     }
 
     private initDebugUI (): void {

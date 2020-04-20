@@ -58,4 +58,9 @@ export default class Highlightable {
             this.events.emit(Highlightable.CLICK, this.parent);
         });
     }
+
+    destroy (fromScene?: boolean): void {
+        this.highlight?.destroy(fromScene);
+        this.highlightText?.destroy(fromScene);
+    }
 }

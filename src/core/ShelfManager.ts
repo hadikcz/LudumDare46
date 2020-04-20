@@ -13,6 +13,7 @@ import TurtleShelf from "core/shelfs/TurtleShelf";
 import SpiderShelf from "core/shelfs/SpiderShelf";
 import FishShelf from "core/shelfs/FishShelf";
 import Highlightable from "core/Highlightable";
+import Group = Phaser.GameObjects.Group;
 
 export default class ShelfManager {
 
@@ -22,17 +23,23 @@ export default class ShelfManager {
 
     private scene: GameScene;
     private gameState: GameState;
-    private shelfs: AbstractShelf[] = [];
+    private shelfs: Group;
 
     constructor (scene: GameScene, gameState: GameState) {
         this.scene = scene;
         this.gameState = gameState;
+
+        this.shelfs = this.scene.add.group();
 
         this.createShelfs();
 
         this.gameState.events.on(GameState.UPDATE_SHELFS, () => {
             this.updateShelfs();
         });
+    }
+
+    preUpdate (): void {
+        console.log(this.shelfs.getLength());
     }
 
     private createShelfs (): void {
@@ -51,15 +58,12 @@ export default class ShelfManager {
             shelf.events.once(AbstractShelf.TOTAL_DIE, () => {
                 this.shelfTotalDie(shelf);
             });
-            this.shelfs.push(shelf);
+            this.shelfs.add(shelf);
         }
     }
 
     private updateShelfs (): void {
-        this.shelfs.forEach((shelf) => {
-            shelf.destroy(true);
-        });
-
+        this.shelfs.clear();
         this.createShelfs();
     }
 
@@ -101,9 +105,11 @@ export default class ShelfManager {
     }
 
     private shelfTotalDie (shelf: AbstractShelf): void {
+        console.log('!!!!!! **** shelfTotalDie ***** !!!!!');
         // return; //@TODO : infinite loop and crash here
-        let i = this.shelfs.indexOf(shelf);
-        this.shelfs.splice(i, 1);
+        this.gameState.removeShelf(shelf.getShelfType());
+        // let i = this.shelfs.getChildren().indexOf(shelf);
+        // this.shelfs.getChildren().splice(i, 1);
         shelf.destroy();
         this.updateShelfs();
     }
