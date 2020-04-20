@@ -38,11 +38,11 @@ export default class ShopUI {
 
     openShop (): void {
         this.renderShop();
-        $('.shop').show();
+        $('.shop').slideDown('slow');
     }
 
     private closeShop (): void {
-        $('.shop').hide();
+        $('.shop').slideUp('slow');
     }
 
     private renderShop (): void {

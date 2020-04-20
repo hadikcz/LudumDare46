@@ -29,7 +29,7 @@ export default class CustomerManager {
 
         this.scene.time.addEvent({
             repeat: Infinity,
-            delay: Phaser.Math.RND.between(5000, 15000),
+            delay: Phaser.Math.RND.between(5000, 10000),
             callbackScope: this,
             callback: () => {
                 this.decideToSpawnCustomer();
@@ -38,9 +38,8 @@ export default class CustomerManager {
     }
 
     private decideToSpawnCustomer (): void {
-        if (Phaser.Math.RND.between(0, 5) === 5) {
+        if (Phaser.Math.RND.between(0, 2) === 2)
             this.spawnCustomer();
-        }
     }
 
     private spawnCustomer (): void {

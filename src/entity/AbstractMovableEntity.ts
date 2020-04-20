@@ -109,4 +109,9 @@ export default abstract class AbstractMovableEntity extends Phaser.GameObjects.C
         ];
         return data[number];
     }
+
+    destroy(fromScene?: boolean): void {
+        super.destroy(fromScene);
+        this.shadow.destroy(fromScene);
+    }
 }

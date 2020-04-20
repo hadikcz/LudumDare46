@@ -76,9 +76,9 @@ export default class ShelfManager {
             case Shelfs.BUNNY:
                 return new BunnyShelf(this.scene, x, y);
             case Shelfs.RAT:
-                return new ParrotShelf(this.scene, x, y);
-            case Shelfs.PARROT:
                 return new RatShelf(this.scene, x, y);
+            case Shelfs.PARROT:
+                return new ParrotShelf(this.scene, x, y);
             case Shelfs.TURTLE:
                 return new TurtleShelf(this.scene, x, y);
             case Shelfs.SPIDER:

@@ -6,16 +6,16 @@ import EffectManager from "effects/EffectManager";
 export default class FlyText extends Phaser.GameObjects.Text {
     constructor (scene) {
         super(scene, EffectManager.DEFAULT_POSITION[0], EffectManager.DEFAULT_POSITION[1], '', {
-            fontFamily: 'AldotheApache, Verdana, Arial',
+            fontFamily: 'ARCADECLASSIC, Arial',
             fontSize: 64,
-            color: '#0000FF'
+            color: '#ffd500'
         } as unknown as TextStyle);
 
         this.setScale(.5);
         this.scene.physics.world.enable(this);
         this.scene.add.existing(this);
 
-        this.setStroke('#FFFFFF', 8);
+        this.setStroke('#7b4401', 8);
 
         this.setDepth(Depths.FLY_TEXT);
         this.setActive(false);

@@ -23,7 +23,6 @@ export default class UI {
         this.gameState = gameState;
         this.dayNightSystem= dayNightSystem;
         this.shopUI = new ShopUI(this.scene, this.gameState);
-        this.shopUI.openShop();
 
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + 10, WorldEnvironment.ORIGIN_POINT.y - 20, 'assets', 'game_coin').setDepth(Depths.UI);
         this.balance = this.scene.add.text(WorldEnvironment.ORIGIN_POINT.x + 25, WorldEnvironment.ORIGIN_POINT.y - 43, '10', { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 120, color: '#feda09', align: 'center' }).setScale(0.3).setDepth(Depths.UI);

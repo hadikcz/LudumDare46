@@ -6,11 +6,11 @@ import WorldEnvironment from "core/WorldEnvironment";
 import {Depths} from "enums/Depths";
 import {Shelfs} from "enums/Shelfs";
 import PlayerCharacter from "entity/PlayerCharacter";
-import Vector2 = Phaser.Math.Vector2;
-import Text = Phaser.GameObjects.Text;
 import GameState from "core/GameState";
 import animals from 'structs/animals.json';
 import ArrayHelpers from "helpers/ArrayHelpers";
+import Vector2 = Phaser.Math.Vector2;
+import Text = Phaser.GameObjects.Text;
 
 export default class Customer extends AbstractMovableEntity {
 
@@ -105,19 +105,24 @@ export default class Customer extends AbstractMovableEntity {
 
             // at the purchase point
             if (this.customerState === CustomerStates.GOING_TO_PURCHASE && this.path.length === 0) {
-                this.customerState = CustomerStates.WAIT_FOR_PURCHASE;
-                this.purchaseIcon.setVisible(true);
-
                 this.wantedItem = ArrayHelpers.getRandomFromArray(this.gameState.getPurchasedShelfs()) as Shelfs;
+                if (!this.wantedItem) {
+                    this.customerState = CustomerStates.LOOKIGN_FOR_LEAVE_TARGET;
+                    this.leavingWithoutPurchase();
+                    return;
+                }
                 this.highlightText.setText(this.translateShelfIntoAnimal(this.wantedItem));
                 this.highlightText.setVisible(true);
 
+                this.customerState = CustomerStates.WAIT_FOR_PURCHASE;
+                this.purchaseIcon.setVisible(true);
                 // Maximal time for wait for purchase
                 // @ts-ignore
                 this.leaveTimeout = setTimeout(() => {
                     this.customerState = CustomerStates.LOOKIGN_FOR_LEAVE_TARGET;
                     this.purchaseIcon.setVisible(false);
                     this.highlightText.setVisible(false);
+                    this.leavingWithoutPurchase();
                 }, Phaser.Math.RND.between(10000, 20000));
                 console.log('waiting for purchase');
             }
@@ -138,6 +143,8 @@ export default class Customer extends AbstractMovableEntity {
                         this.gameState.addBalance(coins);
                         this.purchaseIcon.setVisible(false);
                         this.highlightText.setVisible(false);
+                        // @ts-ignore
+                        window.scene.effectManager.launchFlyText(this.x, this.y, '+' + coins);
                     }
                 });
             }
@@ -160,6 +167,11 @@ export default class Customer extends AbstractMovableEntity {
         } catch(e) {
             console.log(e);
         }
+    }
+
+    private leavingWithoutPurchase (): void {
+        // @ts-ignore
+        window.scene.effectManager.launchSadSmile(this.x, this.y - 100, -100);
     }
 
     private reachLeavePoint (): void {
