@@ -48,7 +48,7 @@ export default class ShelfManager {
                 this.clickOnShelf(shelfP);
             });
 
-            shelf.events.on(AbstractShelf.TOTAL_DIE, () => {
+            shelf.events.once(AbstractShelf.TOTAL_DIE, () => {
                 this.shelfTotalDie(shelf);
             });
             this.shelfs.push(shelf);
@@ -91,12 +91,17 @@ export default class ShelfManager {
     private clickOnShelf (shelf: AbstractShelf): void {
         this.clickedShelf = shelf;
         this.lastClick = shelf;
-        setTimeout(() => {
-            this.clickedShelf = null;
-        }, 500);
+        this.scene.time.addEvent({
+            delay: 500,
+            callbackScope: this,
+            callback: () => {
+                this.clickedShelf = null;
+            }
+        });
     }
 
     private shelfTotalDie (shelf: AbstractShelf): void {
+        // return; //@TODO : infinite loop and crash here
         let i = this.shelfs.indexOf(shelf);
         this.shelfs.splice(i, 1);
         shelf.destroy();

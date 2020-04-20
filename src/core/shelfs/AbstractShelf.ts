@@ -52,6 +52,11 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         }
 
         console.log(`Creating ${title}`);
+        try {
+            throw new Error('rr');
+        } catch (e) {
+            console.log(e);
+        }
 
         this.scene.add.existing(this);
 
@@ -174,7 +179,6 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
                 console.log(`Want feed ${this.title}`);
                 this.feedIcon.setVisible(true);
                 this.events.emit(AbstractShelf.NEED_FOOD);
-                console.log(this);
                 window.scene.time.addEvent({
                     delay: GameConfig.Animal.WaitForPooOrFoodBeforeDie * 1000,
                     callbackScope: this,

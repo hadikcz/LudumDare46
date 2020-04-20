@@ -10,6 +10,7 @@ import Vector2 = Phaser.Math.Vector2;
 import Text = Phaser.GameObjects.Text;
 import GameState from "core/GameState";
 import animals from 'structs/animals.json';
+import ArrayHelpers from "helpers/ArrayHelpers";
 
 export default class Customer extends AbstractMovableEntity {
 
@@ -107,7 +108,7 @@ export default class Customer extends AbstractMovableEntity {
                 this.customerState = CustomerStates.WAIT_FOR_PURCHASE;
                 this.purchaseIcon.setVisible(true);
 
-                this.wantedItem = Shelfs.FISH;
+                this.wantedItem = ArrayHelpers.getRandomFromArray(this.gameState.getPurchasedShelfs()) as Shelfs;
                 this.highlightText.setText(this.translateShelfIntoAnimal(this.wantedItem));
                 this.highlightText.setVisible(true);
 
@@ -128,13 +129,17 @@ export default class Customer extends AbstractMovableEntity {
                 }
                 this.customerState = CustomerStates.PURCHASING;
 
-                setTimeout(() => {
-                    this.customerState = CustomerStates.LOOKIGN_FOR_LEAVE_TARGET;
-                    let coins = this.getCoinsByAnimal();
-                    this.gameState.addBalance(coins);
-                    this.purchaseIcon.setVisible(false);
-                    this.highlightText.setVisible(false);
-                }, 2000);
+                this.scene.time.addEvent({
+                    delay: 2000,
+                    callbackScope: this,
+                    callback: () => {
+                        this.customerState = CustomerStates.LOOKIGN_FOR_LEAVE_TARGET;
+                        let coins = this.getCoinsByAnimal();
+                        this.gameState.addBalance(coins);
+                        this.purchaseIcon.setVisible(false);
+                        this.highlightText.setVisible(false);
+                    }
+                });
             }
 
             if (this.customerState === CustomerStates.LOOKIGN_FOR_LEAVE_TARGET) {

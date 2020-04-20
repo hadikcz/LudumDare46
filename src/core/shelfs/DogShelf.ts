@@ -8,6 +8,7 @@ export default class DogShelf extends AbstractShelf {
 
     constructor (scene: GameScene, x: number, y: number) {
         super(scene, x, y, Shelfs.DOG, 'Dog', animals.dog as AnimalConfig);
+        console.log('creatingdoge');
 
         this.animalImage = this.scene.add.image(71, -63 + 7, 'assets', 'game_dog_body');
         this.add(this.animalImage);

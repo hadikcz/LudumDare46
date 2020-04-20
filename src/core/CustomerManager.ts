@@ -27,19 +27,20 @@ export default class CustomerManager {
 
         this.spawnCustomer();
 
-        setTimeout(() => {
-            this.decideToSpawnCustomer();
-        }, Phaser.Math.RND.between(5000, 15000));
+        this.scene.time.addEvent({
+            repeat: Infinity,
+            delay: Phaser.Math.RND.between(5000, 15000),
+            callbackScope: this,
+            callback: () => {
+                this.decideToSpawnCustomer();
+            }
+        });
     }
 
     private decideToSpawnCustomer (): void {
         if (Phaser.Math.RND.between(0, 5) === 5) {
             this.spawnCustomer();
         }
-
-        setTimeout(() => {
-            this.decideToSpawnCustomer();
-        }, Phaser.Math.RND.between(5000, 15000));
     }
 
     private spawnCustomer (): void {

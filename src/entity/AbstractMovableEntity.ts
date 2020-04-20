@@ -49,6 +49,7 @@ export default abstract class AbstractMovableEntity extends Phaser.GameObjects.C
     }
 
     preUpdate (): void {
+        if (this.character === undefined) return;
         try {
             let body = this.body as Phaser.Physics.Arcade.Body;
 

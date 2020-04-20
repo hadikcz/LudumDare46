@@ -33,6 +33,7 @@ export default class ShopUI {
 
             self.purchaseItem(shelfSlot, price);
         });
+        this.closeShop();
     }
 
     openShop (): void {
