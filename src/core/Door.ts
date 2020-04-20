@@ -26,7 +26,7 @@ export default class Door extends Phaser.GameObjects.Container {
 
         this.highlight.setInteractiveAreaAndHighlight('game_door_highlight', 30, -50, true, -38, -70);
 
-        this.highlight.events.on(Highlightable.CLICK, () => {
+        this.highlight.events.on('Highlightable.CLICK', () => {
             console.log('register click');
             this.registerOpenShop = true;
         });

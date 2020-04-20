@@ -35,7 +35,7 @@ export default class GameState {
 
     addShelf (shelf: Shelfs): void {
         this.purchasedShelfs.push(shelf);
-        this.events.emit(GameState.UPDATE_SHELFS);
+        this.events.emit('GameState.UPDATE_SHELFS');
     }
 
     getPurchasedShelfs (): Shelfs[] {
@@ -53,6 +53,6 @@ export default class GameState {
     addBalance (add: number): void {
         console.log('purchase for ' + add);
         this.balance += Math.abs(add);
-        this.events.emit(GameState.COIN_UPDATE, this.balance);
+        this.events.emit('GameState.COIN_UPDATE', this.balance);
     }
 }

@@ -33,13 +33,12 @@ export default class ShelfManager {
 
         this.createShelfs();
 
-        this.gameState.events.on(GameState.UPDATE_SHELFS, () => {
+        this.gameState.events.on('GameState.UPDATE_SHELFS', () => {
             this.updateShelfs();
         });
     }
 
     preUpdate (): void {
-        console.log(this.shelfs.getLength());
     }
 
     private createShelfs (): void {
@@ -51,12 +50,13 @@ export default class ShelfManager {
             let shelfType: Shelfs | null = this.gameState.getPurchasedShelfs()[i] || null;
 
             shelf = this.generateShelf(position.x, position.y, shelfType);
-            shelf.highlight.events.on(Highlightable.CLICK, (shelfP) => {
+            shelf.highlight.events.on('Highlightable.CLICK', (shelfP) => {
                 this.clickOnShelf(shelfP);
             });
 
-            shelf.events.once(AbstractShelf.TOTAL_DIE, () => {
-                this.shelfTotalDie(shelf);
+            shelf.events.once('total_die', (shelfMe) => {
+                console.log(shelfMe);
+                this.shelfTotalDie(shelfMe);
             });
             this.shelfs.add(shelf);
         }
@@ -110,7 +110,14 @@ export default class ShelfManager {
         this.gameState.removeShelf(shelf.getShelfType());
         // let i = this.shelfs.getChildren().indexOf(shelf);
         // this.shelfs.getChildren().splice(i, 1);
-        shelf.destroy();
+
+        if (this.lastClick === shelf) {
+            this.lastClick = null;
+        }
+        if (this.clickedShelf === shelf) {
+            this.clickedShelf = null;
+        }
+        shelf.destroy(true);
         this.updateShelfs();
     }
 }

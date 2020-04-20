@@ -37,7 +37,7 @@ export default class UI {
         this.calendar = this.scene.add.text(WorldEnvironment.ORIGIN_POINT.x + 210, WorldEnvironment.ORIGIN_POINT.y - 43, '1', { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 120, color: '#00b7ff', align: 'center' }).setScale(0.3).setDepth(Depths.UI);
         this.calendar.setStroke('#0c6082', 10);
 
-        this.gameState.events.on(GameState.COIN_UPDATE, (newBalance: number) => {
+        this.gameState.events.on('GameState.COIN_UPDATE', (newBalance: number) => {
             this.balance.setText(newBalance.toString());
         });
 

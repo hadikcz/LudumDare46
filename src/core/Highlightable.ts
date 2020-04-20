@@ -43,7 +43,7 @@ export default class Highlightable {
             this.highlight?.setAlpha(1);
             this.highlightText?.setVisible(true);
             $('#content').css('cursor', 'pointer');
-            this.events.emit(Highlightable.OVER, this);
+            this.events.emit('Highlightable.OVER', this);
         });
 
         this.highlight.on('pointerout', () => {
@@ -51,11 +51,11 @@ export default class Highlightable {
             this.highlight?.setAlpha(0.00001);
             this.highlightText?.setVisible(false);
             $('#content').css('cursor', 'auto');
-            this.events.emit(Highlightable.OUT, this);
+            this.events.emit('Highlightable.OUT', this);
         });
 
         this.highlight.on('pointerdown', () => {
-            this.events.emit(Highlightable.CLICK, this.parent);
+            this.events.emit('Highlightable.CLICK', this.parent);
         });
     }
 

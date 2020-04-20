@@ -37,6 +37,8 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     protected diePermaIcon!: Image;
     private feedInterval!: Phaser.Time.TimerEvent | null;
     private pooInterval!: Phaser.Time.TimerEvent | null;
+    private waitToPooOrFoodBeforeDieInFeedTimeout!: Phaser.Time.TimerEvent | null;
+    private waitToPooOrFoodBeforeDieInPooTimeout!: Phaser.Time.TimerEvent | null;
 
     protected title: string;
 
@@ -166,12 +168,18 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
             y: this.y + y - 100,
             duration: 5000,
         });
+
+        this.waitToPooOrFoodBeforeDieInFeedTimeout?.remove();
+        this.waitToPooOrFoodBeforeDieInPooTimeout?.remove();
     }
 
     private startFeedInterval (): void {
         if (this.shelfState === ShelfState.WAITING_FOR_FEED || this.shelfState === ShelfState.WAITING_FOR_CLEAN) return;
         console.log(`startFeedInterval ${this.title}`);
 
+        if (this.feedInterval) {
+            this.feedInterval.remove(true);
+        }
         this.feedInterval = this.scene.time.addEvent({
             delay: NumberHelpers.randomIntInRange(this.config?.timeBetweenFeed[0], this.config?.timeBetweenFeed[1]) * 1000,
             callbackScope: this,
@@ -180,8 +188,8 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
                 this.shelfState = ShelfState.WAITING_FOR_FEED;
                 console.log(`Want feed ${this.title}`);
                 this.feedIcon.setVisible(true);
-                this.events.emit(AbstractShelf.NEED_FOOD);
-                window.scene.time.addEvent({
+                this.events.emit('AbstractShelf.NEED_FOOD');
+                this.waitToPooOrFoodBeforeDieInFeedTimeout = window.scene.time.addEvent({
                     delay: GameConfig.Animal.WaitForPooOrFoodBeforeDie * 1000,
                     callbackScope: this,
                     callback: () => {
@@ -196,6 +204,9 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
         if (this.shelfState === ShelfState.WAITING_FOR_FEED || this.shelfState === ShelfState.WAITING_FOR_CLEAN) return;
         console.log(`startPooInterval ${this.title}`);
 
+        if (this.pooInterval) {
+            this.pooInterval.remove(true);
+        }
         this.pooInterval = this.scene.time.addEvent({
             delay: NumberHelpers.randomIntInRange(this.config?.timeBetweenPoo[0], this.config?.timeBetweenPoo[1]) * 1000,
             callbackScope: this,
@@ -204,8 +215,8 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
                 this.shelfState = ShelfState.WAITING_FOR_CLEAN;
                 console.log(`Want clean poo ${this.title}`);
                 this.pooIcon.setVisible(true);
-                this.events.emit(AbstractShelf.NEED_CLEAN_POO);
-                this.scene.time.addEvent({
+                this.events.emit('AbstractShelf.NEED_CLEAN_POO');
+                this.waitToPooOrFoodBeforeDieInPooTimeout =  this.scene.time.addEvent({
                     delay: GameConfig.Animal.WaitForPooOrFoodBeforeDie * 1000,
                     callbackScope: this,
                     callback: () => {
@@ -244,7 +255,6 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     private totalAnimalDie (): void {
         if (this.scene === undefined) return;
         console.log(`Whole animal die ${this.title} ${this.lives}/${this.config?.count}`);
-        this.events.emit(AbstractShelf.TOTAL_DIE, this);
         this.feedInterval?.remove();
         this.pooInterval?.remove();
         this.hideAnimal();
@@ -259,11 +269,23 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
             y: this.y + y - 100,
             duration: 5000,
         });
-        this.destroy();
+        this.events.emit('total_die', this);
     }
 
     destroy(fromScene?: boolean): void {
-        super.destroy(fromScene);
+        this.events.removeAllListeners();
+        if (this.waitToPooOrFoodBeforeDieInPooTimeout)
+            this.waitToPooOrFoodBeforeDieInPooTimeout?.remove();
+
+        if (this.waitToPooOrFoodBeforeDieInFeedTimeout)
+            this.waitToPooOrFoodBeforeDieInFeedTimeout?.remove();
+
+        if (this.feedInterval)
+            this.feedInterval.remove();
+
+        if (this.pooInterval)
+            this.pooInterval.remove();
+
         if (this.pooIcon !== undefined)
             this.pooIcon.destroy(fromScene);
 
@@ -281,5 +303,6 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
 
         if (this.highlight !== undefined)
             this.highlight.destroy(fromScene);
+        super.destroy(fromScene);
     }
 }
