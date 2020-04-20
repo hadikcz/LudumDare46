@@ -5,6 +5,7 @@ import {Depths} from "enums/Depths";
 import CashDesk from "core/CashDesk";
 import Door from "core/Door";
 import DoorEntrance from "core/DoorEntrance";
+import PlayerCharacter from "entity/PlayerCharacter";
 
 export default class WorldEnvironment {
 
@@ -17,11 +18,13 @@ export default class WorldEnvironment {
     public static readonly DESK_MIN_Y: number = 250;
 
     private scene: GameScene;
+    private player: PlayerCharacter;
 
     private fanInner!: Phaser.GameObjects.Image;
 
-    constructor (scene: GameScene) {
+    constructor (scene: GameScene, player: PlayerCharacter) {
         this.scene = scene;
+        this.player = player;
         this.scene.physics.world.setBounds(0, 0, GameConfig.World.size.width, GameConfig.World.size.height);
         this.scene.cameras.main.setBackgroundColor('#00');
 
@@ -36,7 +39,7 @@ export default class WorldEnvironment {
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 179, WorldEnvironment.ORIGIN_POINT.y + 30, 'assets', 'game_vent').setOrigin(0.5, 0.5).setDepth(Depths.UNDER_PLAYER);
         this.fanInner = this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 179, WorldEnvironment.ORIGIN_POINT.y + 30, 'assets', 'game_vent_inner').setOrigin(0.5, 0.5).setDepth(Depths.UNDER_PLAYER);
 
-        let door = new Door(this.scene, WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 781, WorldEnvironment.ORIGIN_POINT.y + 136);
+        let door = new Door(this.scene, WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 781, WorldEnvironment.ORIGIN_POINT.y + 136, this.player);
 
         this.scene.add.rectangle(WorldEnvironment.ORIGIN_POINT.x + 0, WorldEnvironment.ORIGIN_POINT.y + 131, 1000, 15, 0x000000, 0.35).setOrigin(0, 0.5).setDepth(Depths.UNDER_PLAYER);
         let entrance = new DoorEntrance(this.scene, WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 87, WorldEnvironment.ORIGIN_POINT.y + 389);

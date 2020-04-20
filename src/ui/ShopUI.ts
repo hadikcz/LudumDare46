@@ -14,6 +14,10 @@ export default class ShopUI {
         this.scene = scene;
         this.gameState = gameState;
 
+        this.scene.events.on('openshop', () => {
+            this.openShop();
+        });
+
         $('.close').on('click', () => {
             this.closeShop();
         });
@@ -71,6 +75,7 @@ export default class ShopUI {
 
     private purchaseItem (shelf: Shelfs | string, price: number): void {
         if (shelf === 'win') {
+            this.closeShop();
             this.scene.scene.start('WinScene');
         } else if (this.gameState.getBalance() >= price) {
             console.log('purchase');
