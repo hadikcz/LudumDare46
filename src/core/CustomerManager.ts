@@ -37,9 +37,13 @@ export default class CustomerManager {
     }
 
     private spawnCustomer (): void {
-        if (this.customers.getLength() >= CustomerManager.MAX_CUSTOMER) return;
-        let characterIndex = NumberHelpers.randomIntInRange(CustomerManager.ALLOWED_CHARACCTER_INDEXES[0], CustomerManager.ALLOWED_CHARACCTER_INDEXES[1]);
-        let customer = new Customer(this.scene, WorldEnvironment.LEAVE_POSITION.x, WorldEnvironment.LEAVE_POSITION.y, this.pathfinding, characterIndex);
-        this.customers.add(customer);
+        try {
+            if (this.customers.getLength() >= CustomerManager.MAX_CUSTOMER) return;
+            let characterIndex = NumberHelpers.randomIntInRange(CustomerManager.ALLOWED_CHARACCTER_INDEXES[0], CustomerManager.ALLOWED_CHARACCTER_INDEXES[1]);
+            let customer = new Customer(this.scene, WorldEnvironment.LEAVE_POSITION.x, WorldEnvironment.LEAVE_POSITION.y, this.pathfinding, characterIndex);
+            this.customers.add(customer);
+        } catch (e) {
+            console.log(e);
+        }
     }
 }

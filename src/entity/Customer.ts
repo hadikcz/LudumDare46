@@ -5,6 +5,8 @@ import {CustomerStates} from "enums/CustomerStates";
 import WorldEnvironment from "core/WorldEnvironment";
 import Vector2 = Phaser.Math.Vector2;
 import {Depths} from "enums/Depths";
+import Text = Phaser.GameObjects.Text;
+import {Shelfs} from "enums/Shelfs";
 
 export default class Customer extends AbstractMovableEntity {
 
@@ -16,6 +18,9 @@ export default class Customer extends AbstractMovableEntity {
     private customerState: CustomerStates = CustomerStates.INIT;
     private wanderAttempt: number = 0;
     protected purchaseIcon!: Phaser.GameObjects.Image;
+    private highlightText!: Text;
+
+    private wantedItem: Shelfs | null = null;
 
     constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld, characterIndex: number = 0) {
         super(scene, x, y, pathfinding, characterIndex);
@@ -37,10 +42,15 @@ export default class Customer extends AbstractMovableEntity {
             repeat: Infinity,
             ease: Phaser.Math.Easing.Bounce.In
         });
+
+        this.highlightText = this.scene.add.text(0, 0, 'Spider', { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 65, color: '#feda09', align: 'center' }).setScale(0.2).setDepth(Depths.UI);
+        this.highlightText.setStroke('#7c6e1b', 30).setVisible(false);
     }
 
     preUpdate(): void {
         super.preUpdate();
+
+        this.highlightText.setPosition(this.x - 25, this.y - 105);
 
         if (this.customerState === CustomerStates.INIT) {
             // 50% chance to purchase imitiedlty or go and watch thing
@@ -85,10 +95,16 @@ export default class Customer extends AbstractMovableEntity {
         if (this.customerState === CustomerStates.GOING_TO_PURCHASE && this.path.length === 0) {
             this.customerState = CustomerStates.WAIT_FOR_PURCHASE;
             this.purchaseIcon.setVisible(true);
+
+            this.wantedItem = Shelfs.FISH;
+            this.highlightText.setText(this.translateShelfIntoAnimal(this.wantedItem));
+            this.highlightText.setVisible(true);
+
             // Maximal time for wait for purchase
             setTimeout(() => {
                 this.customerState = CustomerStates.LOOKIGN_FOR_LEAVE_TARGET;
                 this.purchaseIcon.setVisible(false);
+                this.highlightText.setVisible(false);
             }, Phaser.Math.RND.between(10000, 20000));
             console.log('waiting for purchase');
         }
@@ -126,5 +142,28 @@ export default class Customer extends AbstractMovableEntity {
             Phaser.Math.RND.between(Customer.WANDERING_AREA[0].x, Customer.WANDERING_AREA[1].x),
             Phaser.Math.RND.between(Customer.WANDERING_AREA[0].y, Customer.WANDERING_AREA[1].y),
         );
+    }
+
+    private translateShelfIntoAnimal (shelf: Shelfs): string {
+        switch (shelf) {
+            case Shelfs.DOG:
+                return 'Dog';
+            case Shelfs.BUNNY:
+                return 'Bunny';
+            case Shelfs.RAT:
+                return 'Rat';
+            case Shelfs.PARROT:
+                return 'Parrot';
+            case Shelfs.TURTLE:
+                return 'Turtle';
+            case Shelfs.SPIDER:
+                return 'Spider';
+            case Shelfs.FISH:
+                return 'Fish';
+            case Shelfs.EMPTY:
+                return 'Unknown';
+            default:
+                return 'Unknown';
+        }
     }
 }
