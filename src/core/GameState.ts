@@ -10,7 +10,7 @@ export default class GameState {
 
     public events: EventEmitter;
     public dayNightSystem: DayNightSystem;
-    private balance: number = 15;
+    private balance: number = 100005;
     private purchasedShelfs: Shelfs[];
 
     constructor (scene: GameScene) {
@@ -18,13 +18,13 @@ export default class GameState {
         this.events = new EventEmitter();
 
         this.purchasedShelfs = [
-            // Shelfs.PARROT,
-            // Shelfs.DOG,
-            // Shelfs.RAT,
-            // Shelfs.BUNNY,
-            // Shelfs.TURTLE,
-            // Shelfs.SPIDER,
-            // Shelfs.FISH,
+            Shelfs.PARROT,
+            Shelfs.DOG,
+            Shelfs.RAT,
+            Shelfs.BUNNY,
+            Shelfs.TURTLE,
+            Shelfs.SPIDER,
+            Shelfs.FISH,
         ];
     }
 

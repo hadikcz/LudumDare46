@@ -43,6 +43,11 @@ export default class ShopUI {
     private renderShop (): void {
         let html = '';
         let animalsArray = ArrayHelpers.objectValuesToArray(animals);
+        animalsArray.push({
+            price: 3000,
+            shelfSlot: 'win',
+            name: 'Employer (WIN)'
+        });
         animalsArray.forEach((animalData: any) => {
             let purchase = '';
 
@@ -64,9 +69,10 @@ export default class ShopUI {
         $('#inner').html(html);
     }
 
-    private purchaseItem (shelf: Shelfs, price: number): void {
-        console.log([price, this.gameState.getBalance()]);
-        if (this.gameState.getBalance() >= price) {
+    private purchaseItem (shelf: Shelfs | string, price: number): void {
+        if (shelf === 'win') {
+            this.scene.scene.start('WinScene');
+        } else if (this.gameState.getBalance() >= price) {
             console.log('purchase');
             this.gameState.takeBalance(price);
             this.gameState.addShelf(shelf);

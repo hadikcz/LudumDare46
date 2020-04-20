@@ -11,15 +11,17 @@ import Image = Phaser.GameObjects.Image;
 import EventEmitter = Phaser.Events.EventEmitter;
 import Vector2 = Phaser.Math.Vector2;
 
+declare let window: any;
+
 export default abstract class AbstractShelf extends Phaser.GameObjects.Container {
 
     public static readonly NEED_FOOD: 'need_food';
+    public static readonly TOTAL_DIE: 'total_die';
     public static readonly NEED_CLEAN_POO: 'need_clean_poo';
     public static readonly DIE: 'die';
 
     public readonly highlight: Highlightable;
     public events: EventEmitter;
-    protected scene: GameScene;
     protected shelfType: Shelfs;
     protected lives: number = 3;
     protected shelfState: ShelfState = ShelfState.OK;
@@ -39,8 +41,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     protected title: string;
 
     constructor(scene: GameScene, x: number, y: number, shelfType: Shelfs, title: string = 'Unknown', config: AnimalConfig | null = null) {
-        super(scene, x, y);
-        this.scene = scene;
+        super(scene, x, y, []);
         this.shelfType = shelfType;
         this.title = title;
         this.config = config;
@@ -83,10 +84,11 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
 
         this.animalImage = this.scene.add.image(-10000, -10000, '');
 
-        this.setInteractive();
-
-        this.startFeedInterval();
-        this.startPooInterval();
+        if (this.shelfType !== Shelfs.EMPTY) {
+            this.setInteractive();
+            this.startFeedInterval();
+            this.startPooInterval();
+        }
     }
 
     getPosition (): Vector2 {
@@ -172,7 +174,8 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
                 console.log(`Want feed ${this.title}`);
                 this.feedIcon.setVisible(true);
                 this.events.emit(AbstractShelf.NEED_FOOD);
-                this.scene.time.addEvent({
+                console.log(this);
+                window.scene.time.addEvent({
                     delay: GameConfig.Animal.WaitForPooOrFoodBeforeDie * 1000,
                     callbackScope: this,
                     callback: () => {
@@ -233,6 +236,7 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     }
 
     private totalAnimalDie (): void {
+        this.events.emit(AbstractShelf.TOTAL_DIE, this);
         this.feedInterval?.destroy();
         this.pooInterval?.destroy();
         console.log(`Whole animal die ${this.title} ${this.lives}/${this.config?.count}`);

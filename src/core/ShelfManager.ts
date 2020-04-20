@@ -47,6 +47,10 @@ export default class ShelfManager {
             shelf.highlight.events.on(Highlightable.CLICK, (shelfP) => {
                 this.clickOnShelf(shelfP);
             });
+
+            shelf.events.on(AbstractShelf.TOTAL_DIE, () => {
+                this.shelfTotalDie(shelf);
+            });
             this.shelfs.push(shelf);
         }
     }
@@ -90,5 +94,12 @@ export default class ShelfManager {
         setTimeout(() => {
             this.clickedShelf = null;
         }, 500);
+    }
+
+    private shelfTotalDie (shelf: AbstractShelf): void {
+        let i = this.shelfs.indexOf(shelf);
+        this.shelfs.splice(i, 1);
+        shelf.destroy();
+        this.updateShelfs();
     }
 }

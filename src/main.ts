@@ -3,6 +3,7 @@ import Stats from 'stats.js';
 import GameConfig from 'config/GameConfig';
 import BootScene from 'scenes/BootScene';
 import GameScene from 'scenes/GameScene';
+import WinScene from 'scenes/WinScene';
 
 declare let __DEV__: any;
 const config = {
@@ -31,7 +32,8 @@ const config = {
     },
     scene: [
         BootScene,
-        GameScene
+        GameScene,
+        WinScene
     ]
 };
 const game = new Phaser.Game(config);
