@@ -178,7 +178,14 @@ export default class Customer extends AbstractMovableEntity {
 
     private canStartPurchaseProcess (): boolean {
         let playerBody = this.player.body as Phaser.Physics.Arcade.Body;
-        return this.player.y <= WorldEnvironment.DESK_MIN_Y && this.player.x >= 210 && this.player.y <= 288 && playerBody.velocity.x === 0 && playerBody.velocity.y === 0;
+        return this.player.y <= WorldEnvironment.DESK_MIN_Y && this.player.x >= 210 && this.player.y <= 288 && playerBody.velocity.x === 0 && playerBody.velocity.y === 0
+            && this.hasWantedItemOnSklad();
+    }
+
+    private hasWantedItemOnSklad(): boolean {
+        return !!this.gameState.getPurchasedShelfs().find((value: Shelfs) => {
+            return value === this.wantedItem;
+        }) as boolean;
     }
 
     private translateShelfIntoAnimal (shelf: Shelfs): string {
