@@ -32,9 +32,9 @@
   "fish": {
     "feedDuration": 3000,
     "pooDuration": 3000,
-    "timeBetweenFeed": [3, 4],
+    "timeBetweenFeed": [5, 10],
     "timeBetweenPoo": [30, 65],
-    "count": 1,
+    "count": 3,
     "iconX": 45,
     "iconY": -95,
     "moveX": 45,
