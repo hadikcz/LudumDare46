@@ -105,8 +105,9 @@ export default class Customer extends AbstractMovableEntity {
 
             // at the purchase point
             if (this.customerState === CustomerStates.GOING_TO_PURCHASE && this.path.length === 0) {
-                this.wantedItem = ArrayHelpers.getRandomFromArray(this.gameState.getPurchasedShelfs()) as Shelfs;
-                if (!this.wantedItem) {
+                this.wantedItem = ArrayHelpers.getRandomFromArray(this.gameState.getRealPurchasedShelfs()) as Shelfs;
+                console.log('GOIND TO PURHCASE, wanted item ' + this.wantedItem);
+                if (!this.wantedItem || this.wantedItem === Shelfs.EMPTY) {
                     this.customerState = CustomerStates.LOOKIGN_FOR_LEAVE_TARGET;
                     this.leavingWithoutPurchase();
                     return;
@@ -231,6 +232,8 @@ export default class Customer extends AbstractMovableEntity {
     private getCoinsByAnimal (): number {
         if (!this.wantedItem) return 0;
         let lowered = this.translateShelfIntoAnimal(this.wantedItem).toLowerCase();
+        if (lowered === 'unknown') return 0;
+
         return Phaser.Math.RND.integerInRange(animals[lowered].reward[0], animals[lowered].reward[1]);
     }
 

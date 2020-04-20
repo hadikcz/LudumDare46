@@ -20,6 +20,9 @@ export default class DogShelf extends AbstractShelf {
         this.add(this.cage);
 
         this.highlight.setInteractiveAreaAndHighlight('game_dog_highlight', 60, -65);
+        if (this.config) {
+            this.highlight.updateCount(this.config.count, this.config.count);
+        }
 
         this.animalImage2.angle = 25;
         this.scene.add.tween({

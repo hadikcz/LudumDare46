@@ -1,7 +1,7 @@
 import {Shelfs} from "enums/Shelfs";
-import EventEmitter = Phaser.Events.EventEmitter;
 import DayNightSystem from "core/DayNightSystem";
 import GameScene from "scenes/GameScene";
+import EventEmitter = Phaser.Events.EventEmitter;
 
 export default class GameState {
 
@@ -19,27 +19,52 @@ export default class GameState {
 
         this.purchasedShelfs = [
             Shelfs.FISH,
-            // Shelfs.PARROT,
-            // Shelfs.DOG,
-            // Shelfs.RAT,
-            // Shelfs.BUNNY,
-            // Shelfs.TURTLE,
-            // Shelfs.SPIDER,
+            Shelfs.PARROT,
+            Shelfs.DOG,
+            Shelfs.RAT,
+            Shelfs.BUNNY,
+            Shelfs.TURTLE,
+            Shelfs.SPIDER,
+        ];
+        this.purchasedShelfs = [
+            Shelfs.EMPTY,
+            Shelfs.FISH,
+            Shelfs.EMPTY,
+            Shelfs.BUNNY,
+            Shelfs.EMPTY,
+            Shelfs.EMPTY,
+            Shelfs.EMPTY,
         ];
     }
 
     removeShelf (shelf: Shelfs): void {
         let i = this.purchasedShelfs.indexOf(shelf);
-        this.purchasedShelfs.splice(i, 1);
+        console.log('remove shelf i ' + i);
+        this.purchasedShelfs[i] = Shelfs.EMPTY;
+        this.events.emit('ShelfPurchased', i, Shelfs.EMPTY);
     }
 
     addShelf (shelf: Shelfs): void {
-        this.purchasedShelfs.push(shelf);
-        this.events.emit('GameState.UPDATE_SHELFS');
+        let freeI = -1;
+        for (let i = 0; i < this.purchasedShelfs.length; i++) {
+            if (this.purchasedShelfs[i] === Shelfs.EMPTY) {
+                freeI = i;
+                break;
+            }
+        }
+        this.purchasedShelfs[freeI] = shelf;
+
+        this.events.emit('ShelfPurchased', freeI, shelf);
     }
 
     getPurchasedShelfs (): Shelfs[] {
         return this.purchasedShelfs;
+    }
+
+    getRealPurchasedShelfs (): Shelfs[] {
+        return this.purchasedShelfs.filter((shelf) => {
+            return shelf !== Shelfs.EMPTY;
+        });
     }
 
     getBalance (): number {

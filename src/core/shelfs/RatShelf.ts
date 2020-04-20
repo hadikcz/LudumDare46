@@ -22,6 +22,9 @@ export default class RatShelf extends AbstractShelf {
         this.add(this.cage);
 
         this.highlight.setInteractiveAreaAndHighlight('game_rat_highlight', 42, -59);
+        if (this.config) {
+            this.highlight.updateCount(this.config.count, this.config.count);
+        }
 
         let duration = 5000;
         this.scene.add.tween({

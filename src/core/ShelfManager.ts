@@ -23,18 +23,16 @@ export default class ShelfManager {
 
     private scene: GameScene;
     private gameState: GameState;
-    private shelfs: Group;
+    private shelfs: AbstractShelf[] = [];
 
     constructor (scene: GameScene, gameState: GameState) {
         this.scene = scene;
         this.gameState = gameState;
 
-        this.shelfs = this.scene.add.group();
-
         this.createShelfs();
 
-        this.gameState.events.on('GameState.UPDATE_SHELFS', () => {
-            this.updateShelfs();
+        this.gameState.events.on('ShelfPurchased', (position: number, type: Shelfs) => {
+            this.shelfPurchased(position, type);
         });
     }
 
@@ -42,29 +40,33 @@ export default class ShelfManager {
     }
 
     private createShelfs (): void {
-        let shelf: AbstractShelf;
-
         // fill with empty shelfs
         for (let i: number = 0; i < ShelfManager.SHELF_COUNT; i++) {
-            let position = shelfSlots[i];
-            let shelfType: Shelfs | null = this.gameState.getPurchasedShelfs()[i] || null;
-
-            shelf = this.generateShelf(position.x, position.y, shelfType);
-            shelf.highlight.events.on('Highlightable.CLICK', (shelfP) => {
-                this.clickOnShelf(shelfP);
-            });
-
-            shelf.events.once('total_die', (shelfMe) => {
-                console.log(shelfMe);
-                this.shelfTotalDie(shelfMe);
-            });
-            this.shelfs.add(shelf);
+            this.createShelf(i);
         }
     }
 
-    private updateShelfs (): void {
-        this.shelfs.clear();
-        this.createShelfs();
+    private createShelf (i: number): void {
+        let shelf: AbstractShelf;
+        let position = shelfSlots[i];
+        let shelfType: Shelfs | null = this.gameState.getPurchasedShelfs()[i] || null;
+
+        shelf = this.generateShelf(position.x, position.y, shelfType);
+        shelf.highlight.events.on('Highlightable.CLICK', (shelfP) => {
+            this.clickOnShelf(shelfP);
+        });
+
+        shelf.events.once('total_die', (shelfMe) => {
+            console.log(shelfMe);
+            this.shelfTotalDie(shelfMe);
+        });
+        this.shelfs[i] =  shelf;
+    }
+
+    private shelfPurchased (position: number, type: Shelfs): void {
+        this.createShelf(position);
+        // this.shelfs.clear();
+        // this.createShelfs();
     }
 
     private generateShelf (x: number, y: number, shelf: Shelfs | null = null): AbstractShelf {
@@ -118,6 +120,6 @@ export default class ShelfManager {
             this.clickedShelf = null;
         }
         shelf.destroy(true);
-        this.updateShelfs();
+        // this.updateShelfs();
     }
 }

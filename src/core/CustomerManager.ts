@@ -28,7 +28,9 @@ export default class CustomerManager {
         this.dayNightSystem = dayNightSystem;
         this.customers = this.scene.add.group();
 
-        this.spawnCustomer();
+        setTimeout(() => {
+            this.spawnCustomer();
+        }, 500);
         this.decideToSpawnCustomer();
     }
 

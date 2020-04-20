@@ -4,6 +4,7 @@ import $ from 'jquery';
 import Sprite = Phaser.GameObjects.Sprite;
 import Container = Phaser.GameObjects.Container;
 import Text = Phaser.GameObjects.Text;
+import {Depths} from "enums/Depths";
 
 export default class Highlightable {
 
@@ -25,13 +26,18 @@ export default class Highlightable {
         this.events = new EventEmitter();
     }
 
+    updateCount (current: number, max: number): void {
+        this.highlightText?.setText(`${this.title}     ${current}/${max}`);
+    }
+
     setInteractiveAreaAndHighlight (imageIndex: string, x: number, y: number, hideAfterPointerOut: boolean = true, modifiyTextX: number = -15, modifyTextY: number = -45): void {
         this.highlight = this.scene.add.sprite(x, y, 'assets', imageIndex).setInteractive();
         this.parent.add(this.highlight);
 
-        this.highlightText = this.scene.add.text(x + modifiyTextX, y + modifyTextY, this.title, { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 65, color: '#feda09', align: 'center' }).setScale(0.2);
+        this.highlightText = this.scene.add.text(this.parent.x + x + modifiyTextX, this.parent.y + y + modifyTextY, this.title, { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 65, color: '#feda09', align: 'center' }).setScale(0.2);
         this.highlightText.setStroke('#7c6e1b', 30).setVisible(false);
-        this.parent.add(this.highlightText);
+        this.highlightText.setDepth(Depths.UI);
+        // this.parent.add(this.highlightText);
 
         if (hideAfterPointerOut) {
             this.highlight.setAlpha(0.00001);
@@ -60,7 +66,7 @@ export default class Highlightable {
     }
 
     destroy (fromScene?: boolean): void {
-        this.highlight?.destroy(fromScene);
+        // this.highlight?.destroy(fromScene);
         this.highlightText?.destroy(fromScene);
     }
 }

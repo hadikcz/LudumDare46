@@ -16,6 +16,9 @@ export default class SpiderShelf extends AbstractShelf {
         this.add(this.cage);
 
         this.highlight.setInteractiveAreaAndHighlight('game_spider_highlight', 45, -56, true);
+        if (this.config) {
+            this.highlight.updateCount(this.config.count, this.config.count);
+        }
 
         this.scene.add.tween({
             targets: this.animalImage,

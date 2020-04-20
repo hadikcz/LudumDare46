@@ -16,6 +16,9 @@ export default class BunnyShelf extends AbstractShelf {
         this.add(this.cage);
 
         this.highlight.setInteractiveAreaAndHighlight('game_bunny_highlight', 79, -61);
+        if (this.config) {
+            this.highlight.updateCount(this.config.count, this.config.count);
+        }
 
         this.scene.add.tween({
             targets: this.animalImage,

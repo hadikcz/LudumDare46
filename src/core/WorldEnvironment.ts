@@ -44,11 +44,11 @@ export default class WorldEnvironment {
         this.scene.add.rectangle(WorldEnvironment.ORIGIN_POINT.x + 0, WorldEnvironment.ORIGIN_POINT.y + 131, 1000, 15, 0x000000, 0.35).setOrigin(0, 0.5).setDepth(Depths.UNDER_PLAYER);
         let entrance = new DoorEntrance(this.scene, WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 87, WorldEnvironment.ORIGIN_POINT.y + 389);
 
-        this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 90, WorldEnvironment.ORIGIN_POINT.y + 14, 'assets', 'game_light_left').setOrigin(0.5, 0).setDepth(Depths.CEILING_LAMPS_LIGHTS);
+        this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 90 + 30, WorldEnvironment.ORIGIN_POINT.y + 14, 'assets', 'game_light_left').setOrigin(0.5, 0).setDepth(Depths.CEILING_LAMPS_LIGHTS);
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 385, WorldEnvironment.ORIGIN_POINT.y + 14, 'assets', 'game_light_left').setOrigin(0.5, 0).setDepth(Depths.CEILING_LAMPS_LIGHTS);
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 720, WorldEnvironment.ORIGIN_POINT.y + 14, 'assets', 'game_light_left').setOrigin(0.5, 0).setDepth(Depths.CEILING_LAMPS_LIGHTS);
 
-        this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 109, WorldEnvironment.ORIGIN_POINT.y + 52, 'assets', 'game_ceiling_single').setOrigin(0.5, 1).setDepth(Depths.CEILING_LAMPS);
+        this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 109 + 30, WorldEnvironment.ORIGIN_POINT.y + 52, 'assets', 'game_ceiling_single').setOrigin(0.5, 1).setDepth(Depths.CEILING_LAMPS);
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 413, WorldEnvironment.ORIGIN_POINT.y + 52, 'assets', 'game_ceiling_single').setOrigin(0.5, 1).setDepth(Depths.CEILING_LAMPS);
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 743, WorldEnvironment.ORIGIN_POINT.y + 52, 'assets', 'game_ceiling_single').setOrigin(0.5, 1).setDepth(Depths.CEILING_LAMPS);
     }
