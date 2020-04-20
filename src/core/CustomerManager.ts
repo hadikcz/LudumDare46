@@ -30,11 +30,11 @@ export default class CustomerManager {
 
         setTimeout(() => {
             this.spawnCustomer();
-            this.spawnCustomer();
-            this.spawnCustomer();
-            this.spawnCustomer();
-            this.spawnCustomer();
-            this.spawnCustomer();
+            // this.spawnCustomer();
+            // this.spawnCustomer();
+            // this.spawnCustomer();
+            // this.spawnCustomer();
+            // this.spawnCustomer();
         }, 500);
         this.decideToSpawnCustomer();
     }
