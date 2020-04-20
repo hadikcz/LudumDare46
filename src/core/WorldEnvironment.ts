@@ -14,6 +14,7 @@ export default class WorldEnvironment {
     public static readonly PURCHASE_POSITION: Vector2 = new Vector2(222, 272);
     public static readonly LEAVE_POSITION: Vector2 = new Vector2(207, 481);
     public static readonly SPAWN_POSITION: Vector2 = new Vector2(207, 300);
+    public static readonly DESK_MIN_Y: number = 250;
 
     private scene: GameScene;
 

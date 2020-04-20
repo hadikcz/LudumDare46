@@ -43,7 +43,7 @@ export default class GameScene extends Phaser.Scene {
         this.matrixWorld = new MatrixWorld(this, this.debugGui);
         this.shelfManager = new ShelfManager(this, this.gameState);
         this.playerCharacter = new PlayerCharacter(this, 350, 356, this.matrixWorld, this.shelfManager);
-        this.customerManager = new CustomerManager(this, this.matrixWorld);
+        this.customerManager = new CustomerManager(this, this.matrixWorld, this.playerCharacter, this.gameState);
         this.initDebugUiPlayer();
 
         this.ui = new UI(this, this.gameState, this.gameState.dayNightSystem);
@@ -61,7 +61,7 @@ export default class GameScene extends Phaser.Scene {
     private initDebugUI (): void {
         this.debugGui = new dat.GUI({ autoPlace: false });
         $('#datGui').append(this.debugGui.domElement);
-        $('#datGui').hide();
+        // $('#datGui').hide();
 
         let camera = this.debugGui.addFolder('Camera');
         camera.add(this.cameras.main, 'zoom').step(1).listen();

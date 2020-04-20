@@ -49,44 +49,48 @@ export default abstract class AbstractMovableEntity extends Phaser.GameObjects.C
     }
 
     preUpdate (): void {
-        let body = this.body as Phaser.Physics.Arcade.Body;
+        try {
+            let body = this.body as Phaser.Physics.Arcade.Body;
 
-        if (body.velocity.x < 0) {
-            this.setScale(-AbstractMovableEntity.SCALE, AbstractMovableEntity.SCALE);
-        } else if (body.velocity.x > 0) {
-            this.setScale(AbstractMovableEntity.SCALE, AbstractMovableEntity.SCALE);
-        }
-
-        if (Math.abs(body.velocity.x) !== 0 || Math.abs(body.velocity.y) !== 0) {
-            this.character.anims.play('playerCharacterWalk' + this.characterIndex, true);
-        } else if (Math.abs(body.velocity.x) === 0 && Math.abs(body.velocity.y) === 0) {
-            this.character.setFrame(this.characterData.start);
-            this.character.anims.stop();
-        }
-
-        if (this.path.length > 0) {
-            let currentTarget = this.path[0];
-            if (Phaser.Math.Distance.Between(currentTarget.x, currentTarget.y, this.x, this.y) <= 5) {
-                this.path.shift();
+            if (body.velocity.x < 0) {
+                this.setScale(-AbstractMovableEntity.SCALE, AbstractMovableEntity.SCALE);
+            } else if (body.velocity.x > 0) {
+                this.setScale(AbstractMovableEntity.SCALE, AbstractMovableEntity.SCALE);
             }
-            this.scene.physics.moveTo(this, currentTarget.x, currentTarget.y, 150);
-        } else {
-            body.setVelocity(0, 0);
-            this.reachTarget();
-        }
 
-        this.shadow.setVisible(true);
-        // check depth against other things
-        if (this.y <= 250) {
-            if (this.x <= 364) {
-                this.shadow.setVisible(false);
+            if (Math.abs(body.velocity.x) !== 0 || Math.abs(body.velocity.y) !== 0) {
+                this.character.anims.play('playerCharacterWalk' + this.characterIndex, true);
+            } else if (Math.abs(body.velocity.x) === 0 && Math.abs(body.velocity.y) === 0) {
+                this.character.setFrame(this.characterData.start);
+                this.character.anims.stop();
             }
-            this.setDepth(Depths.CHARACTER_UNDER_DESK);
 
-        } else if (this.y <= WorldEnvironment.SHELF_SECOND_ROW_DEPTH) {
-            this.setDepth(Depths.CHARACTER_UNDER_SHELF);
-        } else {
-            this.setDepth(Depths.CHARACTER_ABOVE_SHELF);
+            if (this.path.length > 0) {
+                let currentTarget = this.path[0];
+                if (Phaser.Math.Distance.Between(currentTarget.x, currentTarget.y, this.x, this.y) <= 5) {
+                    this.path.shift();
+                }
+                this.scene.physics.moveTo(this, currentTarget.x, currentTarget.y, 150);
+            } else {
+                body.setVelocity(0, 0);
+                this.reachTarget();
+            }
+
+            this.shadow.setVisible(true);
+            // check depth against other things
+            if (this.y <= WorldEnvironment.DESK_MIN_Y) {
+                if (this.x <= 364) {
+                    this.shadow.setVisible(false);
+                }
+                this.setDepth(Depths.CHARACTER_UNDER_DESK);
+
+            } else if (this.y <= WorldEnvironment.SHELF_SECOND_ROW_DEPTH) {
+                this.setDepth(Depths.CHARACTER_UNDER_SHELF);
+            } else {
+                this.setDepth(Depths.CHARACTER_ABOVE_SHELF);
+            }
+        } catch (e) {
+            console.log(e);
         }
     }
 

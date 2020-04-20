@@ -3,10 +3,13 @@ import GameScene from "scenes/GameScene";
 import MatrixWorld from "core/pathfinding/MatrixWorld";
 import {CustomerStates} from "enums/CustomerStates";
 import WorldEnvironment from "core/WorldEnvironment";
-import Vector2 = Phaser.Math.Vector2;
 import {Depths} from "enums/Depths";
-import Text = Phaser.GameObjects.Text;
 import {Shelfs} from "enums/Shelfs";
+import PlayerCharacter from "entity/PlayerCharacter";
+import Vector2 = Phaser.Math.Vector2;
+import Text = Phaser.GameObjects.Text;
+import GameState from "core/GameState";
+import animals from 'structs/animals.json';
 
 export default class Customer extends AbstractMovableEntity {
 
@@ -19,11 +22,16 @@ export default class Customer extends AbstractMovableEntity {
     private wanderAttempt: number = 0;
     protected purchaseIcon!: Phaser.GameObjects.Image;
     private highlightText!: Text;
+    private player: PlayerCharacter;
+    private gameState: GameState;
+    private leaveTimeout: number | null = null;
 
     private wantedItem: Shelfs | null = null;
 
-    constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld, characterIndex: number = 0) {
+    constructor(scene: GameScene, x: number, y: number, pathfinding: MatrixWorld, player: PlayerCharacter, gameState: GameState, characterIndex: number = 0) {
         super(scene, x, y, pathfinding, characterIndex);
+        this.player = player;
+        this.gameState = gameState;
         this.wanderAttempt = Phaser.Math.RND.between(1, 5);
 
         let yT = -36;
@@ -101,12 +109,29 @@ export default class Customer extends AbstractMovableEntity {
             this.highlightText.setVisible(true);
 
             // Maximal time for wait for purchase
-            setTimeout(() => {
+            // @ts-ignore
+            this.leaveTimeout = setTimeout(() => {
                 this.customerState = CustomerStates.LOOKIGN_FOR_LEAVE_TARGET;
                 this.purchaseIcon.setVisible(false);
                 this.highlightText.setVisible(false);
             }, Phaser.Math.RND.between(10000, 20000));
             console.log('waiting for purchase');
+        }
+
+        if (this.customerState === CustomerStates.WAIT_FOR_PURCHASE && this.canStartPurchaseProcess()) {
+            if (this.leaveTimeout) {
+                clearTimeout(this.leaveTimeout);
+                this.leaveTimeout = null;
+            }
+            this.customerState = CustomerStates.PURCHASING;
+
+            setTimeout(() => {
+                this.customerState = CustomerStates.LOOKIGN_FOR_LEAVE_TARGET;
+                let coins = this.getCoinsByAnimal();
+                this.gameState.addBalance(coins);
+                this.purchaseIcon.setVisible(false);
+                this.highlightText.setVisible(false);
+            }, 2000);
         }
 
         if (this.customerState === CustomerStates.LOOKIGN_FOR_LEAVE_TARGET) {
@@ -144,6 +169,11 @@ export default class Customer extends AbstractMovableEntity {
         );
     }
 
+    private canStartPurchaseProcess (): boolean {
+        let playerBody = this.player.body as Phaser.Physics.Arcade.Body;
+        return this.player.y <= WorldEnvironment.DESK_MIN_Y && this.player.x >= 210 && this.player.y <= 288 && playerBody.velocity.x === 0 && playerBody.velocity.y === 0;
+    }
+
     private translateShelfIntoAnimal (shelf: Shelfs): string {
         switch (shelf) {
             case Shelfs.DOG:
@@ -165,5 +195,16 @@ export default class Customer extends AbstractMovableEntity {
             default:
                 return 'Unknown';
         }
+    }
+
+    private getCoinsByAnimal (): number {
+        if (!this.wantedItem) return 0;
+        let lowered = this.translateShelfIntoAnimal(this.wantedItem).toLowerCase();
+        return animals[lowered].price;
+    }
+
+    destroy(fromScene?: boolean): void {
+        super.destroy(fromScene);
+        this.highlightText.destroy(true);
     }
 }
