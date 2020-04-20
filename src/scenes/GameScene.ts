@@ -44,7 +44,7 @@ export default class GameScene extends Phaser.Scene {
         this.shelfManager = new ShelfManager(this, this.gameState);
         this.playerCharacter = new PlayerCharacter(this, 450, 272, this.matrixWorld, this.shelfManager);
         this.worldEnvironment = new WorldEnvironment(this, this.playerCharacter);
-        this.customerManager = new CustomerManager(this, this.matrixWorld, this.playerCharacter, this.gameState);
+        this.customerManager = new CustomerManager(this, this.matrixWorld, this.playerCharacter, this.gameState, this.gameState.dayNightSystem);
         this.initDebugUiPlayer();
 
         this.ui = new UI(this, this.gameState, this.gameState.dayNightSystem);

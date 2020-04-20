@@ -10,7 +10,7 @@
     "moveX": 70,
     "moveY": 10,
     "name": "Bunny",
-    "price": 60,
+    "price": 50,
     "reward": [5, 8],
     "shelfSlot": "game_bunny_shelf"
   },
@@ -25,7 +25,7 @@
     "moveX": 70,
     "moveY": 10,
     "name": "Dog",
-    "price": 120,
+    "price": 60,
     "reward": [6, 15],
     "shelfSlot": "game_dog_shelf"
   },
@@ -55,7 +55,7 @@
     "moveX": 80,
     "moveY": 10,
     "name": "Parrot",
-    "price": 35,
+    "price": 30,
     "reward": [3, 6],
     "shelfSlot": "game_parrot_shelf"
   },
@@ -85,7 +85,7 @@
     "moveX": 45,
     "moveY": 40,
     "name": "Spider",
-    "price": 10,
+    "price": 5,
     "reward": [1, 2],
     "shelfSlot": "game_spider_shelf"
   },
@@ -100,7 +100,7 @@
     "moveX": 45,
     "moveY": 10,
     "name": "Turtle",
-    "price": 50,
+    "price": 30,
     "reward": [3, 6],
     "shelfSlot": "game_turtle_shelf"
   }

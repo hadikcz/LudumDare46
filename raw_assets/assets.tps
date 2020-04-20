@@ -181,22 +181,31 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">tileset/game_bad_smile.png</key>
             <key type="filename">tileset/game_bunny.png</key>
             <key type="filename">tileset/game_bunny_cage.png</key>
+            <key type="filename">tileset/game_bunny_highlight.png</key>
             <key type="filename">tileset/game_bunny_shelf.png</key>
+            <key type="filename">tileset/game_calendar.png</key>
             <key type="filename">tileset/game_ceiling lights.png</key>
             <key type="filename">tileset/game_ceiling_single.png</key>
+            <key type="filename">tileset/game_clock.png</key>
+            <key type="filename">tileset/game_coin.png</key>
             <key type="filename">tileset/game_default_shelf.png</key>
             <key type="filename">tileset/game_dog.png</key>
             <key type="filename">tileset/game_dog_body.png</key>
             <key type="filename">tileset/game_dog_cage.png</key>
             <key type="filename">tileset/game_dog_head.png</key>
+            <key type="filename">tileset/game_dog_highlight.png</key>
             <key type="filename">tileset/game_dog_shelf.png</key>
             <key type="filename">tileset/game_door.png</key>
             <key type="filename">tileset/game_door_entrance.png</key>
+            <key type="filename">tileset/game_door_entrance_highlight.png</key>
+            <key type="filename">tileset/game_door_highlight.png</key>
+            <key type="filename">tileset/game_feed.png</key>
+            <key type="filename">tileset/game_fish_highlight.png</key>
             <key type="filename">tileset/game_fish_orange.png</key>
             <key type="filename">tileset/game_fish_red.png</key>
-            <key type="filename">tileset/game_fishes.png</key>
             <key type="filename">tileset/game_fishes_aquarium_glass.png</key>
             <key type="filename">tileset/game_fishes_shelf.png</key>
             <key type="filename">tileset/game_floor.png</key>
@@ -204,24 +213,35 @@
             <key type="filename">tileset/game_light_left.png</key>
             <key type="filename">tileset/game_parrot.png</key>
             <key type="filename">tileset/game_parrot_cage.png</key>
+            <key type="filename">tileset/game_parrot_highlight.png</key>
             <key type="filename">tileset/game_parrot_shelf.png</key>
+            <key type="filename">tileset/game_poop.png</key>
             <key type="filename">tileset/game_prodejni_pult.png</key>
+            <key type="filename">tileset/game_prodejni_pult_highlight.png</key>
+            <key type="filename">tileset/game_purchase.png</key>
             <key type="filename">tileset/game_rat plain.png</key>
             <key type="filename">tileset/game_rat_cage.png</key>
+            <key type="filename">tileset/game_rat_highlight.png</key>
             <key type="filename">tileset/game_rat_in_cage.png</key>
             <key type="filename">tileset/game_rat_in_cage2.png</key>
             <key type="filename">tileset/game_rat_shelf.png</key>
+            <key type="filename">tileset/game_skull.png</key>
+            <key type="filename">tileset/game_skull_permanent.png</key>
+            <key type="filename">tileset/game_smile.png</key>
             <key type="filename">tileset/game_spider.png</key>
             <key type="filename">tileset/game_spider_aquarium_glass.png</key>
+            <key type="filename">tileset/game_spider_highlight.png</key>
             <key type="filename">tileset/game_spider_shelf.png</key>
             <key type="filename">tileset/game_turtle.png</key>
             <key type="filename">tileset/game_turtle_aquarium_glass.png</key>
+            <key type="filename">tileset/game_turtle_highlight.png</key>
             <key type="filename">tileset/game_turtle_shelf.png</key>
             <key type="filename">tileset/game_vent.png</key>
             <key type="filename">tileset/game_vent_inner.png</key>
             <key type="filename">tileset/game_void.png</key>
             <key type="filename">tileset/game_wall.png</key>
             <key type="filename">tileset/game_wallpaper.png</key>
+            <key type="filename">tileset/game_wallpaper_highlight.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -231,6 +251,20 @@
                 <rect>320,240,640,480</rect>
                 <key>scale9Paddings</key>
                 <rect>320,240,640,480</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">tileset/progress_bar_bg.png</key>
+            <key type="filename">tileset/progress_bar_inner.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,1,16,2</rect>
+                <key>scale9Paddings</key>
+                <rect>8,1,16,2</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
