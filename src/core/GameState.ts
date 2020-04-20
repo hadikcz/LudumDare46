@@ -10,7 +10,7 @@ export default class GameState {
 
     public events: EventEmitter;
     public dayNightSystem: DayNightSystem;
-    private balance: number = 100005;
+    private balance: number = 5;
     private purchasedShelfs: Shelfs[];
 
     constructor (scene: GameScene) {

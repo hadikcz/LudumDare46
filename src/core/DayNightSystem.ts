@@ -29,7 +29,6 @@ export default class DayNightSystem {
      * @private
      */
     _update () {
-        console.log(this.currentTime);
         this.currentTime += 0.1;
         this.currentTime = parseFloat(this.currentTime.toFixed(1));
         if (this.currentTime > 24) {

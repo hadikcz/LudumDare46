@@ -22,7 +22,7 @@ export default class ShopUI {
             this.closeShop();
         });
 
-            // @ts-ignore
+        // @ts-ignore
         let self = this;
         $(document).on('click', '.purchase', function () {
             // @ts-ignore
