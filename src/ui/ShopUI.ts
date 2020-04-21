@@ -9,6 +9,7 @@ export default class ShopUI {
 
     private scene: GameScene;
     private gameState: GameState;
+    private opened: boolean = false;
 
     constructor(scene: GameScene, gameState: GameState) {
         this.scene = scene;
@@ -36,12 +37,24 @@ export default class ShopUI {
         this.closeShop();
     }
 
+    update () {
+        // @ts-ignore
+        if ((this.scene.playerCharacter.body.velocity.x !== 0 || this.scene.playerCharacter.body.velocity.y !== 0) && this.opened) {
+            // @ts-ignore
+            this.closeShop();
+        }
+    }
+
     openShop (): void {
         this.renderShop();
         $('.shop').slideDown('slow');
+        setTimeout(() => {
+            this.opened = true;
+        }, 1000);
     }
 
     private closeShop (): void {
+        this.opened = false;
         $('.shop').slideUp('slow');
     }
 
@@ -49,7 +62,7 @@ export default class ShopUI {
         let html = '';
         let animalsArray = ArrayHelpers.objectValuesToArray(animals);
         animalsArray.push({
-            price: 3000,
+            price: 799,
             shelfSlot: 'win',
             name: 'Employer (WIN)'
         });

@@ -50,6 +50,7 @@ export default class UI {
         this.balance.setText(this.gameState.getBalance().toFixed(0).toString());
         this.clock.setText(this.dayNightSystem.getTime().toFixed(0).toString());
         this.calendar.setText(this.dayNightSystem.getDay().toFixed(0).toString());
+        this.shopUI.update();
     }
 
     show (): void {

@@ -22,7 +22,7 @@ const config = {
         }
     },
     disableContextMenu: !__DEV__,
-    antialias: false,
+    antialias: true,
     scale: {
         // mode: Phaser.DOM.FILL,
         mode: Phaser.Scale.CENTER_BOTH,

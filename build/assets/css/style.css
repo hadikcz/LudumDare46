@@ -62,11 +62,16 @@ a {text-decoration: none;}
     position: absolute;
     background: #3e4e41;
     width: 528px;
-    height: 350px;
+    height: 365px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 5px;
+}
+
+.shop  .close-wrapper {
+    clear: both;
+    margin-top: 15px;
 }
 
 .shop .close {
@@ -87,11 +92,18 @@ a {text-decoration: none;}
     margin-bottom: 20px;
 }
 
+.shop #inner {
+    width: auto;
+    height: 260px;
+    position: relative;
+}
+
 .shop .card {
     background: #2f3d31;
     width: 120px;
     height: 120px;
-    display: inline-block;
+    /*display: inline-block;*/
+    float: left;
     margin-right: 10px;
     margin-top: 10px;
 }
@@ -120,6 +132,7 @@ a {text-decoration: none;}
     font-size: 15px;
     text-align: center;
     cursor: pointer;
+    margin: 0 auto;
     margin-top: 30px;
 }
 
