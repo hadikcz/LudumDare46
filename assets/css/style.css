@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "ARCADECLASSIC";
-    src: url('../fonts/ARCADECLASSIC.ttf') format("truetype");
+    font-family: "arcadeclassic";
+    src: url('../fonts/arcadeclassic.ttf') format("truetype");
 }
 
 html,
@@ -16,7 +16,7 @@ body {
     image-rendering: -o-crisp-edges;
     -ms-interpolation-mode: nearest-neighbor;
     image-rendering: pixelated;
-    font-family: 'ARCADECLASSIC', Arial;
+    font-family: 'arcadeclassic', Arial;
 
     /* Disable selection after double click */
     user-select: none; /* standard syntax */

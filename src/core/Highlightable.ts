@@ -34,7 +34,7 @@ export default class Highlightable {
         this.highlight = this.scene.add.sprite(x, y, 'assets', imageIndex).setInteractive();
         this.parent.add(this.highlight);
 
-        this.highlightText = this.scene.add.text(this.parent.x + x + modifiyTextX, this.parent.y + y + modifyTextY, this.title, { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 65, color: '#feda09', align: 'center' }).setScale(0.2);
+        this.highlightText = this.scene.add.text(this.parent.x + x + modifiyTextX, this.parent.y + y + modifyTextY, this.title, { fontFamily: 'arcadeclassic, Arial', fontSize: 65, color: '#feda09', align: 'center' }).setScale(0.2);
         this.highlightText.setStroke('#7c6e1b', 30).setVisible(false);
         this.highlightText.setDepth(Depths.UI);
         // this.parent.add(this.highlightText);

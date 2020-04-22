@@ -223,6 +223,8 @@ export default abstract class AbstractShelf extends Phaser.GameObjects.Container
     }
 
     private animalDie (): void {
+        // @ts-ignore
+        this.scene.worldEnvironment.shopDoor.flashBossText(true);
         this.stopLoops();
         this.lives--;
 

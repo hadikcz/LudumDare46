@@ -107,6 +107,8 @@ export default class ShelfManager {
     }
 
     private shelfTotalDie (shelf: AbstractShelf): void {
+        // @ts-ignore
+        this.scene.worldEnvironment.shopDoor.flashBossText(true);
         console.log('!!!!!! **** shelfTotalDie ***** !!!!!');
         // return; //@TODO : infinite loop and crash here
         this.gameState.removeShelf(shelf.getShelfType());

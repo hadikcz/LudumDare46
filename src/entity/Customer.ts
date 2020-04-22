@@ -67,7 +67,7 @@ export default class Customer extends AbstractMovableEntity {
             ease: Phaser.Math.Easing.Bounce.In
         });
 
-        this.highlightText = this.scene.add.text(0, 0, 'Spider', { fontFamily: 'ARCADECLASSIC, Arial', fontSize: 65, color: '#feda09', align: 'center' }).setScale(0.2).setDepth(Depths.UI);
+        this.highlightText = this.scene.add.text(0, 0, 'Spider', { fontFamily: 'arcadeclassic, Arial', fontSize: 65, color: '#feda09', align: 'center' }).setScale(0.2).setDepth(Depths.UI);
         this.highlightText.setStroke('#7c6e1b', 30).setVisible(false);
     }
 

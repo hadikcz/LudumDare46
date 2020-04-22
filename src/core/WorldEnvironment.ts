@@ -18,6 +18,7 @@ export default class WorldEnvironment {
     public static readonly SPAWN_POSITION: Vector2 = new Vector2(207, 300);
     public static readonly DESK_MIN_Y: number = 250;
 
+    public shopDoor: Door;
     private scene: GameScene;
     private player: PlayerCharacter;
 
@@ -40,7 +41,7 @@ export default class WorldEnvironment {
         this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 179, WorldEnvironment.ORIGIN_POINT.y + 30, 'assets', 'game_vent').setOrigin(0.5, 0.5).setDepth(Depths.UNDER_PLAYER);
         this.fanInner = this.scene.add.image(WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 179, WorldEnvironment.ORIGIN_POINT.y + 30, 'assets', 'game_vent_inner').setOrigin(0.5, 0.5).setDepth(Depths.UNDER_PLAYER);
 
-        let door = new Door(this.scene, WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 781, WorldEnvironment.ORIGIN_POINT.y + 136, this.player);
+        this.shopDoor = new Door(this.scene, WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 781, WorldEnvironment.ORIGIN_POINT.y + 136, this.player);
 
         this.scene.add.rectangle(WorldEnvironment.ORIGIN_POINT.x + 0, WorldEnvironment.ORIGIN_POINT.y + 131, 1000, 15, 0x000000, 0.35).setOrigin(0, 0.5).setDepth(Depths.UNDER_PLAYER);
         let entrance = new DoorEntrance(this.scene, WorldEnvironment.ORIGIN_POINT.x + WorldEnvironment.ORIGIN_POINT_INNER.x + 87, WorldEnvironment.ORIGIN_POINT.y + 389);

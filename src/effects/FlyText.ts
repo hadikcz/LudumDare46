@@ -6,7 +6,7 @@ import EffectManager from "effects/EffectManager";
 export default class FlyText extends Phaser.GameObjects.Text {
     constructor (scene) {
         super(scene, EffectManager.DEFAULT_POSITION[0], EffectManager.DEFAULT_POSITION[1], '', {
-            fontFamily: 'ARCADECLASSIC, Arial',
+            fontFamily: 'arcadeclassic, Arial',
             fontSize: 64,
             color: '#ffd500'
         } as unknown as TextStyle);

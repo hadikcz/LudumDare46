@@ -21,5 +21,10 @@ export default class DoorEntrance extends Phaser.GameObjects.Container {
         this.highlight = new Highlightable(scene, this, 'Entrance');
 
         this.highlight.setInteractiveAreaAndHighlight('game_door_entrance_highlight', 0, -50, true, -27, -70);
+        this.highlight.events.on('Highlightable.CLICK', () => {
+            console.log('hl');
+            // @ts-ignore
+            this.scene.worldEnvironment.shopDoor.flashBossText();
+        });
     }
 }

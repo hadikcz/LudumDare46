@@ -23,7 +23,7 @@ export default class FishShelf extends AbstractShelf {
         this.cage = this.scene.add.image(41, -54, 'assets', 'game_fishes_aquarium_glass');
         this.add(this.cage);
 
-        this.highlight.setInteractiveAreaAndHighlight('game_fish_highlight', 41, -53);
+        this.highlight.setInteractiveAreaAndHighlight('game_fish_highlight', 41, -57);
         if (this.config) {
             this.highlight.updateCount(this.config.count, this.config.count);
         }

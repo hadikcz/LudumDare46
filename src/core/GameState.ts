@@ -26,15 +26,15 @@ export default class GameState {
             Shelfs.TURTLE,
             Shelfs.SPIDER,
         ];
-        this.purchasedShelfs = [
-            Shelfs.FISH,
-            Shelfs.EMPTY,
-            Shelfs.EMPTY,
-            Shelfs.EMPTY,
-            Shelfs.EMPTY,
-            Shelfs.EMPTY,
-            Shelfs.EMPTY,
-        ];
+        // this.purchasedShelfs = [
+        //     Shelfs.FISH,
+        //     Shelfs.EMPTY,
+        //     Shelfs.EMPTY,
+        //     Shelfs.EMPTY,
+        //     Shelfs.EMPTY,
+        //     Shelfs.EMPTY,
+        //     Shelfs.EMPTY,
+        // ];
     }
 
     removeShelf (shelf: Shelfs): void {

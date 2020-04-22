@@ -30,7 +30,7 @@ export default class WinScene extends Phaser.Scene {
     }
 
     showText (text, last = false) {
-        let textObject = this.add.text(this.physics.world.bounds.centerX, this.physics.world.bounds.centerY, text, { fill: '#FFF', fontFamily: 'ARCADECLASSIC', fontSize: 50, align: 'center' }).setOrigin(0.5, 0.5).setAlpha(0);
+        let textObject = this.add.text(this.physics.world.bounds.centerX, this.physics.world.bounds.centerY, text, { fill: '#FFF', fontFamily: 'arcadeclassic', fontSize: 50, align: 'center' }).setOrigin(0.5, 0.5).setAlpha(0);
         this.add.tween({
             targets: textObject,
             duration: 1000,
